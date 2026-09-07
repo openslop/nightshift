@@ -16,7 +16,8 @@ Linux)
   UNITS=${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user
   if [ "$MODE" = remove ]; then
     run systemctl --user disable --now nightshift-nightly.timer nightshift-review.timer || true
-    rm -f "$UNITS"/nightshift-*.{service,timer}; run systemctl --user daemon-reload; exit 0
+    for f in "$DIR"/install/systemd/*; do rm -f "$UNITS/$(basename "$f")"; done
+    run systemctl --user daemon-reload; exit 0
   fi
   mkdir -p "$UNITS"
   for f in "$DIR"/install/systemd/*; do fill "$f" "$UNITS/$(basename "$f")"; done
@@ -27,7 +28,9 @@ Linux)
 Darwin)
   AGENTS=$HOME/Library/LaunchAgents
   if [ "$MODE" = remove ]; then
-    for l in com.nightshift.nightly com.nightshift.review; do run launchctl bootout "gui/$(id -u)/$l" || true; rm -f "$AGENTS/$l.plist"; done; exit 0
+    for f in "$DIR"/install/launchd/*; do
+      name=$(basename "$f" .plist); run launchctl bootout "gui/$(id -u)/$name" || true; rm -f "$AGENTS/$name.plist"
+    done; exit 0
   fi
   mkdir -p "$AGENTS"
   for f in "$DIR"/install/launchd/*; do
