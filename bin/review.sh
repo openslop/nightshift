@@ -38,8 +38,7 @@ The repo owner is $OWNER. Do not repeat anything they already said on a PR.
 Read $NIGHTSHIFT_DIR/review/SKILL.md and follow it exactly.
 End with a short report: PRs reviewed, comments posted, anything skipped and why."
 
-# shellcheck disable=SC2086
-timeout "$REVIEW_TIMEOUT" $REVIEW_AGENT "$PROMPT" </dev/null >>"$LOG" 2>&1
+run_agent "$REVIEW_TIMEOUT" "$REVIEW_AGENT" "$PROMPT" >>"$LOG" 2>&1
 RC=$?
 if [ "$RC" -ne 0 ]; then
   log "$LOG" "ERROR: review exited $RC (124 = timeout). ledger not updated. will retry"; exit "$RC"

@@ -7,7 +7,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat" alt="License: MIT"></a>
   <img src="https://img.shields.io/badge/runs%20on-Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-6b6bcf?style=flat" alt="Linux, macOS, Windows">
-  <img src="https://img.shields.io/badge/agent-Claude%20Code-1c1720?style=flat" alt="Claude Code">
+  <img src="https://img.shields.io/badge/agent-any%20coding%20agent-1c1720?style=flat" alt="Works with any coding agent">
   <img src="https://img.shields.io/badge/deps-bash%20%C2%B7%20git%20%C2%B7%20gh-black?style=flat" alt="bash, git, gh">
 </p>
 
@@ -19,7 +19,7 @@
 
 ## What it is
 
-Nightshift is a set of timers and job files. Each night it wakes a coding agent, points it at your repo, and runs a list of jobs one by one. Each job looks for one kind of thing to fix, opens a small PR, or does nothing. Every two hours it also reviews open PRs.
+Nightshift is a set of timers and job files. Each night it wakes your coding agent (Claude Code, Codex, Cursor, Gemini, Copilot, Hermes, OpenClaw, or any other CLI agent), points it at your repo, and runs a list of jobs one by one. Each job looks for one kind of thing to fix, opens a small PR, or does nothing. Every two hours it also reviews open PRs.
 
 You wake up to a few PRs to read. Most nights, some jobs do nothing. That is by design.
 
@@ -42,7 +42,7 @@ Every job follows the same rules in [`jobs/_common.md`](jobs/_common.md). It rea
 
 ## Set it up
 
-You need `bash`, `git`, `gh` (logged in), and [Claude Code](https://claude.com/claude-code) (logged in).
+You need `bash`, `git`, `gh` (logged in), and one coding agent CLI (logged in). See the agent table below.
 
 The fast way: paste this to your coding agent.
 
@@ -70,7 +70,7 @@ Default times: the batch at 05:12, the review at 7 past every even hour. Change 
 
 1. Clone this repo. Run `cp nightshift.conf.example nightshift.conf`.
 2. Fill in `nightshift.conf`. Ask the user only for what you cannot find: the repo folder, the GitHub `owner/repo`, the main branch, their GitHub handle, and the checks command (look in `package.json` scripts and `.github/workflows` first).
-3. Make sure `gh auth status` and `claude --version` both work for this user.
+3. Pick the user's agent in `nightshift.conf` (one of the `AGENT=` lines). Make sure `gh auth status` and the agent's own `--version` both work for this user.
 4. Run `bin/install.sh`. On Windows, run `install/windows/install.ps1` from PowerShell instead.
 5. Test one job by hand: `bin/nightly.sh`. If it is past 8 in the morning it will skip. Set `WINDOW_END_HOUR=24` in the conf while you test, then set it back.
 6. Show the user the log folder: `$STATE_DIR/runs/<date>/`.
@@ -103,7 +103,34 @@ Safety rails, all in the scripts:
 - Turn jobs off by removing them from `JOBS` in the conf.
 - Change how a job thinks by editing its file in `jobs/`. Keep the language plain.
 - Add a job: add `jobs/<name>.md` and put `<name>` in `JOBS`.
-- Swap the agent: change `AGENT` in the conf. Any CLI that takes a prompt as its last argument works.
+- Swap the agent: pick a different `AGENT=` line in the conf.
+
+## Agents
+
+Nightshift runs one command and appends the job prompt as the last argument. Any agent CLI with a non-interactive mode works. These are in the conf, ready to uncomment:
+
+| Agent                | Command                                                            |
+| -------------------- | ------------------------------------------------------------------ |
+| Claude Code          | `claude -p --dangerously-skip-permissions --max-turns 150`         |
+| Codex CLI            | `codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check` |
+| Cursor CLI           | `agent -p --force` (older installs: `cursor-agent`)                |
+| Gemini CLI           | `gemini --yolo -p`                                                 |
+| GitHub Copilot CLI   | `copilot --allow-all-tools -p`                                     |
+| Hermes Agent         | `hermes chat -q`                                                   |
+| OpenClaw             | `openclaw agent --local --message`                                 |
+| OpenCode             | `opencode run`                                                     |
+| Aider                | `aider --yes-always --message`                                     |
+| Amp                  | `amp -x --dangerously-allow-all`                                   |
+| Goose                | `goose run -t` (with `GOOSE_MODE=auto`)                            |
+| Qwen Code            | `qwen --yolo -p`                                                   |
+| Factory Droid        | `droid exec --auto high`                                           |
+| Cline                | `cline -y`                                                         |
+
+Every line turns off permission prompts. That is required: no one is awake to click yes. Flags change often, so if a run fails, check `<agent> --help` and fix the line.
+
+If your agent reads the prompt from stdin instead of an argument, set `AGENT_STDIN=1`.
+
+Not listed? Add it. The rule is: the command must run one task with no prompts and exit. Open a PR with the line and we will add it to the table.
 
 ## Turn it off
 

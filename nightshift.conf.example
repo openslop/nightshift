@@ -18,9 +18,28 @@ CHECKS="npm run lint && npm run typecheck && npm test"
 # Options: security bugs maintainability performance conventions-followup conventions architecture smoke-tests issues
 JOBS="security maintainability performance conventions-followup conventions architecture smoke-tests issues"
 
-# The agent command. The job prompt is passed as the last argument.
-AGENT="claude -p --model claude-fable-5-1 --effort high --dangerously-skip-permissions --max-turns 150"
-REVIEW_AGENT="claude -p --model claude-fable-5-1 --effort high --dangerously-skip-permissions --max-turns 80"
+# The agent. Nightshift appends the job prompt as the last argument.
+# Pick one line and remove the # in front. Flags change often; check `<agent> --help` if a run fails.
+AGENT="claude -p --dangerously-skip-permissions --max-turns 150"
+# AGENT="codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check"
+# AGENT="agent -p --force"                       # Cursor CLI (older installs: cursor-agent)
+# AGENT="gemini --yolo -p"
+# AGENT="copilot --allow-all-tools -p"
+# AGENT="hermes chat -q"
+# AGENT="openclaw agent --local --message"
+# AGENT="opencode run"
+# AGENT="aider --yes-always --message"
+# AGENT="amp -x --dangerously-allow-all"
+# AGENT="goose run -t"                           # also set GOOSE_MODE=auto
+# AGENT="qwen --yolo -p"
+# AGENT="droid exec --auto high"
+# AGENT="cline -y"
+
+# If your agent reads the prompt from stdin instead, set this to 1.
+AGENT_STDIN=0
+
+# The reviewer. Defaults to AGENT. Set it to use a different agent or model for reviews.
+# REVIEW_AGENT="claude -p --dangerously-skip-permissions --max-turns 80"
 
 # How long one job may run.
 JOB_TIMEOUT=45m

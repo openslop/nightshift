@@ -47,8 +47,7 @@ PROMPT
 for job in $JOBS; do
   [ -f "$NIGHTSHIFT_DIR/jobs/$job.md" ] || { log "$BLOG" "no job named $job"; continue; }
   log "$BLOG" "START $job (branch=$(git branch --show-current))"
-  # shellcheck disable=SC2086
-  timeout "$JOB_TIMEOUT" $AGENT "$(prompt "$job")" </dev/null >"$RUN_DIR/$job.log" 2>&1
+  run_agent "$JOB_TIMEOUT" "$AGENT" "$(prompt "$job")" >"$RUN_DIR/$job.log" 2>&1
   log "$BLOG" "END   $job exit=$?"
 done
 
