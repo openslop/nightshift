@@ -1,0 +1,7 @@
+[Unit]
+Description=Nightshift nightly batch
+
+[Service]
+Type=oneshot
+ExecStart=__DIR__/bin/nightly.sh
+TimeoutStartSec=8h

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1290 300" width="1290" height="300" role="img" aria-label="Nightshift">
+<title>Nightshift</title>
+<style>
+  :root { --ink: #1c1720; --accent: #6b6bcf; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #f3eef0; --accent: #9d9df0; } }
+  .ink { fill: var(--ink); }
+  .rim { fill: none; stroke: var(--ink); stroke-width: 13; }
+  .word { fill: var(--ink); font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif; font-size: 212px; letter-spacing: -5px; }
+  .shadow { animation: ns-phase 9s infinite; }
+  .star { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: ns-twinkle 9s infinite; }
+  .mark { transform-box: fill-box; transform-origin: center; animation: ns-tilt 9s infinite; }
+  @keyframes ns-phase {
+    0%, 9%    { transform: translateX(-196px); animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    26%, 36%  { transform: translateX(-62px);  animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    53%, 63%  { transform: translateX(0px);    animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    80%, 90%  { transform: translateX(62px);   animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    100%      { transform: translateX(196px); } }
+  @keyframes ns-tilt {
+    0%, 9%    { transform: rotate(-14deg); animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    53%, 63%  { transform: rotate(14deg);  animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    100%      { transform: rotate(-14deg); } }
+  @keyframes ns-twinkle {
+    0%, 9%    { opacity: .15; transform: scale(.6) rotate(0deg);   animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    53%, 63%  { opacity: 1;   transform: scale(1)  rotate(90deg);  animation-timing-function: cubic-bezier(.5,0,.18,1); }
+    100%      { opacity: .15; transform: scale(.6) rotate(180deg); } }
+  @media (prefers-reduced-motion: reduce) { .shadow, .star, .mark { animation: none; } .shadow { transform: translateX(-62px); } }
+</style>
+<defs>
+  <mask id="ns-lit">
+    <rect x="-40" y="-40" width="336" height="336" fill="#fff"/>
+    <circle class="shadow" cx="128" cy="128" r="96" fill="#000"/>
+  </mask>
+</defs>
+<svg x="22" y="22" width="256" height="256" viewBox="0 0 256 256" overflow="visible">
+  <g class="mark">
+    <circle class="ink" cx="128" cy="128" r="96" mask="url(#ns-lit)"/>
+    <circle class="rim" cx="128" cy="128" r="96"/>
+  </g>
+  <path class="star" d="M 214 22 C 216 40 222 46 240 48 C 222 50 216 56 214 74 C 212 56 206 50 188 48 C 206 46 212 40 214 22 Z"/>
+</svg>
+<text class="word" x="318" y="214">nightshift</text>
+</svg>

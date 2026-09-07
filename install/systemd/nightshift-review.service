@@ -1,0 +1,7 @@
+[Unit]
+Description=Nightshift PR review
+
+[Service]
+Type=oneshot
+ExecStart=__DIR__/bin/review.sh
+TimeoutStartSec=70m

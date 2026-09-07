@@ -1,0 +1,34 @@
+# Copy me to nightshift.conf and fill me in. Plain shell. No quotes needed unless there are spaces.
+
+# The repo to work on.
+REPO_DIR=$HOME/code/my-app
+REPO_SLUG=me/my-app
+BASE_BRANCH=main
+
+# Every branch Nightshift makes starts with this.
+BRANCH_PREFIX=nightshift
+
+# Your GitHub handle. Jobs read your PR comments to learn what you like.
+OWNER=me
+
+# The command that runs your repo's checks. Jobs must make it pass.
+CHECKS="npm run lint && npm run typecheck && npm test"
+
+# Jobs to run each night, in order. Remove any you do not want.
+# Options: security bugs maintainability performance conventions-followup conventions architecture smoke-tests issues
+JOBS="security maintainability performance conventions-followup conventions architecture smoke-tests issues"
+
+# The agent command. The job prompt is passed as the last argument.
+AGENT="claude -p --model claude-fable-5-1 --effort high --dangerously-skip-permissions --max-turns 150"
+REVIEW_AGENT="claude -p --model claude-fable-5-1 --effort high --dangerously-skip-permissions --max-turns 80"
+
+# How long one job may run.
+JOB_TIMEOUT=45m
+REVIEW_TIMEOUT=55m
+
+# If the nightly batch starts at or after this hour, it is skipped.
+# This stops a batch from running in the middle of your day after your laptop wakes up.
+WINDOW_END_HOUR=8
+
+# Where logs, locks, and ledgers live. Outside the repo.
+STATE_DIR=$HOME/.local/state/nightshift

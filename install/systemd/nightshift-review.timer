@@ -1,0 +1,9 @@
+[Unit]
+Description=Nightshift PR review (every 2 hours)
+
+[Timer]
+OnCalendar=*-*-* 00/2:07:00
+AccuracySec=1m
+
+[Install]
+WantedBy=timers.target

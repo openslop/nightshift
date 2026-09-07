@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Nightshift demo" xml:space="preserve">
+<title>Nightshift</title>
+<desc>At 05:12 Nightshift runs its jobs one by one. Four pull requests are ready by morning.</desc>
+<style>
+.dawn{animation:kf-dawn 32.0s infinite both}@keyframes kf-dawn{0%,79.69%{opacity:0}92.19%,96.88%{opacity:1}100%{opacity:0}}
+.s1{animation:kf-s1 32.0s infinite both}@keyframes kf-s1{0%,0.00%{opacity:0}0.62%,10.00%{opacity:1}10.63%,100%{opacity:0}}
+.s2{animation:kf-s2 32.0s infinite both}@keyframes kf-s2{0%,9.97%{opacity:0}10.63%,23.44%{opacity:1}24.06%,100%{opacity:0}}
+.s3{animation:kf-s3 32.0s infinite both}@keyframes kf-s3{0%,23.41%{opacity:0}24.06%,34.38%{opacity:1}35.00%,100%{opacity:0}}
+.s4{animation:kf-s4 32.0s infinite both}@keyframes kf-s4{0%,34.34%{opacity:0}35.00%,45.31%{opacity:1}45.94%,100%{opacity:0}}
+.s5{animation:kf-s5 32.0s infinite both}@keyframes kf-s5{0%,45.28%{opacity:0}45.94%,56.25%{opacity:1}56.88%,100%{opacity:0}}
+.s6{animation:kf-s6 32.0s infinite both}@keyframes kf-s6{0%,56.22%{opacity:0}56.88%,67.19%{opacity:1}67.81%,100%{opacity:0}}
+.s7{animation:kf-s7 32.0s infinite both}@keyframes kf-s7{0%,67.16%{opacity:0}67.81%,78.12%{opacity:1}78.75%,100%{opacity:0}}
+.s8{animation:kf-s8 32.0s infinite both}@keyframes kf-s8{0%,78.09%{opacity:0}78.75%,89.06%{opacity:1}89.69%,100%{opacity:0}}
+.s9{animation:kf-s9 32.0s infinite both}@keyframes kf-s9{0%,89.03%{opacity:0}89.69%,100.00%{opacity:1}100.00%,100%{opacity:0}}
+.a10{animation:kf-a10 32.0s infinite both}@keyframes kf-a10{0%,9.97%{opacity:0;transform:translate(0,6px)}11.56%,100%{opacity:1;transform:translate(0,0)}}
+.a11{animation:kf-a11 32.0s infinite both}@keyframes kf-a11{0%,12.16%{opacity:0;transform:translate(0,6px)}13.75%,100%{opacity:1;transform:translate(0,0)}}
+.a12{animation:kf-a12 32.0s infinite both}@keyframes kf-a12{0%,23.41%{opacity:0;transform:translate(0,6px)}25.00%,100%{opacity:1;transform:translate(0,0)}}
+.a13{animation:kf-a13 32.0s infinite both}@keyframes kf-a13{0%,24.66%{opacity:0;transform:translate(0,6px)}26.25%,100%{opacity:1;transform:translate(0,0)}}
+.a14{animation:kf-a14 32.0s infinite both}@keyframes kf-a14{0%,34.34%{opacity:0;transform:translate(0,6px)}35.94%,100%{opacity:1;transform:translate(0,0)}}
+.a15{animation:kf-a15 32.0s infinite both}@keyframes kf-a15{0%,35.59%{opacity:0;transform:translate(0,6px)}37.19%,100%{opacity:1;transform:translate(0,0)}}
+.a16{animation:kf-a16 32.0s infinite both}@keyframes kf-a16{0%,42.47%{opacity:0;transform:translate(0,6px)}44.06%,100%{opacity:1;transform:translate(0,0)}}
+.a17{animation:kf-a17 32.0s infinite both}@keyframes kf-a17{0%,43.72%{opacity:0;transform:translate(0,6px)}45.31%,100%{opacity:1;transform:translate(0,0)}}
+.a18{animation:kf-a18 32.0s infinite both}@keyframes kf-a18{0%,45.28%{opacity:0;transform:translate(0,6px)}46.88%,100%{opacity:1;transform:translate(0,0)}}
+.a19{animation:kf-a19 32.0s infinite both}@keyframes kf-a19{0%,46.53%{opacity:0;transform:translate(0,6px)}48.12%,100%{opacity:1;transform:translate(0,0)}}
+.a20{animation:kf-a20 32.0s infinite both}@keyframes kf-a20{0%,56.22%{opacity:0;transform:translate(0,6px)}57.81%,100%{opacity:1;transform:translate(0,0)}}
+.a21{animation:kf-a21 32.0s infinite both}@keyframes kf-a21{0%,57.47%{opacity:0;transform:translate(0,6px)}59.06%,100%{opacity:1;transform:translate(0,0)}}
+.a22{animation:kf-a22 32.0s infinite both}@keyframes kf-a22{0%,61.22%{opacity:0;transform:translate(0,6px)}62.81%,100%{opacity:1;transform:translate(0,0)}}
+.a23{animation:kf-a23 32.0s infinite both}@keyframes kf-a23{0%,62.47%{opacity:0;transform:translate(0,6px)}64.06%,100%{opacity:1;transform:translate(0,0)}}
+.a24{animation:kf-a24 32.0s infinite both}@keyframes kf-a24{0%,67.16%{opacity:0;transform:translate(0,6px)}68.75%,100%{opacity:1;transform:translate(0,0)}}
+.a25{animation:kf-a25 32.0s infinite both}@keyframes kf-a25{0%,68.72%{opacity:0;transform:translate(0,6px)}70.31%,100%{opacity:1;transform:translate(0,0)}}
+.blink{animation:kf-blink 1s steps(1) infinite}@keyframes kf-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.s26{animation:kf-s26 32.0s infinite both}@keyframes kf-s26{0%,9.97%{opacity:0}10.31%,68.75%{opacity:1}69.06%,100%{opacity:0}}
+.s27{animation:kf-s27 32.0s infinite both}@keyframes kf-s27{0%,0.00%{opacity:0}0.94%,33.75%{opacity:1}34.69%,100%{opacity:0}}
+.a28{animation:kf-a28 32.0s infinite both}@keyframes kf-a28{0%,34.34%{opacity:0;transform:translate(0,8px)}35.94%,100%{opacity:1;transform:translate(0,0)}}
+.a29{animation:kf-a29 32.0s infinite both}@keyframes kf-a29{0%,39.34%{opacity:0;transform:translate(0,0px)}40.94%,100%{opacity:1;transform:translate(0,0)}}
+.a30{animation:kf-a30 32.0s infinite both}@keyframes kf-a30{0%,78.09%{opacity:0;transform:translate(0,0px)}79.69%,100%{opacity:1;transform:translate(0,0)}}
+.a31{animation:kf-a31 32.0s infinite both}@keyframes kf-a31{0%,45.28%{opacity:0;transform:translate(0,8px)}46.88%,100%{opacity:1;transform:translate(0,0)}}
+.a32{animation:kf-a32 32.0s infinite both}@keyframes kf-a32{0%,50.28%{opacity:0;transform:translate(0,0px)}51.88%,100%{opacity:1;transform:translate(0,0)}}
+.a33{animation:kf-a33 32.0s infinite both}@keyframes kf-a33{0%,56.22%{opacity:0;transform:translate(0,8px)}57.81%,100%{opacity:1;transform:translate(0,0)}}
+.a34{animation:kf-a34 32.0s infinite both}@keyframes kf-a34{0%,61.22%{opacity:0;transform:translate(0,0px)}62.81%,100%{opacity:1;transform:translate(0,0)}}
+.a35{animation:kf-a35 32.0s infinite both}@keyframes kf-a35{0%,67.16%{opacity:0;transform:translate(0,8px)}68.75%,100%{opacity:1;transform:translate(0,0)}}
+.a36{animation:kf-a36 32.0s infinite both}@keyframes kf-a36{0%,72.16%{opacity:0;transform:translate(0,0px)}73.75%,100%{opacity:1;transform:translate(0,0)}}
+.s37{animation:kf-s37 32.0s infinite both}@keyframes kf-s37{0%,0.00%{opacity:0}0.94%,88.44%{opacity:1}89.38%,100%{opacity:0}}
+.z{animation:kf-z 2.4s ease-in-out infinite}@keyframes kf-z{0%,100%{opacity:.25}50%{opacity:1}}
+.s38{animation:kf-s38 32.0s infinite both}@keyframes kf-s38{0%,89.03%{opacity:0}90.31%,100.00%{opacity:1}100.00%,100%{opacity:0}}
+.dot{animation:kf-dot 32.0s linear infinite}@keyframes kf-dot{0%{transform:translateX(0)}100%{transform:translateX(1200px)}}
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: forwards !important; } }
+</style>
+<rect width="1280" height="720" fill="#140e11"/>
+<defs><linearGradient id="dawn" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#3a2a3a"/><stop offset=".6" stop-color="#241a26"/><stop offset="1" stop-color="#140e11"/></linearGradient><clipPath id="moonclip"><circle cx="0" cy="0" r="12"/></clipPath></defs>
+<rect width="1280" height="720" fill="url(#dawn)" class="dawn"/>
+<rect x="0" y="0" width="1280" height="52" fill="#1c1619"/><line x1="0" y1="52.5" x2="1280" y2="52.5" stroke="#2e282b"/>
+<g transform="translate(34,26)"><circle r="11" fill="none" stroke="#f3eef0" stroke-width="2.5"/><circle r="11" fill="#f3eef0" clip-path="url(#moonclip)" transform="translate(-7,0)"/></g>
+<text x="56" y="32" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#f3eef0" text-anchor="start" class="" style="white-space:pre" >nightshift</text>
+<text x="150" y="31" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre" >runs while you sleep</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s1" style="white-space:pre" >23:41</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s2" style="white-space:pre" >05:12</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s3" style="white-space:pre" >05:19</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s4" style="white-space:pre" >05:43</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s5" style="white-space:pre" >06:14</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s6" style="white-space:pre" >06:41</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s7" style="white-space:pre" >07:02</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s8" style="white-space:pre" >07:31</text>
+<text x="1246" y="33" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="16" font-weight="400" fill="#ded6da" text-anchor="end" class="s9" style="white-space:pre" >08:00</text>
+<rect x="40" y="84" width="600" height="520" rx="12" fill="#1c1619" stroke="#2e282b"/>
+<text x="60" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre" >~/.local/state/nightshift/runs/20260907/_batch.log</text>
+<line x1="40" y1="128" x2="640" y2="128" stroke="#2e282b"/>
+<text x="60" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a10" style="white-space:pre" >05:12:00</text>
+<text x="144" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="a10" style="white-space:pre" >batch start</text>
+<text x="60" y="186" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a11" style="white-space:pre" >05:12:01</text>
+<text x="144" y="186" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a11" style="white-space:pre" >START security</text>
+<text x="60" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a12" style="white-space:pre" >05:19:41</text>
+<text x="144" y="212" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a12" style="white-space:pre" >END   security          no change</text>
+<text x="60" y="238" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a13" style="white-space:pre" >05:19:42</text>
+<text x="144" y="238" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a13" style="white-space:pre" >START maintainability</text>
+<text x="60" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a14" style="white-space:pre" >05:43:10</text>
+<text x="144" y="264" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#8f8fe6" text-anchor="start" class="a14" style="white-space:pre" >END   maintainability   PR #212</text>
+<text x="60" y="290" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a15" style="white-space:pre" >05:43:11</text>
+<text x="144" y="290" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a15" style="white-space:pre" >START performance</text>
+<text x="60" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a16" style="white-space:pre" >05:58:02</text>
+<text x="144" y="316" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a16" style="white-space:pre" >END   performance       no change</text>
+<text x="60" y="342" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a17" style="white-space:pre" >05:58:03</text>
+<text x="144" y="342" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a17" style="white-space:pre" >START conventions</text>
+<text x="60" y="368" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a18" style="white-space:pre" >06:14:55</text>
+<text x="144" y="368" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#8f8fe6" text-anchor="start" class="a18" style="white-space:pre" >END   conventions       PR #213</text>
+<text x="60" y="394" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a19" style="white-space:pre" >06:14:56</text>
+<text x="144" y="394" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a19" style="white-space:pre" >START architecture</text>
+<text x="60" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a20" style="white-space:pre" >06:41:30</text>
+<text x="144" y="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#8f8fe6" text-anchor="start" class="a20" style="white-space:pre" >END   architecture      PR #214</text>
+<text x="60" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a21" style="white-space:pre" >06:41:31</text>
+<text x="144" y="446" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a21" style="white-space:pre" >START smoke-tests</text>
+<text x="60" y="472" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a22" style="white-space:pre" >06:44:12</text>
+<text x="144" y="472" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a22" style="white-space:pre" >END   smoke-tests       no change</text>
+<text x="60" y="498" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a23" style="white-space:pre" >06:44:13</text>
+<text x="144" y="498" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#ded6da" text-anchor="start" class="a23" style="white-space:pre" >START issues</text>
+<text x="60" y="524" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a24" style="white-space:pre" >07:02:48</text>
+<text x="144" y="524" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#8f8fe6" text-anchor="start" class="a24" style="white-space:pre" >END   issues            PR #215  closes #198</text>
+<text x="60" y="550" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#6f6167" text-anchor="start" class="a25" style="white-space:pre" >07:02:49</text>
+<text x="144" y="550" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="a25" style="white-space:pre" >batch done</text>
+<g class="s26"><rect x="60" y="564" width="8" height="15" fill="#9d8b93" class="blink"/></g>
+<rect x="680" y="84" width="560" height="520" rx="12" fill="#1c1619" stroke="#2e282b"/>
+<text x="700" y="114" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#ded6da" text-anchor="start" class="" style="white-space:pre" >Pull requests</text>
+<text x="1220" y="114" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre" >github.com/you/your-app</text>
+<line x1="680" y1="128" x2="1240" y2="128" stroke="#2e282b"/>
+<text x="960.0" y="284" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#6f6167" text-anchor="middle" class="s27" style="white-space:pre" >Nothing yet.</text>
+<text x="960.0" y="308" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#6f6167" text-anchor="middle" class="s27" style="white-space:pre" >Go to sleep.</text>
+<g class="a28">
+<rect x="696" y="146" width="528" height="92" rx="10" fill="#231e21" stroke="#2e282b"/>
+<circle cx="718" cy="172" r="6" fill="#5fbf8a"/>
+<text x="734" y="177" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#ded6da" text-anchor="start" class="" style="white-space:pre" >refactor: nightly maintainability 2026-09-07</text>
+<text x="1204" y="177" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre" >#212</text>
+<text x="734" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre" >nightly/maintainability-20260907-0519</text>
+<text x="734" y="222" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre" >+41  -163</text>
+<text x="830" y="222" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a29" style="white-space:pre" >checks passed</text>
+<text x="1204" y="222" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#8f8fe6" text-anchor="end" class="a30" style="white-space:pre" >nightshift review: lgtm</text>
+</g>
+<g class="a31">
+<rect x="696" y="250" width="528" height="92" rx="10" fill="#231e21" stroke="#2e282b"/>
+<circle cx="718" cy="276" r="6" fill="#5fbf8a"/>
+<text x="734" y="281" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#ded6da" text-anchor="start" class="" style="white-space:pre" >refactor: nightly conventions sweep 2026-09-07</text>
+<text x="1204" y="281" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre" >#213</text>
+<text x="734" y="304" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre" >nightly/conventions-20260907-0558</text>
+<text x="734" y="326" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre" >+28  -57</text>
+<text x="830" y="326" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a32" style="white-space:pre" >checks passed</text>
+</g>
+<g class="a33">
+<rect x="696" y="354" width="528" height="92" rx="10" fill="#231e21" stroke="#2e282b"/>
+<circle cx="718" cy="380" r="6" fill="#5fbf8a"/>
+<text x="734" y="385" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#ded6da" text-anchor="start" class="" style="white-space:pre" >refactor: rethink architecture 2026-09-07</text>
+<text x="1204" y="385" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre" >#214</text>
+<text x="734" y="408" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre" >nightly/architecture-20260907-0614</text>
+<text x="734" y="430" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre" >+96  -240</text>
+<text x="830" y="430" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a34" style="white-space:pre" >checks passed</text>
+</g>
+<g class="a35">
+<rect x="696" y="458" width="528" height="92" rx="10" fill="#231e21" stroke="#2e282b"/>
+<circle cx="718" cy="484" r="6" fill="#5fbf8a"/>
+<text x="734" y="489" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" fill="#ded6da" text-anchor="start" class="" style="white-space:pre" >fix: export toast opens the right panel</text>
+<text x="1204" y="489" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre" >#215</text>
+<text x="734" y="512" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre" >nightly/issue-198-20260907-0644</text>
+<text x="734" y="534" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre" >+19  -4</text>
+<text x="830" y="534" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a36" style="white-space:pre" >checks passed</text>
+</g>
+<text x="40" y="640" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#9d8b93" text-anchor="start" class="s37" style="white-space:pre" >you</text>
+<g class="s37"><text x="80" y="640" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#6f6167" class="z">z</text><text x="92" y="634" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#6f6167" class="z" style="animation-delay:-.8s">z</text><text x="106" y="627" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" fill="#6f6167" class="z" style="animation-delay:-1.6s">z</text></g>
+<text x="40" y="640" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#ded6da" text-anchor="start" class="s38" style="white-space:pre" >good morning. four PRs are waiting.</text>
+<line x1="40" y1="674" x2="1240" y2="674" stroke="#2e282b" stroke-width="2"/>
+<line x1="40" y1="669" x2="40" y2="679" stroke="#9d8b93"/>
+<text x="40" y="698" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" font-weight="400" fill="#6f6167" text-anchor="middle" class="" style="white-space:pre" >23:00</text>
+<line x1="448.00000000000006" y1="669" x2="448.00000000000006" y2="679" stroke="#9d8b93"/>
+<text x="448.00000000000006" y="698" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" font-weight="400" fill="#6f6167" text-anchor="middle" class="" style="white-space:pre" >05:12</text>
+<line x1="832.0" y1="669" x2="832.0" y2="679" stroke="#9d8b93"/>
+<text x="832.0" y="698" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" font-weight="400" fill="#6f6167" text-anchor="middle" class="" style="white-space:pre" >08:00</text>
+<line x1="1240" y1="669" x2="1240" y2="679" stroke="#9d8b93"/>
+<text x="1240" y="698" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" font-weight="400" fill="#6f6167" text-anchor="middle" class="" style="white-space:pre" >noon</text>
+<line x1="448.00000000000006" y1="674" x2="832.0" y2="674" stroke="#8f8fe6" stroke-width="3" stroke-linecap="round"/>
+<circle cx="40" cy="674" r="6" fill="#f3eef0" class="dot"/>
+</svg>
