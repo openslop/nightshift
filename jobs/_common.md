@@ -25,7 +25,7 @@ The runner gives you these names. Use them.
 
 Your PR must never touch a file that any open PR touches.
 
-1. List open PRs: `gh pr list --repo $REPO_SLUG --state open --json number,title,files --limit 100`. Every file in that list is off limits tonight.
+1. List open PRs: `gh pr list --repo $REPO_SLUG --state open --json number,title,files --limit 100`. Every file in that list is off limits tonight. That list caps at 100 files per PR, so the guard script below is the source of truth.
 2. If the only good change needs one of those files, do nothing tonight. Say which PR blocked you.
 3. Before you push, run `$GUARD` on your branch. It fails if you share a file with an open PR, or would conflict with one. Never push while it fails. Drop the change, or report no change.
 4. Put the guard output in the PR body under the heading `Merge-conflict guard`.
@@ -47,7 +47,9 @@ Your PR must never touch a file that any open PR touches.
 - One clear change beats five small ones. No change beats one weak one.
 - A night with no PR is fine. Say why. List what you skipped.
 - Never pad a PR. Never do side work outside the job.
-- Do not delete code just because nothing uses it yet. Design system parts, icons, tokens, and shared interfaces are often kept on purpose. List them as skipped instead.
+- Do not delete code just because nothing uses it yet. Design system parts, icons, tokens, and shared interfaces are often kept on purpose. List them as skipped instead. Never tighten a dead-code checker's ignore list to force those deletions.
+- Odd things are often on purpose. A strange file name, a script in an odd place, a pinned version, a check that looks redundant. If a guide file or a comment says it is intentional, leave it. If nothing explains it, still leave it, and ask in the report.
+- If the repo ships its own review or simplify commands in its agent folders, run them before you open the PR.
 - Fail loudly. Do not add `try/catch` or fallbacks that hide errors.
 - Comments are rare. Never write comments about history.
 - Simple and readable beats clever.
@@ -57,7 +59,7 @@ Your PR must never touch a file that any open PR touches.
 
 End with:
 
-- PR link, or `no change` and why.
+- PR link, or `no change` and why. Check the link with `gh pr view` before you report it.
 - What you changed.
 - What you skipped and why.
 - The guard output.

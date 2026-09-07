@@ -36,6 +36,7 @@ Skip a flag, and record why, if:
 - Move padding, defaults, and layout opinions to the layer that owns them. Move the tests with them.
 - A `.catch` that logs and carries on becomes a real error, unless a comment from `OWNER` says the fallback was on purpose.
 - Update tests that pinned the old behavior. Add one that pins the new. Never delete a failing test to go green.
+- Do not cast or assert to hide a type you could tighten.
 
 ## Steps
 

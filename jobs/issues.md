@@ -23,7 +23,7 @@ gh issue list --repo $REPO_SLUG --state open --label "size: S" --limit 30 --json
 gh issue list --repo $REPO_SLUG --state open --label "size: M" --limit 30 --json number,title,labels,url
 ```
 
-If the repo does not use size labels, read the open issues and judge size yourself. Read a candidate with `gh issue view N --repo $REPO_SLUG --json title,body,labels,comments`.
+Label names often have a space after the colon (`size: S`, not `size:S`). Quote them exactly as the repo spells them. If the repo does not use size labels, read the open issues and judge size yourself. Read a candidate with `gh issue view N --repo $REPO_SLUG --json title,body,labels,comments`.
 
 An issue fits if the goal is clear from the body, the code area is easy to find, and you can check it locally with tests or the build.
 
