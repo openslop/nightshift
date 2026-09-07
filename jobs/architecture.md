@@ -16,8 +16,8 @@ Look at the whole app with fresh eyes. Ask: if we built this from scratch today,
 3. Pick the safest, highest-value change that fits in one PR. Kinds of change:
    - clearer feature and domain boundaries
    - simpler route and page composition
-   - fewer cross-tree dependencies, less prop drilling
-   - one validation boundary instead of scattered shape checks
+   - fewer parts that reach across the app, fewer values passed down through many layers
+   - one place that checks outside data, instead of little checks all over
    - business logic moved out of UI
    - dead app code deleted, overloaded modules split
    - simpler state and data flow

@@ -17,7 +17,7 @@ Pick one theme, not a grab bag. About 3 to 6 flags. About 15 files at most. A re
 Order:
 
 1. Likely live bugs: a button that does nothing, a tooltip that cannot open, an error that gets swallowed on a real path.
-2. Contract tightening that deletes guards: make the field required, add the union variant, drop the sentinel.
+2. Tighten a type so a check is no longer needed, then delete the check.
 3. Design token fixes. Read the repo's design doc first.
 4. Duplication last.
 
@@ -30,13 +30,13 @@ Skip a flag, and record why, if:
 
 ## How to fix
 
-- The fix is what the repo's rule files say the canonical shape is, not the literal words in the flag.
-- If a guard exists only because a type is looser than every producer, tighten the type and delete the guard. Check every reference.
-- Switch on a `kind` field, not on a string buried in one variant.
-- Move padding, defaults, and layout opinions to the layer that owns them. Move the tests with them.
-- A `.catch` that logs and carries on becomes a real error, unless a comment from `OWNER` says the fallback was on purpose.
+- The fix is whatever the repo's rule files say the right shape is, not the exact words in the flag.
+- If a check exists only because a type allows a value that never really happens, tighten the type and delete the check. Look at every place that uses it.
+- Branch on one clear `kind` field, not on a word buried inside the data.
+- Defaults and opinions belong in the layer that owns them, not in low-level helpers. Move the tests with them.
+- Code that catches an error, logs it, and carries on should let the error through instead, unless `OWNER` said the carry-on was on purpose.
 - Update tests that pinned the old behavior. Add one that pins the new. Never delete a failing test to go green.
-- Do not cast or assert to hide a type you could tighten.
+- Do not force a type to be quiet when you could fix the type.
 
 ## Steps
 

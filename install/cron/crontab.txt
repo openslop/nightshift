@@ -1,3 +1,0 @@
-# Nightshift. Add these two lines with `crontab -e`.
-12 5 * * *   __DIR__/bin/nightly.sh
-7 */2 * * *  __DIR__/bin/review.sh

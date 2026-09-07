@@ -6,13 +6,13 @@ Find where the code breaks the repo's own written rules. Fix the safe ones. Flag
 
 - Only fix things that change no behavior tonight. Everything else goes in the `Flagged, not fixed` list for the `conventions-followup` job.
 - If the repo has no `CONVENTIONS.md` or similar, use these rules:
-  1. Define errors out of existence. Make the bad state impossible instead of checking for it.
-  2. No special-case wiring. Prefer a registry or a table over `if provider === X` chains.
-  3. Keep policy out of mechanism. Low-level helpers stay plain. High-level code holds the opinions.
-  4. Units stay dumb and small.
-  5. One way to do each thing. No duplicate wrappers or validators.
-  6. Fail loudly. No silent `catch`. No `catch` that returns `null`.
-  7. Code reads like config.
+  1. Make bad states impossible instead of checking for them.
+  2. No one-off special cases. Use a table or a list instead of a chain of `if this kind, do that`.
+  3. Small helpers stay plain. The code that puts them together holds the opinions.
+  4. Each piece stays small and dumb.
+  5. One way to do each thing. No two helpers that do the same job.
+  6. When something goes wrong, fail out loud. Never quietly swallow an error.
+  7. Code should read like a list of settings.
 
 ## Steps
 

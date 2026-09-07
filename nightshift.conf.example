@@ -1,4 +1,5 @@
-# Copy me to nightshift.conf and fill me in. Plain shell. No quotes needed unless there are spaces.
+# Settings. Copy me to nightshift.conf and fill me in.
+# One setting per line. Use quotes when the value has spaces.
 
 # The repo to work on.
 REPO_DIR=$HOME/code/my-app
@@ -8,18 +9,20 @@ BASE_BRANCH=main
 # Every branch Nightshift makes starts with this.
 BRANCH_PREFIX=nightshift
 
-# Your GitHub handle. Jobs read your PR comments to learn what you like.
+# Your GitHub name. Jobs read what you said on past pull requests to learn your taste.
 OWNER=me
 
-# The command that runs your repo's checks. Jobs must make it pass.
+# The command that runs your repo's checks. Every job must make it pass before it opens a pull request.
 CHECKS="npm run lint && npm run typecheck && npm test"
 
-# Jobs to run each night, in order. Remove any you do not want.
+# The jobs to run each night, in this order. Take out any you do not want.
 # Options: security bugs maintainability performance conventions-followup conventions architecture smoke-tests issues
 JOBS="security maintainability performance conventions-followup conventions architecture smoke-tests issues"
 
-# The agent. Nightshift appends the job prompt as the last argument.
-# Pick one line and remove the # in front. Flags change often; check `<agent> --help` if a run fails.
+# Your coding agent. Pick one line and remove the # in front.
+# Nightshift runs this command and adds the job text at the end.
+# Every line turns off "are you sure?" prompts. That is needed. No one is awake to answer.
+# These flags change now and then. If a run fails, check the agent's help and fix the line.
 AGENT="claude -p --dangerously-skip-permissions --max-turns 150"
 # AGENT="codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check"
 # AGENT="agent -p --force"                       # Cursor CLI (older installs: cursor-agent)
@@ -35,19 +38,19 @@ AGENT="claude -p --dangerously-skip-permissions --max-turns 150"
 # AGENT="droid exec --auto high"
 # AGENT="cline -y"
 
-# If your agent reads the prompt from stdin instead, set this to 1.
+# Some agents want the job text typed in, not added to the command. For those, set this to 1.
 AGENT_STDIN=0
 
-# The reviewer. Defaults to AGENT. Set it to use a different agent or model for reviews.
+# The reviewer. Same as AGENT unless you set it.
 # REVIEW_AGENT="claude -p --dangerously-skip-permissions --max-turns 80"
 
-# How long one job may run.
+# How long one job may run before it is stopped.
 JOB_TIMEOUT=45m
 REVIEW_TIMEOUT=55m
 
-# If the nightly batch starts at or after this hour, it is skipped.
-# This stops a batch from running in the middle of your day after your laptop wakes up.
+# If the night run starts at or after this hour, it is skipped.
+# This stops it from running in the middle of your day after your laptop wakes up.
 WINDOW_END_HOUR=8
 
-# Where logs, locks, and ledgers live. Outside the repo.
+# Where logs and notes go. Outside your repo.
 STATE_DIR=$HOME/.local/state/nightshift

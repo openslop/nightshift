@@ -23,7 +23,7 @@ Do not fix:
 
 ## Steps
 
-1. Hunt for: bad `null` access, unhandled promise rejections, stale closures and effect deps, wrong comparisons, missing cleanup.
+1. Hunt for: reading a value that is not there, async work whose errors go nowhere, stale values captured in callbacks, wrong comparisons, cleanup that never runs.
 2. Fix only what clears the bar. Fix the root cause. Make the code simpler, not busier.
 3. Add tests for the fixed paths. Follow the repo's test style. No boilerplate tests.
 4. Run `$CHECKS`.

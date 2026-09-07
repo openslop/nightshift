@@ -13,7 +13,7 @@ The runner gives you these names. Use them.
 - `OWNER`: the GitHub handle of the person who reviews your PRs.
 - `CHECKS`: the shell command that runs the repo's checks.
 - `STATE_DIR`: a folder for notes that live outside the repo.
-- `GUARD`: the script that checks for clashes with open PRs.
+- `GUARD`: the script that checks you did not touch a file an open PR touches.
 
 ## Before you start
 
@@ -21,7 +21,7 @@ The runner gives you these names. Use them.
 2. Read the repo's guide files if they exist: `CLAUDE.md`, `AGENTS.md`, `CONVENTIONS.md`, `CONTRIBUTING.md`. Follow them. They win over these job files.
 3. Read what `OWNER` said on recent closed PRs. Run `gh pr list --repo $REPO_SLUG --state closed --limit 10`, then `gh pr view N --comments` on a few. A PR that was closed but not merged tells you what not to do again.
 
-## Stay out of other people's way (hard rule)
+## Stay out of other people's way (never break this)
 
 Your PR must never touch a file that any open PR touches.
 
@@ -50,7 +50,7 @@ Your PR must never touch a file that any open PR touches.
 - Do not delete code just because nothing uses it yet. Design system parts, icons, tokens, and shared interfaces are often kept on purpose. List them as skipped instead. Never tighten a dead-code checker's ignore list to force those deletions.
 - Odd things are often on purpose. A strange file name, a script in an odd place, a pinned version, a check that looks redundant. If a guide file or a comment says it is intentional, leave it. If nothing explains it, still leave it, and ask in the report.
 - If the repo ships its own review or simplify commands in its agent folders, run them before you open the PR.
-- Fail loudly. Do not add `try/catch` or fallbacks that hide errors.
+- When something goes wrong, let it fail out loud. Do not add code that hides errors.
 - Comments are rare. Never write comments about history.
 - Simple and readable beats clever.
 - Use the repo's package manager. Do not add dependencies unless the job says you may.

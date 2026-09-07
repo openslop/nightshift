@@ -5,12 +5,12 @@ Make the code easier to change without changing what it does.
 ## Rules
 
 - No behavior changes.
-- Deep modules: a small interface over a strong implementation. Push complexity down behind the interface.
+- Small doors, big rooms. Each module shows a small, simple face and keeps the hard parts inside.
 - Fewer branches. Fewer special cases. Less nesting.
 - Move business logic out of UI parts. UI parts stay dumb.
 - Fix prop drilling with better composition, a hook, a context, or a store. Pick the simplest one that fits.
-- Validate once at the boundary with a schema, not with `typeof` checks all over.
-- Remove hidden fallbacks. Replace them with a clear contract and a clear error.
+- Check outside data once, where it comes in. Not with little checks all over.
+- Remove hidden backup paths. Replace them with a clear rule and a clear error.
 - Add docs only when they really help someone understand the design or an interface. Short. Skimmable. Every line earns its place.
 - Big, reviewable wins over small churn.
 
