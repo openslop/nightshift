@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+"use strict";
+const { App, VERSION } = require("../src/app");
+
+const args = process.argv.slice(2);
+const opts = {};
+for (let i = 0; i < args.length; i++) {
+  const a = args[i];
+  const next = () => args[++i];
+  if (a === "--state") opts.state = next();
+  else if (a === "--repo") opts.repo = next();
+  else if (a === "--conf") opts.conf = next();
+  else if (a === "--theme") opts.theme = next();
+  else if (a === "--no-boot") opts.noBoot = true;
+  else if (a === "--opaque") opts.opaque = true;
+  else if (a === "--no-warp") opts.noWarp = true;
+  else if (a === "--launch") opts.launch = true;
+  else if (a === "--demo") opts.demo = true;
+  else if (a === "--frame") opts.frame = next() || "160x45";
+  else if (a === "--dump") opts.dump = next();
+  else if (a === "--view") opts.view = next();
+  else if (a === "-v" || a === "--version") { console.log(VERSION); process.exit(0); }
+  else if (a === "-h" || a === "--help") {
+    console.log(`nightshift-tui ${VERSION} — a bridge console for Nightshift
+
+usage: nightshift-tui [--demo] [--state DIR] [--repo DIR] [--conf FILE] [--theme night|phosphor]
+
+  --state DIR    Nightshift STATE_DIR (default: nightshift.conf, NIGHTSHIFT_STATE, ~/.local/state/nightshift)
+  --repo DIR     the repo Nightshift works on; used to find Claude Code sessions to resume
+  --conf FILE    a nightshift.conf to read STATE_DIR / REPO_DIR / JOBS from
+  --theme NAME   night (default) or phosphor
+  --no-boot      skip the boot sequence
+  --opaque       paint the background (default: transparent, so the terminal's blur shows through)
+  --launch       open the bridge in a new terminal window (ptyxis, kitty, alacritty, wezterm, foot)
+  --demo         show a made-up state dir, for a look around before your first night
+  --frame WxH    render one frame as plain text and exit (for screenshots / tests)
+
+keys: ↑↓ job · ←→ night · ↵ report · c continue in Claude Code · r reviews · o open PR · t theme · ? help · q quit`);
+    process.exit(0);
+  } else { console.error("unknown flag " + a); process.exit(2); }
+}
+
+if (opts.demo) {
+  const path = require("node:path"), fs = require("node:fs");
+  const dir = path.join(require("node:os").tmpdir(), "nightshift-demo-state");
+  if (!fs.existsSync(path.join(dir, "review.log"))) require("node:child_process").execFileSync(process.execPath, [path.join(__dirname, "..", "scripts", "make-demo-state.js"), dir], { stdio: "ignore" });
+  opts.state = dir; opts.repo = opts.repo || "/home/you/code/your-app";
+}
+
+if (opts.launch) {
+  // Open a fresh, maximised terminal window running the bridge. The window's transparency
+  // and blur come from the terminal / compositor; scripts/setup-gnome.sh sets that up on GNOME.
+  const { spawn } = require("node:child_process");
+  const self = process.argv[1];
+  const inner = [process.execPath, self, ...args.filter((a) => a !== "--launch")];
+  const font = process.env.NIGHTSHIFT_FONT || "Share Tech Mono";
+  const cands = [
+    ["ptyxis", ["-s", "--new-window", "--maximize", "-T", "Nightshift", "--", ...inner]],
+    ["kitty", ["-T", "Nightshift", "-o", "background_opacity=0.72", "-o", "background_blur=24", "-o", "font_family=" + font, "-o", "font_size=13", "--start-as=maximized", ...inner]],
+    ["wezterm", ["start", "--class", "Nightshift", "--", ...inner]],
+    ["alacritty", ["-T", "Nightshift", "-o", "window.opacity=0.72", "-o", "font.normal.family=" + font, "-o", "font.size=13", "-e", ...inner]],
+    ["foot", ["-T", "Nightshift", "-o", "colors.alpha=0.72", "-o", "main.font=" + font + ":size=13", ...inner]],
+  ];
+  const { execSync } = require("node:child_process");
+  for (const [bin, a] of cands) {
+    try { execSync("command -v " + bin, { stdio: "ignore" }); } catch { continue; }
+    spawn(bin, a, { detached: true, stdio: "ignore" }).unref();
+    console.log("launched in " + bin);
+    process.exit(0);
+  }
+  console.error("no supported terminal found (ptyxis, kitty, wezterm, alacritty, foot)");
+  process.exit(1);
+}
+
+if (opts.frame) {
+  // Headless render: a fake stdout with a size, then dump the cell grid as text.
+  const [w, h] = opts.frame.split("x").map(Number);
+  const out = { columns: w || 160, rows: h || 45, write() {} , on() {} };
+  const app = new App({ ...opts, out, noBoot: true });
+  app.t0 = Date.now() - 4200;
+  app.render();
+  if (opts.view === "boot") { app.booted = false; app.t0 = Date.now() - 2200; app.render(); }
+  if (opts.view === "report") { app.overlay = "report"; app.overlayT = Date.now() - 9000; app.render(); }
+  if (opts.view === "review") { app.view = "review"; app.render(); }
+  if (opts.view === "help") { app.overlay = "help"; app.render(); }
+  if (opts.view === "metrics") { app.overlay = "metrics"; app.overlayT = Date.now() - 5000; app.render(); }
+  if (opts.view === "deep") { app.overlay = "deep"; app.nightIdx = 1; app.jobIdx = 3; for (let i = 0; i < 40; i++) app.render(); }
+  if (opts.view === "warp") { app.warpState = require("../src/fx").makeWarp(); app.warpState.t0 = Date.now() - 700; app.warpLabel = "  HANDOFF ▸ security · 2026-09-08  ▸ session 9d9c3596  "; for (let i = 0; i < 12; i++) app.render(); }
+  if (opts.dump) {
+    const cells = app.scr.back.map((row) => row.map((c) => [c.ch, c.fg, c.bg]));
+    require("node:fs").writeFileSync(opts.dump, JSON.stringify({ w: app.scr.w, h: app.scr.h, bg: app.th.bg, cells }));
+    process.exit(0);
+  }
+  const lines = app.scr.back.map((row) => row.map((c) => c.ch).join("").replace(/\s+$/, ""));
+  process.stdout.write(lines.join("\n") + "\n");
+  process.exit(0);
+}
+
+if (!process.stdin.isTTY || !process.stdout.isTTY) {
+  console.error("nightshift-tui needs a terminal (try --frame 160x45 for a text snapshot)");
+  process.exit(1);
+}
+new App(opts).run();

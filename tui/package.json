@@ -1,0 +1,13 @@
+{
+  "name": "nightshift-tui",
+  "version": "0.1.0",
+  "description": "A bridge console for Nightshift: watch the night's jobs, then step into any shift's conversation.",
+  "bin": { "nightshift-tui": "bin/nightshift-tui" },
+  "main": "src/app.js",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node bin/nightshift-tui",
+    "frame": "node bin/nightshift-tui --frame 160x45"
+  }
+}

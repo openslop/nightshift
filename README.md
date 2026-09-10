@@ -49,6 +49,19 @@ Every job follows the same rules. They are in [`jobs/_common.md`](jobs/_common.m
 - Run the repo's checks. Fix what breaks.
 - Open a pull request, or say why not. Never push to the main branch.
 
+## Watch it
+
+<p align="center">
+  <img src="./assets/nightshift-console.png" alt="The Nightshift console" width="100%">
+</p>
+
+Nightshift comes with a console. It shows every night and every job on one screen, and it lets you
+pick up any night's conversation where the agent left off. Tell your coding agent:
+
+> Open the Nightshift console. Read ~/nightshift/tui/README.md and start it.
+
+It needs Node. Press `c` on a job to talk to the agent about what it did. Press `?` for the rest.
+
 ## How to start
 
 Tell your coding agent this:
@@ -67,6 +80,7 @@ Works on Mac, Linux, and Windows. Works with Claude Code, Codex, Cursor, Gemini,
 - [`nightshift.conf.example`](nightshift.conf.example) is the settings page. Your agent fills in a copy.
 - [`SETUP.md`](SETUP.md) is the page your agent follows to set things up.
 - [`bin/`](bin) has three small scripts the timers run. You do not need to read them.
+- [`tui/`](tui) is the console. [`tui/README.md`](tui/README.md) says how to open it.
 
 ## Is it safe?
 
