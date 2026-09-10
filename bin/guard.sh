@@ -3,6 +3,7 @@
 # touches, or would merge-conflict with one. Run it before you push.
 # A PR that already conflicts with the base branch on its own is stale. It is skipped.
 set -u
+export LC_ALL=C  # sort and comm must agree on collation
 . "$(dirname "$0")/lib.sh"
 MINE=${1:-HEAD}
 cd "$REPO_DIR" || { echo "no repo at $REPO_DIR"; exit 2; }
