@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="a reviewer every two hours">
+<title>a reviewer every two hours</title>
+<desc>A day-long timeline ticks every two hours. Most ticks say quiet; one leaves a short review on a pull request.</desc>
+<style>
+.a1{animation:kf-a1 14.0s infinite both}@keyframes kf-a1{0%,5.64%{opacity:0;transform:translate(0,0px)}8.21%,100%{opacity:1;transform:translate(0,0)}}
+.a2{animation:kf-a2 14.0s infinite both}@keyframes kf-a2{0%,16.36%{opacity:0;transform:translate(0,0px)}18.93%,100%{opacity:1;transform:translate(0,0)}}
+.a3{animation:kf-a3 14.0s infinite both}@keyframes kf-a3{0%,27.07%{opacity:0;transform:translate(0,0px)}29.64%,100%{opacity:1;transform:translate(0,0)}}
+.a4{animation:kf-a4 14.0s infinite both}@keyframes kf-a4{0%,37.79%{opacity:0;transform:translate(0,0px)}40.36%,100%{opacity:1;transform:translate(0,0)}}
+.a5{animation:kf-a5 14.0s infinite both}@keyframes kf-a5{0%,48.50%{opacity:0;transform:translate(0,0px)}51.07%,100%{opacity:1;transform:translate(0,0)}}
+.a6{animation:kf-a6 14.0s infinite both}@keyframes kf-a6{0%,59.21%{opacity:0;transform:translate(0,0px)}61.79%,100%{opacity:1;transform:translate(0,0)}}
+.a7{animation:kf-a7 14.0s infinite both}@keyframes kf-a7{0%,69.93%{opacity:0;transform:translate(0,0px)}72.50%,100%{opacity:1;transform:translate(0,0)}}
+.a8{animation:kf-a8 14.0s infinite both}@keyframes kf-a8{0%,80.64%{opacity:0;transform:translate(0,0px)}83.21%,100%{opacity:1;transform:translate(0,0)}}
+.h9{animation:kf-h9 14.0s linear infinite both}@keyframes kf-h9{0%{transform:translate(0,0)}82.14%,100%{transform:translate(560px,0)}}
+.a10{animation:kf-a10 14.0s infinite both}@keyframes kf-a10{0%,18.50%{opacity:0;transform:translate(0,8px)}21.07%,100%{opacity:1;transform:translate(0,0)}}
+.a11{animation:kf-a11 14.0s infinite both}@keyframes kf-a11{0%,61.36%{opacity:0;transform:translate(0,8px)}63.93%,100%{opacity:1;transform:translate(0,0)}}
+</style>
+<rect width="640" height="360" fill="#140e11"/>
+<defs><pattern id="dots" width="40" height="28" patternUnits="userSpaceOnUse"><circle cx="20" cy="14" r="1" fill="#2e282b"/></pattern><clipPath id="moonclip"><circle cx="0" cy="0" r="9"/></clipPath></defs>
+<rect width="640" height="360" fill="url(#dots)"/>
+<rect x="0" y="0" width="640" height="34" fill="#1a1316"/><line x1="0" y1="34.5" x2="640" y2="34.5" stroke="#2e282b"/>
+<g transform="translate(24,17)"><circle r="7" fill="none" stroke="#f3eef0" stroke-width="2"/><circle r="7" fill="#f3eef0" clip-path="url(#moonclip)" transform="translate(-4.5,0)"/></g>
+<text x="40" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#f3eef0" text-anchor="start" class="" style="white-space:pre">nightshift</text>
+<text x="620" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre">a reviewer every two hours</text>
+<text x="28" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">REVIEW LEDGER</text>
+<text x="612" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">EVERY 2 HOURS · :07 PAST</text>
+<line x1="28" y1="66" x2="612" y2="66" stroke="#2e282b"/>
+<line x1="40" y1="96" x2="600" y2="96" stroke="#4a4046"/>
+<line x1="40.0" y1="91" x2="40.0" y2="101" stroke="#6f6167"/>
+<text x="40.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">07:07</text>
+<circle cx="40.0" cy="96" r="4" fill="none" stroke="#5fbf8a" stroke-width="1.5" class="a1"/>
+<text x="40.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="middle" class="a1" style="white-space:pre">quiet</text>
+<line x1="120.0" y1="91" x2="120.0" y2="101" stroke="#6f6167"/>
+<text x="120.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">09:07</text>
+<circle cx="120.0" cy="96" r="6" fill="#d29cb8" class="a2"/>
+<text x="120.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#d29cb8" text-anchor="middle" class="a2" style="white-space:pre">note</text>
+<line x1="200.0" y1="91" x2="200.0" y2="101" stroke="#6f6167"/>
+<text x="200.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">11:07</text>
+<circle cx="200.0" cy="96" r="4" fill="none" stroke="#5fbf8a" stroke-width="1.5" class="a3"/>
+<text x="200.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="middle" class="a3" style="white-space:pre">quiet</text>
+<line x1="280.0" y1="91" x2="280.0" y2="101" stroke="#6f6167"/>
+<text x="280.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">13:07</text>
+<circle cx="280.0" cy="96" r="4" fill="none" stroke="#5fbf8a" stroke-width="1.5" class="a4"/>
+<text x="280.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="middle" class="a4" style="white-space:pre">quiet</text>
+<line x1="360.0" y1="91" x2="360.0" y2="101" stroke="#6f6167"/>
+<text x="360.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">15:07</text>
+<circle cx="360.0" cy="96" r="4" fill="none" stroke="#5fbf8a" stroke-width="1.5" class="a5"/>
+<text x="360.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="middle" class="a5" style="white-space:pre">quiet</text>
+<line x1="440.0" y1="91" x2="440.0" y2="101" stroke="#6f6167"/>
+<text x="440.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">17:07</text>
+<circle cx="440.0" cy="96" r="6" fill="#d29cb8" class="a6"/>
+<text x="440.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#d29cb8" text-anchor="middle" class="a6" style="white-space:pre">note</text>
+<line x1="520.0" y1="91" x2="520.0" y2="101" stroke="#6f6167"/>
+<text x="520.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">19:07</text>
+<circle cx="520.0" cy="96" r="4" fill="none" stroke="#5fbf8a" stroke-width="1.5" class="a7"/>
+<text x="520.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="middle" class="a7" style="white-space:pre">quiet</text>
+<line x1="600.0" y1="91" x2="600.0" y2="101" stroke="#6f6167"/>
+<text x="600.0" y="118" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="middle" class="" style="white-space:pre">21:07</text>
+<circle cx="600.0" cy="96" r="4" fill="none" stroke="#5fbf8a" stroke-width="1.5" class="a8"/>
+<text x="600.0" y="82" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="middle" class="a8" style="white-space:pre">quiet</text>
+<line x1="40" y1="74" x2="40" y2="106" stroke="#9d9df0" stroke-width="1.5" class="h9"/>
+<rect x="40" y="150" width="560" height="74" fill="#1a1316" stroke="#2e282b" class="a10"/>
+<rect x="40" y="150" width="3" height="74" fill="#d29cb8" class="a10"/>
+<text x="56" y="172" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#d29cb8" text-anchor="start" class="a10" style="white-space:pre">#314</text>
+<text x="104" y="172" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a10" style="white-space:pre">review · one comment</text>
+<text x="584" y="172" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="end" class="a10" style="white-space:pre">2 min</text>
+<text x="56" y="196" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#ded6da" text-anchor="start" class="a10" style="white-space:pre">the cache key misses the tenant id. one line.</text>
+<text x="56" y="214" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="start" class="a10" style="white-space:pre">left as a normal PR review. quiet unless it finds something.</text>
+<rect x="40" y="242" width="560" height="74" fill="#1a1316" stroke="#2e282b" class="a11"/>
+<rect x="40" y="242" width="3" height="74" fill="#d29cb8" class="a11"/>
+<text x="56" y="264" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#d29cb8" text-anchor="start" class="a11" style="white-space:pre">#321</text>
+<text x="104" y="264" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a11" style="white-space:pre">review · one comment</text>
+<text x="584" y="264" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="end" class="a11" style="white-space:pre">2 min</text>
+<text x="56" y="288" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#ded6da" text-anchor="start" class="a11" style="white-space:pre">tests cover the happy path only. add the empty case.</text>
+<text x="56" y="306" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="start" class="a11" style="white-space:pre">left as a normal PR review. quiet unless it finds something.</text>
+</svg>

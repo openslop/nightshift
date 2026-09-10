@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="one job at a time">
+<title>one job at a time</title>
+<desc>Eight jobs run one after another. Each bar grows while its job runs, then the row says PR OPEN or NO-OP.</desc>
+<style>
+.s1{animation:kf-s1 20.0s infinite both}@keyframes kf-s1{0%,4.95%{opacity:0}5.50%,15.00%{opacity:1}15.50%,100%{opacity:0}}
+.g2{animation:kf-g2 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g2{0%,4.95%{transform:scaleX(0)}15.00%,100%{transform:scaleX(1)}}
+.a3{animation:kf-a3 20.0s infinite both}@keyframes kf-a3{0%,14.95%{opacity:0;transform:translate(0,4px)}16.75%,100%{opacity:1;transform:translate(0,0)}}
+.a4{animation:kf-a4 20.0s infinite both}@keyframes kf-a4{0%,14.95%{opacity:0;transform:translate(0,4px)}16.75%,100%{opacity:1;transform:translate(0,0)}}
+.a5{animation:kf-a5 20.0s infinite both}@keyframes kf-a5{0%,14.95%{opacity:0;transform:translate(0,4px)}16.75%,100%{opacity:1;transform:translate(0,0)}}
+.a6{animation:kf-a6 20.0s infinite both}@keyframes kf-a6{0%,14.95%{opacity:0;transform:translate(0,0px)}16.75%,100%{opacity:1;transform:translate(0,0)}}
+.s7{animation:kf-s7 20.0s infinite both}@keyframes kf-s7{0%,15.70%{opacity:0}16.25%,26.25%{opacity:1}26.75%,100%{opacity:0}}
+.g8{animation:kf-g8 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g8{0%,15.70%{transform:scaleX(0)}26.25%,100%{transform:scaleX(1)}}
+.a9{animation:kf-a9 20.0s infinite both}@keyframes kf-a9{0%,26.20%{opacity:0;transform:translate(0,4px)}28.00%,100%{opacity:1;transform:translate(0,0)}}
+.a10{animation:kf-a10 20.0s infinite both}@keyframes kf-a10{0%,26.20%{opacity:0;transform:translate(0,4px)}28.00%,100%{opacity:1;transform:translate(0,0)}}
+.a11{animation:kf-a11 20.0s infinite both}@keyframes kf-a11{0%,26.20%{opacity:0;transform:translate(0,4px)}28.00%,100%{opacity:1;transform:translate(0,0)}}
+.a12{animation:kf-a12 20.0s infinite both}@keyframes kf-a12{0%,26.20%{opacity:0;transform:translate(0,0px)}28.00%,100%{opacity:1;transform:translate(0,0)}}
+.s13{animation:kf-s13 20.0s infinite both}@keyframes kf-s13{0%,26.95%{opacity:0}27.50%,36.50%{opacity:1}37.00%,100%{opacity:0}}
+.g14{animation:kf-g14 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g14{0%,26.95%{transform:scaleX(0)}36.50%,100%{transform:scaleX(1)}}
+.a15{animation:kf-a15 20.0s infinite both}@keyframes kf-a15{0%,36.45%{opacity:0;transform:translate(0,4px)}38.25%,100%{opacity:1;transform:translate(0,0)}}
+.a16{animation:kf-a16 20.0s infinite both}@keyframes kf-a16{0%,36.45%{opacity:0;transform:translate(0,4px)}38.25%,100%{opacity:1;transform:translate(0,0)}}
+.a17{animation:kf-a17 20.0s infinite both}@keyframes kf-a17{0%,36.45%{opacity:0;transform:translate(0,4px)}38.25%,100%{opacity:1;transform:translate(0,0)}}
+.a18{animation:kf-a18 20.0s infinite both}@keyframes kf-a18{0%,36.45%{opacity:0;transform:translate(0,0px)}38.25%,100%{opacity:1;transform:translate(0,0)}}
+.s19{animation:kf-s19 20.0s infinite both}@keyframes kf-s19{0%,37.20%{opacity:0}37.75%,46.25%{opacity:1}46.75%,100%{opacity:0}}
+.g20{animation:kf-g20 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g20{0%,37.20%{transform:scaleX(0)}46.25%,100%{transform:scaleX(1)}}
+.a21{animation:kf-a21 20.0s infinite both}@keyframes kf-a21{0%,46.20%{opacity:0;transform:translate(0,4px)}48.00%,100%{opacity:1;transform:translate(0,0)}}
+.a22{animation:kf-a22 20.0s infinite both}@keyframes kf-a22{0%,46.20%{opacity:0;transform:translate(0,4px)}48.00%,100%{opacity:1;transform:translate(0,0)}}
+.a23{animation:kf-a23 20.0s infinite both}@keyframes kf-a23{0%,46.20%{opacity:0;transform:translate(0,4px)}48.00%,100%{opacity:1;transform:translate(0,0)}}
+.a24{animation:kf-a24 20.0s infinite both}@keyframes kf-a24{0%,46.20%{opacity:0;transform:translate(0,0px)}48.00%,100%{opacity:1;transform:translate(0,0)}}
+.s25{animation:kf-s25 20.0s infinite both}@keyframes kf-s25{0%,46.95%{opacity:0}47.50%,55.50%{opacity:1}56.00%,100%{opacity:0}}
+.g26{animation:kf-g26 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g26{0%,46.95%{transform:scaleX(0)}55.50%,100%{transform:scaleX(1)}}
+.a27{animation:kf-a27 20.0s infinite both}@keyframes kf-a27{0%,55.45%{opacity:0;transform:translate(0,4px)}57.25%,100%{opacity:1;transform:translate(0,0)}}
+.a28{animation:kf-a28 20.0s infinite both}@keyframes kf-a28{0%,55.45%{opacity:0;transform:translate(0,4px)}57.25%,100%{opacity:1;transform:translate(0,0)}}
+.a29{animation:kf-a29 20.0s infinite both}@keyframes kf-a29{0%,55.45%{opacity:0;transform:translate(0,4px)}57.25%,100%{opacity:1;transform:translate(0,0)}}
+.a30{animation:kf-a30 20.0s infinite both}@keyframes kf-a30{0%,55.45%{opacity:0;transform:translate(0,0px)}57.25%,100%{opacity:1;transform:translate(0,0)}}
+.s31{animation:kf-s31 20.0s infinite both}@keyframes kf-s31{0%,56.20%{opacity:0}56.75%,67.75%{opacity:1}68.25%,100%{opacity:0}}
+.g32{animation:kf-g32 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g32{0%,56.20%{transform:scaleX(0)}67.75%,100%{transform:scaleX(1)}}
+.a33{animation:kf-a33 20.0s infinite both}@keyframes kf-a33{0%,67.70%{opacity:0;transform:translate(0,4px)}69.50%,100%{opacity:1;transform:translate(0,0)}}
+.a34{animation:kf-a34 20.0s infinite both}@keyframes kf-a34{0%,67.70%{opacity:0;transform:translate(0,4px)}69.50%,100%{opacity:1;transform:translate(0,0)}}
+.a35{animation:kf-a35 20.0s infinite both}@keyframes kf-a35{0%,67.70%{opacity:0;transform:translate(0,4px)}69.50%,100%{opacity:1;transform:translate(0,0)}}
+.a36{animation:kf-a36 20.0s infinite both}@keyframes kf-a36{0%,67.70%{opacity:0;transform:translate(0,0px)}69.50%,100%{opacity:1;transform:translate(0,0)}}
+.s37{animation:kf-s37 20.0s infinite both}@keyframes kf-s37{0%,68.45%{opacity:0}69.00%,76.00%{opacity:1}76.50%,100%{opacity:0}}
+.g38{animation:kf-g38 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g38{0%,68.45%{transform:scaleX(0)}76.00%,100%{transform:scaleX(1)}}
+.a39{animation:kf-a39 20.0s infinite both}@keyframes kf-a39{0%,75.95%{opacity:0;transform:translate(0,4px)}77.75%,100%{opacity:1;transform:translate(0,0)}}
+.a40{animation:kf-a40 20.0s infinite both}@keyframes kf-a40{0%,75.95%{opacity:0;transform:translate(0,4px)}77.75%,100%{opacity:1;transform:translate(0,0)}}
+.a41{animation:kf-a41 20.0s infinite both}@keyframes kf-a41{0%,75.95%{opacity:0;transform:translate(0,4px)}77.75%,100%{opacity:1;transform:translate(0,0)}}
+.a42{animation:kf-a42 20.0s infinite both}@keyframes kf-a42{0%,75.95%{opacity:0;transform:translate(0,0px)}77.75%,100%{opacity:1;transform:translate(0,0)}}
+.s43{animation:kf-s43 20.0s infinite both}@keyframes kf-s43{0%,76.70%{opacity:0}77.25%,86.75%{opacity:1}87.25%,100%{opacity:0}}
+.g44{animation:kf-g44 20.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g44{0%,76.70%{transform:scaleX(0)}86.75%,100%{transform:scaleX(1)}}
+.a45{animation:kf-a45 20.0s infinite both}@keyframes kf-a45{0%,86.70%{opacity:0;transform:translate(0,4px)}88.50%,100%{opacity:1;transform:translate(0,0)}}
+.a46{animation:kf-a46 20.0s infinite both}@keyframes kf-a46{0%,86.70%{opacity:0;transform:translate(0,4px)}88.50%,100%{opacity:1;transform:translate(0,0)}}
+.a47{animation:kf-a47 20.0s infinite both}@keyframes kf-a47{0%,86.70%{opacity:0;transform:translate(0,4px)}88.50%,100%{opacity:1;transform:translate(0,0)}}
+.a48{animation:kf-a48 20.0s infinite both}@keyframes kf-a48{0%,86.70%{opacity:0;transform:translate(0,0px)}88.50%,100%{opacity:1;transform:translate(0,0)}}
+.a49{animation:kf-a49 20.0s infinite both}@keyframes kf-a49{0%,88.45%{opacity:0;transform:translate(0,4px)}90.25%,100%{opacity:1;transform:translate(0,0)}}
+</style>
+<rect width="640" height="360" fill="#140e11"/>
+<defs><pattern id="dots" width="40" height="28" patternUnits="userSpaceOnUse"><circle cx="20" cy="14" r="1" fill="#2e282b"/></pattern><clipPath id="moonclip"><circle cx="0" cy="0" r="9"/></clipPath></defs>
+<rect width="640" height="360" fill="url(#dots)"/>
+<rect x="0" y="0" width="640" height="34" fill="#1a1316"/><line x1="0" y1="34.5" x2="640" y2="34.5" stroke="#2e282b"/>
+<g transform="translate(24,17)"><circle r="7" fill="none" stroke="#f3eef0" stroke-width="2"/><circle r="7" fill="#f3eef0" clip-path="url(#moonclip)" transform="translate(-4.5,0)"/></g>
+<text x="40" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#f3eef0" text-anchor="start" class="" style="white-space:pre">nightshift</text>
+<text x="620" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre">one job at a time</text>
+<text x="28" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">TONIGHT</text>
+<text x="612" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">05:12 → 07:31</text>
+<line x1="28" y1="66" x2="612" y2="66" stroke="#2e282b"/>
+<text x="28" y="84" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">JOB</text>
+<text x="300" y="84" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">STATUS</text>
+<text x="392" y="84" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">DUR</text>
+<text x="470" y="84" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">PR</text>
+<rect x="20" y="94" width="600" height="22" fill="#2c2329" class="s1"/>
+<text x="24" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s1" style="white-space:pre">▸</text>
+<text x="40" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">security</text>
+<rect x="200" y="102" width="88" height="8" fill="#4a4046" class="g2"/>
+<text x="300" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a3" style="white-space:pre">NO-OP</text>
+<text x="392" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a4" style="white-space:pre">11m</text>
+<text x="470" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="start" class="a5" style="white-space:pre">–</text>
+<circle cx="290" cy="106" r="3" fill="#9d8b93" class="a6"/>
+<rect x="20" y="122" width="600" height="22" fill="#2c2329" class="s7"/>
+<text x="24" y="138" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s7" style="white-space:pre">▸</text>
+<text x="40" y="138" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">maintainability</text>
+<rect x="200" y="130" width="88" height="8" fill="#4a4046" class="g8"/>
+<text x="300" y="138" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a9" style="white-space:pre">PR OPEN</text>
+<text x="392" y="138" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a10" style="white-space:pre">12m</text>
+<text x="470" y="138" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a11" style="white-space:pre">#313</text>
+<circle cx="290" cy="134" r="3" fill="#5fbf8a" class="a12"/>
+<rect x="20" y="150" width="600" height="22" fill="#2c2329" class="s13"/>
+<text x="24" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s13" style="white-space:pre">▸</text>
+<text x="40" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">performance</text>
+<rect x="200" y="158" width="88" height="8" fill="#4a4046" class="g14"/>
+<text x="300" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a15" style="white-space:pre">PR OPEN</text>
+<text x="392" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a16" style="white-space:pre">10m</text>
+<text x="470" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a17" style="white-space:pre">#314</text>
+<circle cx="290" cy="162" r="3" fill="#5fbf8a" class="a18"/>
+<rect x="20" y="178" width="600" height="22" fill="#2c2329" class="s19"/>
+<text x="24" y="194" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s19" style="white-space:pre">▸</text>
+<text x="40" y="194" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">conventions-followup</text>
+<rect x="200" y="186" width="88" height="8" fill="#4a4046" class="g20"/>
+<text x="300" y="194" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a21" style="white-space:pre">NO-OP</text>
+<text x="392" y="194" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a22" style="white-space:pre">10m</text>
+<text x="470" y="194" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="start" class="a23" style="white-space:pre">–</text>
+<circle cx="290" cy="190" r="3" fill="#9d8b93" class="a24"/>
+<rect x="20" y="206" width="600" height="22" fill="#2c2329" class="s25"/>
+<text x="24" y="222" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s25" style="white-space:pre">▸</text>
+<text x="40" y="222" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">conventions</text>
+<rect x="200" y="214" width="88" height="8" fill="#4a4046" class="g26"/>
+<text x="300" y="222" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a27" style="white-space:pre">PR OPEN</text>
+<text x="392" y="222" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a28" style="white-space:pre">9m</text>
+<text x="470" y="222" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a29" style="white-space:pre">#315</text>
+<circle cx="290" cy="218" r="3" fill="#5fbf8a" class="a30"/>
+<rect x="20" y="234" width="600" height="22" fill="#2c2329" class="s31"/>
+<text x="24" y="250" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s31" style="white-space:pre">▸</text>
+<text x="40" y="250" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">architecture</text>
+<rect x="200" y="242" width="88" height="8" fill="#4a4046" class="g32"/>
+<text x="300" y="250" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a33" style="white-space:pre">PR OPEN</text>
+<text x="392" y="250" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a34" style="white-space:pre">13m</text>
+<text x="470" y="250" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a35" style="white-space:pre">#316</text>
+<circle cx="290" cy="246" r="3" fill="#5fbf8a" class="a36"/>
+<rect x="20" y="262" width="600" height="22" fill="#2c2329" class="s37"/>
+<text x="24" y="278" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s37" style="white-space:pre">▸</text>
+<text x="40" y="278" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">smoke-tests</text>
+<rect x="200" y="270" width="88" height="8" fill="#4a4046" class="g38"/>
+<text x="300" y="278" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a39" style="white-space:pre">NO-OP</text>
+<text x="392" y="278" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a40" style="white-space:pre">8m</text>
+<text x="470" y="278" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="start" class="a41" style="white-space:pre">–</text>
+<circle cx="290" cy="274" r="3" fill="#9d8b93" class="a42"/>
+<rect x="20" y="290" width="600" height="22" fill="#2c2329" class="s43"/>
+<text x="24" y="306" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s43" style="white-space:pre">▸</text>
+<text x="40" y="306" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">issues</text>
+<rect x="200" y="298" width="88" height="8" fill="#4a4046" class="g44"/>
+<text x="300" y="306" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a45" style="white-space:pre">PR OPEN</text>
+<text x="392" y="306" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a46" style="white-space:pre">11m</text>
+<text x="470" y="306" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a47" style="white-space:pre">#317</text>
+<circle cx="290" cy="302" r="3" fill="#5fbf8a" class="a48"/>
+<text x="28" y="338" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a49" style="white-space:pre">shift done · 4 pull requests · 4 quiet nights</text>
+<text x="612" y="338" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="a49" style="white-space:pre">nothing is better than a bad change</text>
+</svg>

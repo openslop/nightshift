@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="pick up the conversation">
+<title>pick up the conversation</title>
+<desc>In the console, the cursor rests on a job. A c key is pressed, a terminal opens with claude --resume, and the agent picks up where it stopped.</desc>
+<style>
+.s1{animation:kf-s1 14.0s infinite both}@keyframes kf-s1{0%,0.00%{opacity:0}0.36%,25.71%{opacity:1}26.07%,100%{opacity:0}}
+.s2{animation:kf-s2 14.0s infinite both}@keyframes kf-s2{0%,0.00%{opacity:0}0.36%,25.71%{opacity:1}26.07%,100%{opacity:0}}
+.s3{animation:kf-s3 14.0s infinite both}@keyframes kf-s3{0%,14.21%{opacity:0}15.00%,24.29%{opacity:1}25.00%,100%{opacity:0}}
+.a4{animation:kf-a4 14.0s infinite both}@keyframes kf-a4{0%,25.64%{opacity:0;transform:translate(0,10px)}28.21%,100%{opacity:1;transform:translate(0,0)}}
+.a5{animation:kf-a5 14.0s infinite both}@keyframes kf-a5{0%,28.50%{opacity:0;transform:translate(0,0px)}30.00%,100%{opacity:1;transform:translate(0,0)}}
+.a6{animation:kf-a6 14.0s infinite both}@keyframes kf-a6{0%,37.07%{opacity:0;transform:translate(0,0px)}38.57%,100%{opacity:1;transform:translate(0,0)}}
+.a7{animation:kf-a7 14.0s infinite both}@keyframes kf-a7{0%,42.79%{opacity:0;transform:translate(0,0px)}44.29%,100%{opacity:1;transform:translate(0,0)}}
+.a8{animation:kf-a8 14.0s infinite both}@keyframes kf-a8{0%,52.79%{opacity:0;transform:translate(0,0px)}54.29%,100%{opacity:1;transform:translate(0,0)}}
+.a9{animation:kf-a9 14.0s infinite both}@keyframes kf-a9{0%,64.21%{opacity:0;transform:translate(0,0px)}65.71%,100%{opacity:1;transform:translate(0,0)}}
+.a10{animation:kf-a10 14.0s infinite both}@keyframes kf-a10{0%,69.93%{opacity:0;transform:translate(0,0px)}71.43%,100%{opacity:1;transform:translate(0,0)}}
+.a11{animation:kf-a11 14.0s infinite both}@keyframes kf-a11{0%,77.07%{opacity:0;transform:translate(0,0px)}78.57%,100%{opacity:1;transform:translate(0,0)}}
+.a12{animation:kf-a12 14.0s infinite both}@keyframes kf-a12{0%,85.64%{opacity:0;transform:translate(0,0px)}87.14%,100%{opacity:1;transform:translate(0,0)}}
+.b13{animation:kf-b13 1.0s steps(1) infinite}@keyframes kf-b13{0%{opacity:1}50%{opacity:0}}
+</style>
+<rect width="640" height="360" fill="#140e11"/>
+<defs><pattern id="dots" width="40" height="28" patternUnits="userSpaceOnUse"><circle cx="20" cy="14" r="1" fill="#2e282b"/></pattern><clipPath id="moonclip"><circle cx="0" cy="0" r="9"/></clipPath></defs>
+<rect width="640" height="360" fill="url(#dots)"/>
+<rect x="0" y="0" width="640" height="34" fill="#1a1316"/><line x1="0" y1="34.5" x2="640" y2="34.5" stroke="#2e282b"/>
+<g transform="translate(24,17)"><circle r="7" fill="none" stroke="#f3eef0" stroke-width="2"/><circle r="7" fill="#f3eef0" clip-path="url(#moonclip)" transform="translate(-4.5,0)"/></g>
+<text x="40" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#f3eef0" text-anchor="start" class="" style="white-space:pre">nightshift</text>
+<text x="620" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre">pick up the conversation</text>
+<text x="28" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">JOB</text>
+<text x="612" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">SESSION</text>
+<line x1="28" y1="66" x2="612" y2="66" stroke="#2e282b"/>
+<text x="40" y="86" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">security</text>
+<text x="260" y="86" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">NO-OP</text>
+<text x="470" y="86" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="start" class="" style="white-space:pre">–</text>
+<rect x="20" y="94" width="600" height="22" fill="#2c2329" class="s1"/>
+<text x="24" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s2" style="white-space:pre">▸</text>
+<text x="40" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">maintainability</text>
+<text x="260" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="" style="white-space:pre">PR OPEN #313</text>
+<text x="470" y="110" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="" style="white-space:pre">42cc59c</text>
+<text x="40" y="134" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="" style="white-space:pre">performance</text>
+<text x="260" y="134" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="" style="white-space:pre">PR OPEN #314</text>
+<text x="470" y="134" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="" style="white-space:pre">de65abc</text>
+<rect x="520" y="60" width="22" height="22" rx="3" fill="#1a1316" stroke="#f3eef0" class="s3"/>
+<text x="531" y="76" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#f3eef0" text-anchor="middle" class="s3" style="white-space:pre">c</text>
+<text x="548" y="76" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="s3" style="white-space:pre">continue</text>
+<rect x="28" y="158" width="584" height="172" fill="#1a1316" stroke="#4a4046" class="a4"/>
+<rect x="28" y="158" width="584" height="20" fill="#2c2329" class="a4"/>
+<text x="40" y="172" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="start" class="a4" style="white-space:pre">night 2026-09-08 · maintainability · a copy of the transcript</text>
+<text x="40" y="198" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#f3eef0" text-anchor="start" class="a5" style="white-space:pre">$ claude --resume 42cc59c</text>
+<text x="40" y="215" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a6" style="white-space:pre">▐ Picking up the maintainability job from last night.</text>
+<text x="40" y="232" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a7" style="white-space:pre">▐ I split the router into three files and opened #313.</text>
+<text x="40" y="249" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="a8" style="white-space:pre">&gt; why did you leave the auth routes in one file?</text>
+<text x="40" y="266" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a9" style="white-space:pre">▐ Open PR #298 touches src/auth.ts, so it was off limits</text>
+<text x="40" y="283" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a10" style="white-space:pre">▐ tonight. The guard would have blocked the push.</text>
+<text x="40" y="300" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="a11" style="white-space:pre">▐ Want me to do that half once #298 merges?</text>
+<text x="40" y="317" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="a12" style="white-space:pre">&gt; yes, and keep the same layout</text>
+<rect x="270" y="306" width="7" height="14" fill="#9d9df0" fill-opacity="0.8" class="b13"/>
+</svg>

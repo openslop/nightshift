@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="pull requests by morning">
+<title>pull requests by morning</title>
+<desc>A clock runs from 05:12 to 08:00 while four pull requests appear, each with a short plain title.</desc>
+<style>
+.s1{animation:kf-s1 14.0s infinite both}@keyframes kf-s1{0%,0.00%{opacity:0}0.86%,17.86%{opacity:1}18.71%,100%{opacity:0}}
+.s2{animation:kf-s2 14.0s infinite both}@keyframes kf-s2{0%,17.79%{opacity:0}18.71%,35.71%{opacity:1}36.57%,100%{opacity:0}}
+.s3{animation:kf-s3 14.0s infinite both}@keyframes kf-s3{0%,35.64%{opacity:0}36.57%,53.57%{opacity:1}54.43%,100%{opacity:0}}
+.s4{animation:kf-s4 14.0s infinite both}@keyframes kf-s4{0%,53.50%{opacity:0}54.43%,71.43%{opacity:1}72.29%,100%{opacity:0}}
+.s5{animation:kf-s5 14.0s infinite both}@keyframes kf-s5{0%,71.36%{opacity:0}72.29%,85.71%{opacity:1}86.57%,100%{opacity:0}}
+.s6{animation:kf-s6 14.0s infinite both}@keyframes kf-s6{0%,85.64%{opacity:0}86.57%,100.00%{opacity:1}}
+.s7{animation:kf-s7 14.0s infinite both}@keyframes kf-s7{0%,0.00%{opacity:0}0.71%,85.71%{opacity:1}86.43%,100%{opacity:0}}
+.a8{animation:kf-a8 14.0s infinite both}@keyframes kf-a8{0%,85.64%{opacity:0;transform:translate(0,0px)}88.21%,100%{opacity:1;transform:translate(0,0)}}
+.s9{animation:kf-s9 14.0s infinite both}@keyframes kf-s9{0%,0.00%{opacity:0}0.71%,17.86%{opacity:1}18.57%,100%{opacity:0}}
+.s10{animation:kf-s10 14.0s infinite both}@keyframes kf-s10{0%,17.79%{opacity:0}18.57%,35.71%{opacity:1}36.43%,100%{opacity:0}}
+.s11{animation:kf-s11 14.0s infinite both}@keyframes kf-s11{0%,35.64%{opacity:0}36.43%,53.57%{opacity:1}54.29%,100%{opacity:0}}
+.s12{animation:kf-s12 14.0s infinite both}@keyframes kf-s12{0%,53.50%{opacity:0}54.29%,71.43%{opacity:1}72.14%,100%{opacity:0}}
+.s13{animation:kf-s13 14.0s infinite both}@keyframes kf-s13{0%,71.36%{opacity:0}72.14%,85.71%{opacity:1}86.43%,100%{opacity:0}}
+.s14{animation:kf-s14 14.0s infinite both}@keyframes kf-s14{0%,85.64%{opacity:0}86.43%,100.00%{opacity:1}}
+.a15{animation:kf-a15 14.0s infinite both}@keyframes kf-a15{0%,17.79%{opacity:0;transform:translate(0,8px)}20.36%,100%{opacity:1;transform:translate(0,0)}}
+.a16{animation:kf-a16 14.0s infinite both}@keyframes kf-a16{0%,35.64%{opacity:0;transform:translate(0,8px)}38.21%,100%{opacity:1;transform:translate(0,0)}}
+.a17{animation:kf-a17 14.0s infinite both}@keyframes kf-a17{0%,53.50%{opacity:0;transform:translate(0,8px)}56.07%,100%{opacity:1;transform:translate(0,0)}}
+.a18{animation:kf-a18 14.0s infinite both}@keyframes kf-a18{0%,71.36%{opacity:0;transform:translate(0,8px)}73.93%,100%{opacity:1;transform:translate(0,0)}}
+.a19{animation:kf-a19 14.0s infinite both}@keyframes kf-a19{0%,87.79%{opacity:0;transform:translate(0,4px)}90.36%,100%{opacity:1;transform:translate(0,0)}}
+</style>
+<rect width="640" height="360" fill="#140e11"/>
+<defs><pattern id="dots" width="40" height="28" patternUnits="userSpaceOnUse"><circle cx="20" cy="14" r="1" fill="#2e282b"/></pattern><clipPath id="moonclip"><circle cx="0" cy="0" r="9"/></clipPath></defs>
+<rect width="640" height="360" fill="url(#dots)"/>
+<rect x="0" y="0" width="640" height="34" fill="#1a1316"/><line x1="0" y1="34.5" x2="640" y2="34.5" stroke="#2e282b"/>
+<g transform="translate(24,17)"><circle r="7" fill="none" stroke="#f3eef0" stroke-width="2"/><circle r="7" fill="#f3eef0" clip-path="url(#moonclip)" transform="translate(-4.5,0)"/></g>
+<text x="40" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#f3eef0" text-anchor="start" class="" style="white-space:pre">nightshift</text>
+<text x="620" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre">pull requests by morning</text>
+<text x="28" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">SHIFT</text>
+<text x="248" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">CHRONOMETER</text>
+<line x1="28" y1="66" x2="248" y2="66" stroke="#2e282b"/>
+<g class="s1" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="30" y1="78" x2="54" y2="78"/>
+<line x1="54" y1="78" x2="54" y2="99.0"/>
+<line x1="54" y1="99.0" x2="54" y2="120"/>
+<line x1="30" y1="120" x2="54" y2="120"/>
+<line x1="30" y1="99.0" x2="30" y2="120"/>
+<line x1="30" y1="78" x2="30" y2="99.0"/>
+</g>
+<g class="s1" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="66" y1="78" x2="90" y2="78"/>
+<line x1="90" y1="99.0" x2="90" y2="120"/>
+<line x1="66" y1="120" x2="90" y2="120"/>
+<line x1="66" y1="78" x2="66" y2="99.0"/>
+<line x1="66" y1="99.0" x2="90" y2="99.0"/>
+</g>
+<g class="s1"><circle cx="106" cy="90.6" r="2" fill="#f3eef0"/><circle cx="106" cy="107.4" r="2" fill="#f3eef0"/></g>
+<g class="s1" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="140" y1="78" x2="140" y2="99.0"/>
+<line x1="140" y1="99.0" x2="140" y2="120"/>
+</g>
+<g class="s1" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="152" y1="78" x2="176" y2="78"/>
+<line x1="176" y1="78" x2="176" y2="99.0"/>
+<line x1="152" y1="120" x2="176" y2="120"/>
+<line x1="152" y1="99.0" x2="152" y2="120"/>
+<line x1="152" y1="99.0" x2="176" y2="99.0"/>
+</g>
+<g class="s2" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="30" y1="78" x2="54" y2="78"/>
+<line x1="54" y1="78" x2="54" y2="99.0"/>
+<line x1="54" y1="99.0" x2="54" y2="120"/>
+<line x1="30" y1="120" x2="54" y2="120"/>
+<line x1="30" y1="99.0" x2="30" y2="120"/>
+<line x1="30" y1="78" x2="30" y2="99.0"/>
+</g>
+<g class="s2" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="66" y1="78" x2="90" y2="78"/>
+<line x1="90" y1="99.0" x2="90" y2="120"/>
+<line x1="66" y1="120" x2="90" y2="120"/>
+<line x1="66" y1="78" x2="66" y2="99.0"/>
+<line x1="66" y1="99.0" x2="90" y2="99.0"/>
+</g>
+<g class="s2"><circle cx="106" cy="90.6" r="2" fill="#f3eef0"/><circle cx="106" cy="107.4" r="2" fill="#f3eef0"/></g>
+<g class="s2" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="116" y1="78" x2="140" y2="78"/>
+<line x1="140" y1="78" x2="140" y2="99.0"/>
+<line x1="116" y1="120" x2="140" y2="120"/>
+<line x1="116" y1="99.0" x2="116" y2="120"/>
+<line x1="116" y1="99.0" x2="140" y2="99.0"/>
+</g>
+<g class="s2" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="152" y1="78" x2="176" y2="78"/>
+<line x1="176" y1="78" x2="176" y2="99.0"/>
+<line x1="176" y1="99.0" x2="176" y2="120"/>
+<line x1="152" y1="120" x2="176" y2="120"/>
+<line x1="152" y1="99.0" x2="176" y2="99.0"/>
+</g>
+<g class="s3" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="30" y1="78" x2="54" y2="78"/>
+<line x1="54" y1="78" x2="54" y2="99.0"/>
+<line x1="54" y1="99.0" x2="54" y2="120"/>
+<line x1="30" y1="120" x2="54" y2="120"/>
+<line x1="30" y1="99.0" x2="30" y2="120"/>
+<line x1="30" y1="78" x2="30" y2="99.0"/>
+</g>
+<g class="s3" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="66" y1="78" x2="90" y2="78"/>
+<line x1="90" y1="99.0" x2="90" y2="120"/>
+<line x1="66" y1="120" x2="90" y2="120"/>
+<line x1="66" y1="78" x2="66" y2="99.0"/>
+<line x1="66" y1="99.0" x2="90" y2="99.0"/>
+</g>
+<g class="s3"><circle cx="106" cy="90.6" r="2" fill="#f3eef0"/><circle cx="106" cy="107.4" r="2" fill="#f3eef0"/></g>
+<g class="s3" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="116" y1="78" x2="140" y2="78"/>
+<line x1="140" y1="99.0" x2="140" y2="120"/>
+<line x1="116" y1="120" x2="140" y2="120"/>
+<line x1="116" y1="78" x2="116" y2="99.0"/>
+<line x1="116" y1="99.0" x2="140" y2="99.0"/>
+</g>
+<g class="s3" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="176" y1="78" x2="176" y2="99.0"/>
+<line x1="176" y1="99.0" x2="176" y2="120"/>
+</g>
+<g class="s4" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="30" y1="78" x2="54" y2="78"/>
+<line x1="54" y1="78" x2="54" y2="99.0"/>
+<line x1="54" y1="99.0" x2="54" y2="120"/>
+<line x1="30" y1="120" x2="54" y2="120"/>
+<line x1="30" y1="99.0" x2="30" y2="120"/>
+<line x1="30" y1="78" x2="30" y2="99.0"/>
+</g>
+<g class="s4" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="66" y1="78" x2="90" y2="78"/>
+<line x1="90" y1="99.0" x2="90" y2="120"/>
+<line x1="66" y1="120" x2="90" y2="120"/>
+<line x1="66" y1="99.0" x2="66" y2="120"/>
+<line x1="66" y1="78" x2="66" y2="99.0"/>
+<line x1="66" y1="99.0" x2="90" y2="99.0"/>
+</g>
+<g class="s4"><circle cx="106" cy="90.6" r="2" fill="#f3eef0"/><circle cx="106" cy="107.4" r="2" fill="#f3eef0"/></g>
+<g class="s4" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="116" y1="78" x2="140" y2="78"/>
+<line x1="140" y1="78" x2="140" y2="99.0"/>
+<line x1="140" y1="99.0" x2="140" y2="120"/>
+<line x1="116" y1="120" x2="140" y2="120"/>
+<line x1="116" y1="99.0" x2="116" y2="120"/>
+<line x1="116" y1="78" x2="116" y2="99.0"/>
+</g>
+<g class="s4" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="176" y1="78" x2="176" y2="99.0"/>
+<line x1="176" y1="99.0" x2="176" y2="120"/>
+<line x1="152" y1="78" x2="152" y2="99.0"/>
+<line x1="152" y1="99.0" x2="176" y2="99.0"/>
+</g>
+<g class="s5" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="30" y1="78" x2="54" y2="78"/>
+<line x1="54" y1="78" x2="54" y2="99.0"/>
+<line x1="54" y1="99.0" x2="54" y2="120"/>
+<line x1="30" y1="120" x2="54" y2="120"/>
+<line x1="30" y1="99.0" x2="30" y2="120"/>
+<line x1="30" y1="78" x2="30" y2="99.0"/>
+</g>
+<g class="s5" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="66" y1="78" x2="90" y2="78"/>
+<line x1="90" y1="99.0" x2="90" y2="120"/>
+<line x1="66" y1="120" x2="90" y2="120"/>
+<line x1="66" y1="99.0" x2="66" y2="120"/>
+<line x1="66" y1="78" x2="66" y2="99.0"/>
+<line x1="66" y1="99.0" x2="90" y2="99.0"/>
+</g>
+<g class="s5"><circle cx="106" cy="90.6" r="2" fill="#f3eef0"/><circle cx="106" cy="107.4" r="2" fill="#f3eef0"/></g>
+<g class="s5" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="140" y1="78" x2="140" y2="99.0"/>
+<line x1="140" y1="99.0" x2="140" y2="120"/>
+<line x1="116" y1="78" x2="116" y2="99.0"/>
+<line x1="116" y1="99.0" x2="140" y2="99.0"/>
+</g>
+<g class="s5" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="176" y1="78" x2="176" y2="99.0"/>
+<line x1="176" y1="99.0" x2="176" y2="120"/>
+</g>
+<g class="s6" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="30" y1="78" x2="54" y2="78"/>
+<line x1="54" y1="78" x2="54" y2="99.0"/>
+<line x1="54" y1="99.0" x2="54" y2="120"/>
+<line x1="30" y1="120" x2="54" y2="120"/>
+<line x1="30" y1="99.0" x2="30" y2="120"/>
+<line x1="30" y1="78" x2="30" y2="99.0"/>
+</g>
+<g class="s6" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="66" y1="78" x2="90" y2="78"/>
+<line x1="90" y1="78" x2="90" y2="99.0"/>
+<line x1="90" y1="99.0" x2="90" y2="120"/>
+</g>
+<g class="s6"><circle cx="106" cy="90.6" r="2" fill="#f3eef0"/><circle cx="106" cy="107.4" r="2" fill="#f3eef0"/></g>
+<g class="s6" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="116" y1="78" x2="140" y2="78"/>
+<line x1="140" y1="78" x2="140" y2="99.0"/>
+<line x1="140" y1="99.0" x2="140" y2="120"/>
+<line x1="116" y1="120" x2="140" y2="120"/>
+<line x1="116" y1="99.0" x2="140" y2="99.0"/>
+</g>
+<g class="s6" stroke="#f3eef0" stroke-width="2" stroke-linecap="round">
+<line x1="176" y1="78" x2="176" y2="99.0"/>
+<line x1="176" y1="99.0" x2="176" y2="120"/>
+</g>
+<text x="28" y="150" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="start" class="" style="white-space:pre">2026</text>
+<text x="28" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">SEP 08</text>
+<text x="100" y="150" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#4f454a" text-anchor="start" class="" style="white-space:pre">SHIFT</text>
+<text x="100" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="s7" style="white-space:pre">RUNNING</text>
+<text x="100" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a8" style="white-space:pre">DONE</text>
+<g transform="translate(220,158)"><circle r="12" fill="none" stroke="#6f6167" stroke-width="1.5"/>
+<clipPath id="m0"><rect x="-12" y="-12" width="2" height="24"/></clipPath><circle r="12" fill="#9d9df0" clip-path="url(#m0)" class="s9"/>
+<clipPath id="m1"><rect x="-12" y="-12" width="6" height="24"/></clipPath><circle r="12" fill="#9d9df0" clip-path="url(#m1)" class="s10"/>
+<clipPath id="m2"><rect x="-12" y="-12" width="10" height="24"/></clipPath><circle r="12" fill="#9d9df0" clip-path="url(#m2)" class="s11"/>
+<clipPath id="m3"><rect x="-12" y="-12" width="14" height="24"/></clipPath><circle r="12" fill="#9d9df0" clip-path="url(#m3)" class="s12"/>
+<clipPath id="m4"><rect x="-12" y="-12" width="18" height="24"/></clipPath><circle r="12" fill="#9d9df0" clip-path="url(#m4)" class="s13"/>
+<clipPath id="m5"><rect x="-12" y="-12" width="24" height="24"/></clipPath><circle r="12" fill="#9d9df0" clip-path="url(#m5)" class="s14"/>
+</g>
+<text x="28" y="200" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre">you are asleep.</text>
+<text x="28" y="218" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre">nothing pushes to main.</text>
+<text x="28" y="236" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="" style="white-space:pre">nothing merges by itself.</text>
+<text x="290" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">PULL REQUESTS</text>
+<text x="612" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">BY MORNING</text>
+<line x1="290" y1="66" x2="612" y2="66" stroke="#2e282b"/>
+<rect x="290" y="84" width="322" height="50" fill="#1a1316" stroke="#2e282b" class="a15"/>
+<rect x="290" y="84" width="3" height="50" fill="#5fbf8a" class="a15"/>
+<text x="304" y="104" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#5fbf8a" text-anchor="start" class="a15" style="white-space:pre">#313</text>
+<text x="350" y="104" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="a15" style="white-space:pre">maintainability</text>
+<text x="600" y="104" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="end" class="a15" style="white-space:pre">open</text>
+<text x="304" y="122" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#ded6da" text-anchor="start" class="a15" style="white-space:pre">Split the 900-line router into three files</text>
+<rect x="290" y="146" width="322" height="50" fill="#1a1316" stroke="#2e282b" class="a16"/>
+<rect x="290" y="146" width="3" height="50" fill="#5fbf8a" class="a16"/>
+<text x="304" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#5fbf8a" text-anchor="start" class="a16" style="white-space:pre">#314</text>
+<text x="350" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="a16" style="white-space:pre">performance</text>
+<text x="600" y="166" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="end" class="a16" style="white-space:pre">open</text>
+<text x="304" y="184" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#ded6da" text-anchor="start" class="a16" style="white-space:pre">Cache the settings query; it ran on every request</text>
+<rect x="290" y="208" width="322" height="50" fill="#1a1316" stroke="#2e282b" class="a17"/>
+<rect x="290" y="208" width="3" height="50" fill="#5fbf8a" class="a17"/>
+<text x="304" y="228" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#5fbf8a" text-anchor="start" class="a17" style="white-space:pre">#315</text>
+<text x="350" y="228" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="a17" style="white-space:pre">conventions</text>
+<text x="600" y="228" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="end" class="a17" style="white-space:pre">open</text>
+<text x="304" y="246" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#ded6da" text-anchor="start" class="a17" style="white-space:pre">Use the shared logger in the six places that print</text>
+<rect x="290" y="270" width="322" height="50" fill="#1a1316" stroke="#2e282b" class="a18"/>
+<rect x="290" y="270" width="3" height="50" fill="#5fbf8a" class="a18"/>
+<text x="304" y="290" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#5fbf8a" text-anchor="start" class="a18" style="white-space:pre">#316</text>
+<text x="350" y="290" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d9df0" text-anchor="start" class="a18" style="white-space:pre">architecture</text>
+<text x="600" y="290" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="end" class="a18" style="white-space:pre">open</text>
+<text x="304" y="308" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#ded6da" text-anchor="start" class="a18" style="white-space:pre">Move retry logic into one helper</text>
+<text x="290" y="338" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="start" class="a19" style="white-space:pre">read them with coffee. merge what you like.</text>
+</svg>

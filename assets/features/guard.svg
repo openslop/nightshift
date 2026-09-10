@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="stays out of your way">
+<title>stays out of your way</title>
+<desc>A job wants to change three files. One is touched by a teammate&#x27;s open pull request, so the guard marks it off limits and the job leaves it alone.</desc>
+<style>
+.a1{animation:kf-a1 14.0s infinite both}@keyframes kf-a1{0%,4.21%{opacity:0;transform:translate(0,4px)}6.79%,100%{opacity:1;transform:translate(0,0)}}
+.a2{animation:kf-a2 14.0s infinite both}@keyframes kf-a2{0%,4.21%{opacity:0;transform:translate(0,0px)}6.79%,100%{opacity:1;transform:translate(0,0)}}
+.a3{animation:kf-a3 14.0s infinite both}@keyframes kf-a3{0%,7.07%{opacity:0;transform:translate(0,4px)}9.64%,100%{opacity:1;transform:translate(0,0)}}
+.a4{animation:kf-a4 14.0s infinite both}@keyframes kf-a4{0%,7.07%{opacity:0;transform:translate(0,0px)}9.64%,100%{opacity:1;transform:translate(0,0)}}
+.a5{animation:kf-a5 14.0s infinite both}@keyframes kf-a5{0%,9.93%{opacity:0;transform:translate(0,4px)}12.50%,100%{opacity:1;transform:translate(0,0)}}
+.a6{animation:kf-a6 14.0s infinite both}@keyframes kf-a6{0%,9.93%{opacity:0;transform:translate(0,0px)}12.50%,100%{opacity:1;transform:translate(0,0)}}
+.a7{animation:kf-a7 14.0s infinite both}@keyframes kf-a7{0%,8.50%{opacity:0;transform:translate(0,4px)}11.07%,100%{opacity:1;transform:translate(0,0)}}
+.a8{animation:kf-a8 14.0s infinite both}@keyframes kf-a8{0%,11.36%{opacity:0;transform:translate(0,4px)}13.93%,100%{opacity:1;transform:translate(0,0)}}
+.a9{animation:kf-a9 14.0s infinite both}@keyframes kf-a9{0%,21.36%{opacity:0;transform:translate(0,4px)}23.93%,100%{opacity:1;transform:translate(0,0)}}
+.g10{animation:kf-g10 14.0s linear infinite both;transform-box:fill-box;transform-origin:left center}@keyframes kf-g10{0%,22.79%{transform:scaleX(0)}35.71%,100%{transform:scaleX(1)}}
+.a11{animation:kf-a11 14.0s infinite both}@keyframes kf-a11{0%,37.07%{opacity:0;transform:translate(0,4px)}39.64%,100%{opacity:1;transform:translate(0,0)}}
+.a12{animation:kf-a12 14.0s infinite both}@keyframes kf-a12{0%,48.50%{opacity:0;transform:translate(0,4px)}51.07%,100%{opacity:1;transform:translate(0,0)}}
+.a13{animation:kf-a13 14.0s infinite both}@keyframes kf-a13{0%,59.93%{opacity:0;transform:translate(0,4px)}62.50%,100%{opacity:1;transform:translate(0,0)}}
+.a14{animation:kf-a14 14.0s infinite both}@keyframes kf-a14{0%,67.07%{opacity:0;transform:translate(0,4px)}69.64%,100%{opacity:1;transform:translate(0,0)}}
+.a15{animation:kf-a15 14.0s infinite both}@keyframes kf-a15{0%,74.21%{opacity:0;transform:translate(0,4px)}76.79%,100%{opacity:1;transform:translate(0,0)}}
+</style>
+<rect width="640" height="360" fill="#140e11"/>
+<defs><pattern id="dots" width="40" height="28" patternUnits="userSpaceOnUse"><circle cx="20" cy="14" r="1" fill="#2e282b"/></pattern><clipPath id="moonclip"><circle cx="0" cy="0" r="9"/></clipPath></defs>
+<rect width="640" height="360" fill="url(#dots)"/>
+<rect x="0" y="0" width="640" height="34" fill="#1a1316"/><line x1="0" y1="34.5" x2="640" y2="34.5" stroke="#2e282b"/>
+<g transform="translate(24,17)"><circle r="7" fill="none" stroke="#f3eef0" stroke-width="2"/><circle r="7" fill="#f3eef0" clip-path="url(#moonclip)" transform="translate(-4.5,0)"/></g>
+<text x="40" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#f3eef0" text-anchor="start" class="" style="white-space:pre">nightshift</text>
+<text x="620" y="22" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="end" class="" style="white-space:pre">stays out of your way</text>
+<text x="28" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">TONIGHT&#x27;S CHANGE</text>
+<text x="308" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">performance</text>
+<line x1="28" y1="66" x2="308" y2="66" stroke="#2e282b"/>
+<text x="40" y="88" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="a1" style="white-space:pre">src/db/settings.ts</text>
+<circle cx="30" cy="84" r="3" fill="#6f6167" class="a2"/>
+<text x="40" y="114" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="a3" style="white-space:pre">src/auth.ts</text>
+<circle cx="30" cy="110" r="3" fill="#6f6167" class="a4"/>
+<text x="40" y="140" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="400" fill="#ded6da" text-anchor="start" class="a5" style="white-space:pre">src/cache/keys.ts</text>
+<circle cx="30" cy="136" r="3" fill="#6f6167" class="a6"/>
+<text x="340" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">OPEN PULL REQUESTS</text>
+<text x="612" y="58" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">yours and your team&#x27;s</text>
+<line x1="340" y1="66" x2="612" y2="66" stroke="#2e282b"/>
+<text x="352" y="88" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#d29cb8" text-anchor="start" class="a7" style="white-space:pre">#298</text>
+<text x="400" y="88" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a7" style="white-space:pre">a teammate</text>
+<text x="352" y="106" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#9d8b93" text-anchor="start" class="a7" style="white-space:pre">src/auth.ts, src/login.ts</text>
+<text x="352" y="128" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#d29cb8" text-anchor="start" class="a8" style="white-space:pre">#301</text>
+<text x="400" y="128" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#6f6167" text-anchor="start" class="a8" style="white-space:pre">a teammate</text>
+<text x="352" y="146" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#9d8b93" text-anchor="start" class="a8" style="white-space:pre">docs/api.md</text>
+<text x="28" y="190" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#9d8b93" text-anchor="start" class="" style="white-space:pre">MERGE-CONFLICT GUARD</text>
+<text x="612" y="190" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="end" class="" style="white-space:pre">bin/guard.sh</text>
+<line x1="28" y1="198" x2="612" y2="198" stroke="#2e282b"/>
+<text x="40" y="216" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#f3eef0" text-anchor="start" class="a9" style="white-space:pre">$ guard.sh nightshift/performance-20260908-0532</text>
+<rect x="40" y="226" width="560" height="6" fill="#4a4046" class="g10"/>
+<rect x="20" y="98" width="300" height="22" fill="#e0605a" fill-opacity="0.14" class="a11"/>
+<circle cx="30" cy="110" r="3" fill="#e0605a" class="a11"/>
+<text x="300" y="114" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#e0605a" text-anchor="end" class="a11" style="white-space:pre">#298</text>
+<text x="40" y="252" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#e0605a" text-anchor="start" class="a11" style="white-space:pre">✗ src/auth.ts is in open PR #298 · off limits tonight</text>
+<text x="40" y="272" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#b57e38" text-anchor="start" class="a12" style="white-space:pre">→ change dropped from tonight&#x27;s branch</text>
+<line x1="40" y1="110" x2="130" y2="110" stroke="#ded6da" stroke-width="1.2" class="a12"/>
+<text x="40" y="298" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#5fbf8a" text-anchor="start" class="a13" style="white-space:pre">✓ no shared files with any open PR · guard ok · pushed</text>
+<text x="40" y="318" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" font-weight="400" fill="#6f6167" text-anchor="start" class="a14" style="white-space:pre">the guard output goes in the PR body. never push while it fails.</text>
+<text x="28" y="338" font-family="'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="400" fill="#4f454a" text-anchor="start" class="a15" style="white-space:pre">you decide what merges. it only ever opens pull requests.</text>
+</svg>
