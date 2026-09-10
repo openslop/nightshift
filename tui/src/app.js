@@ -99,6 +99,7 @@ class App {
     this.streamT = 0;
     this.warpState = null;
     this.cam = { speed: 0.26, angle: 0, tilt: 0.62, zoom: 1, paused: false };
+    this.fieldStyle = opts.field || "ridge"; // ridge | mesh (f toggles)
     this.selF = { row: null, col: null };
     this.lastT = 0;
     this.reload();
@@ -147,6 +148,7 @@ class App {
     if (k === "?") { this.overlay = "help"; return; }
     if (k === "R") { this.reload(); this.say("state reloaded"); return; }
     if (k === "d") { this.overlay = this.overlay === "deep" ? null : "deep"; return; }
+    if (k === "f") { this.fieldStyle = this.fieldStyle === "ridge" ? "mesh" : "ridge"; this.say("deep field: " + this.fieldStyle); return; }
     if (k === "m") { this.overlay = this.overlay === "metrics" ? null : "metrics"; this.overlayT = Date.now(); return; }
     if (k === "<" || k === ",") { this.cam.speed = Math.max(-1.2, this.cam.speed - 0.1); return; }
     if (k === ">" || k === ".") { this.cam.speed = Math.min(1.2, this.cam.speed + 0.1); return; }
@@ -258,6 +260,7 @@ class App {
     const gap = 2;
     const cx = left ? left + gap : 1, cwAll = w - cx - (side ? side + gap : 1);
     const an = cwAll >= 166 ? Math.min(100, cwAll - 106) : 0; // analytics column beside the terminal
+    this.wide = an > 0;
     const cw = cwAll - (an ? an + gap : 0);
     const top = 1, bottom = h - 2;
     if (left) this.renderLeft(1, top, left - 1, bottom - top, t);
@@ -328,8 +331,8 @@ class App {
     let yy = y + 13;
     // 3D terrain of nights × jobs
     W.caption(scr, x, yy, w, "deep field", "nights × jobs", th);
-    const th3 = Math.max(7, Math.min(13, Math.floor(h * 0.28)));
-    const df = this.deepField(x + 1, yy + 3, w - 2, th3, t, 10, false);
+    const th3 = this.wide ? Math.max(9, Math.min(20, Math.floor(h * 0.42))) : Math.max(7, Math.min(13, Math.floor(h * 0.28)));
+    const df = this.deepField(x + 1, yy + 3, w - 2, th3, t, this.wide ? 12 : 10, false);
     scr.text(x + 1, yy + 3 + th3, "ROT " + rpad(Math.round(((this.cam.angle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2) * 57.3) + "°", 4), { fg: th.dim });
     scr.text(x + w - 14, yy + 3 + th3, rpad(df.rows + "N × " + df.cols + "J", 13), { fg: th.dim });
     yy += th3 + 5;
@@ -373,7 +376,8 @@ class App {
     this.selF.row = tw(this.selF.row, selRow); this.selF.col = tw(this.selF.col, selCol);
     if (!grid.length) return { rows: 0, cols: 0 };
     const cam = { angle: this.cam.angle, tilt: this.cam.tilt, zoom: this.cam.zoom };
-    const a = FX.terrain(scr, x, y, w, h, t, th, grid, { row: this.selF.row, col: this.selF.col }, { cam, pulse, sparks, big: labels });
+    const draw = this.fieldStyle === "mesh" ? FX.terrain : FX.ridges;
+    const a = draw(scr, x, y, w, h, t, th, grid, { row: this.selF.row, col: this.selF.col }, { cam, pulse, sparks, big: labels });
     if (labels) {
       const put = (pt, s, fg, dx = 1) => { if (!pt) return; const px = Math.max(x, Math.min(x + w - s.length, pt[0] + dx)), py = Math.max(y, Math.min(y + h - 1, pt[1])); scr.text(px, py, s, { fg }); };
       put(a.old, nights[0] ? "◂ " + nights[0].label.slice(5) : "", th.dim, -8);
@@ -708,7 +712,7 @@ class App {
 
   renderHelp(t) {
     const scr = this.scr, th = this.th, d = this.data;
-    const bw = Math.min(scr.w - 4, 78), bh = 25;
+    const bw = Math.min(scr.w - 4, 78), bh = 26;
     const x = (scr.w - bw) >> 1, y = (scr.h - bh) >> 1;
     scr.fill(x, y, bw, bh, " ", { bg: th.panel });
     W.box(scr, x, y, bw, bh, "help", "esc closes", th, true);
@@ -721,6 +725,7 @@ class App {
       ["", "  linked session → claude --resume <id> --fork-session"],
       ["", "  no session    → new claude seeded with the report"],
       ["d", "fullscreen deep field; < > spin, [ ] tilt, + - zoom, space pause"],
+      ["f", "deep field style: ridge lines / wire mesh"],
       ["m", "metrics: yield, durations, review cadence, status mix"],
       ["r", "PR review shifts (every 2h)"],
       ["o", "open the job's pull request in the browser"],

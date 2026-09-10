@@ -80,6 +80,93 @@ function terrain(scr, x, y, w, h, t, th, grid, sel = {}, opts = {}) {
   return { pin, old: cellOf(K[0]), new: cellOf(K[3]), colEnd: sel.col != null && P[R - 1] && P[R - 1][Math.round(sel.col)] ? cellOf(P[R - 1][Math.round(sel.col)].p) : null };
 }
 
+// Ridge-line rendering of the same field: one line per night, drawn far to near, each hiding
+// what is behind it, with the surface below dithered by slope. Reads as a solid shape.
+function ridges(scr, x, y, w, h, t, th, grid, sel = {}, opts = {}) {
+  const { cam = { angle: t * 0.26, tilt: 0.62, zoom: 1 }, sparks = new Set(), pulse = new Set(), big = false } = opts;
+  const W = w * 2, H = h * 4;
+  const R = grid.length, C = R ? grid[0].length : 0;
+  if (!R || !C) return { pin: null };
+  const dots = new Uint8Array(W * H); // 0 empty · 1 dark shade · 2 light shade · 3 line · 4 selected night · 5 selected job · 6 bright
+  const ay = cam.angle, ax = -(cam.tilt + 0.08 * Math.sin(t * 0.3));
+  const scale = Math.min(W, H * 1.35) * (big ? 0.4 : 0.48) * cam.zoom;
+  const pos = (r, c, v) => rot([(C > 1 ? c / (C - 1) - 0.5 : 0) * 1.75, -0.3 + (v || 0) * 0.6, (R > 1 ? r / (R - 1) - 0.5 : 0) * 1.75], ay, ax);
+  const P = (r, c, v) => proj(pos(r, c, v), W, H, scale);
+  const val = (r, c) => { let v = grid[r][c]; if (v == null) v = 0; if (pulse.has(r + "," + c)) v = 0.5 + 0.5 * Math.sin(t * 5); return v; };
+  const put = (px, py, k) => { if (px >= 0 && py >= 0 && px < W && py < H) dots[py * W + px] = k; };
+  const rowW = (r) => Math.max(0, 1 - Math.abs(r - (sel.row == null ? -9 : sel.row)));
+  // sub-sample columns so the ridge is smooth, then order rows by depth (far first)
+  const SUB = 4;
+  const rows = [];
+  for (let r = 0; r < R; r++) {
+    const pts = [], floor = [];
+    for (let c = 0; c < C - 1; c++)
+      for (let k = 0; k < SUB; k++) {
+        const u = k / SUB, cc = c + u, v = val(r, c) * (1 - u) + val(r, c + 1) * u;
+        pts.push(P(r, cc, v)); floor.push(P(r, cc, 0));
+      }
+    pts.push(P(r, C - 1, val(r, C - 1))); floor.push(P(r, C - 1, 0));
+    rows.push({ r, pts, floor, depth: pts.reduce((s, p) => s + p[2], 0) / pts.length });
+  }
+  rows.sort((a, b) => b.depth - a.depth); // nearest first; a per-column horizon hides what is behind
+  const horizon = new Int16Array(W).fill(H);
+  for (const row of rows) {
+    const { r, pts } = row;
+    const selRow = rowW(r) > 0.5;
+    const near = Math.max(0, Math.min(1, (row.depth - 0.75) / 0.6));
+    const band = 3 + Math.round(near * 3);
+    for (let i = 0; i + 1 < pts.length; i++) {
+      const [x0, y0] = pts[i], [x1, y1] = pts[i + 1];
+      const slope = (y1 - y0) / Math.max(1, Math.abs(x1 - x0)); // lit from the upper left
+      const shade = slope < -0.5 ? 2 : slope < 0.25 ? 1 : 0;
+      const n = Math.max(1, Math.abs(x1 - x0));
+      for (let k = 0; k <= n; k++) {
+        const u = k / n, px = Math.round(x0 + (x1 - x0) * u), ly = Math.round(y0 + (y1 - y0) * u);
+        if (px < 0 || px >= W) continue;
+        if (ly < horizon[px]) {
+          put(px, ly, selRow ? 4 : 3);
+          for (let py = ly + 1; py < Math.min(horizon[px], ly + band); py++) {
+            const lit = shade === 2 ? (px + py) % 2 === 0 : shade === 1 ? (px % 2 === 0 && py % 2 === 0) : false;
+            if (lit) put(px, py, near > 0.5 ? 2 : 1);
+          }
+          horizon[px] = ly;
+        }
+      }
+    }
+    if (sel.col != null) { const c = Math.round(sel.col); if (c >= 0 && c < C) { const q = pts[Math.min(pts.length - 1, c * SUB)]; if (q[1] <= horizon[q[0]] + 1) { put(q[0], q[1], 5); put(q[0] + 1, q[1], 5); put(q[0] - 1, q[1], 5); } } }
+  }
+  for (const key of sparks) {
+    const [r, c] = key.split(",").map(Number);
+    if (r >= R || c >= C) continue;
+    const seed = (r * 31 + c * 17) % 97 / 97;
+    for (let k = 0; k < 2; k++) { const ph = (t * 0.35 + seed + k * 0.5) % 1; const q = P(r, c, val(r, c) + 0.08 + ph * 0.55); put(q[0], q[1], 4); }
+  }
+  let pin = null;
+  if (sel.row != null && sel.col != null) {
+    const rr = Math.round(sel.row), cc = Math.round(sel.col);
+    if (rr >= 0 && rr < R && cc >= 0 && cc < C) {
+      const v = val(rr, cc);
+      const top = P(sel.row, sel.col, v + 0.45 + 0.05 * Math.sin(t * 4)), tip = P(sel.row, sel.col, v + 0.14);
+      const n = Math.max(1, Math.abs(top[1] - tip[1]));
+      for (let k = 0; k <= n; k++) put(Math.round(tip[0] + (top[0] - tip[0]) * k / n), Math.round(tip[1] + (top[1] - tip[1]) * k / n), 6);
+      put(top[0] - 2, top[1], 6); put(top[0] + 2, top[1], 6); put(top[0], top[1] - 2, 6);
+      pin = [x + (top[0] >> 1), y + (top[1] >> 2)];
+    }
+  }
+  // dots → braille
+  const DOTBITS = [[0x01, 0x08], [0x02, 0x10], [0x04, 0x20], [0x40, 0x80]];
+  const col = [null, th.dim, th.muted, th.fg, th.accent, th.tert, th.bright];
+  for (let cy = 0; cy < h; cy++)
+    for (let cx = 0; cx < w; cx++) {
+      let bits = 0, best = 0;
+      for (let dy = 0; dy < 4; dy++) for (let dx = 0; dx < 2; dx++) { const k = dots[(cy * 4 + dy) * W + cx * 2 + dx]; if (k) { bits |= DOTBITS[dy][dx]; if (k > best) best = k; } }
+      if (bits) scr.put(x + cx, y + cy, String.fromCharCode(0x2800 + bits), { fg: col[best] });
+    }
+  const K = [P(0, 0, 0), P(R - 1, 0, 0), P(R - 1, C - 1, 0)];
+  const cellOf = (q) => [x + (q[0] >> 1), y + (q[1] >> 2)];
+  return { pin, old: cellOf(K[0]), new: cellOf(K[1]), colEnd: sel.col != null ? cellOf(P(R - 1, Math.max(0, Math.min(C - 1, Math.round(sel.col))), val(R - 1, Math.max(0, Math.min(C - 1, Math.round(sel.col)))))) : null };
+}
+
 // Rotating icosahedron for the boot screen.
 const PHI = (1 + Math.sqrt(5)) / 2;
 const ICO_V = [[-1, PHI, 0], [1, PHI, 0], [-1, -PHI, 0], [1, -PHI, 0], [0, -1, PHI], [0, 1, PHI], [0, -1, -PHI], [0, 1, -PHI], [PHI, 0, -1], [PHI, 0, 1], [-PHI, 0, -1], [-PHI, 0, 1]].map((p) => p.map((v) => v / PHI / 1.15));
@@ -261,4 +348,4 @@ function ruler(scr, x, y, w, th) {
   for (let i = 0; i < w; i++) scr.put(x + i, y, i % 10 === 0 ? "┼" : "─", { fg: i % 10 === 0 ? th.lineHi : th.line });
 }
 
-module.exports = { terrain, wireframe, makeWarp, warp, moon, gantt, matrix, streamLine, hexStream, dotField, scanline, glitch, ruler, fmtShort };
+module.exports = { terrain, ridges, wireframe, makeWarp, warp, moon, gantt, matrix, streamLine, hexStream, dotField, scanline, glitch, ruler, fmtShort };

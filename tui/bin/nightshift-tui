@@ -16,6 +16,7 @@ for (let i = 0; i < args.length; i++) {
   else if (a === "--no-warp") opts.noWarp = true;
   else if (a === "--launch") opts.launch = true;
   else if (a === "--demo") opts.demo = true;
+  else if (a === "--field") opts.field = next();
   else if (a === "--frame") opts.frame = next() || "160x45";
   else if (a === "--dump") opts.dump = next();
   else if (a === "--view") opts.view = next();
@@ -33,6 +34,7 @@ usage: nightshift-tui [--demo] [--state DIR] [--repo DIR] [--conf FILE] [--theme
   --opaque       paint the background (default: transparent, so the terminal's blur shows through)
   --launch       open the bridge in a new terminal window (ptyxis, kitty, alacritty, wezterm, foot)
   --demo         show a made-up state dir, for a look around before your first night
+  --field STYLE  deep field renderer: ridge (default) or mesh; f toggles it live
   --frame WxH    render one frame as plain text and exit (for screenshots / tests)
 
 keys: ↑↓ job · ←→ night · ↵ report · c continue in Claude Code · r reviews · o open PR · t theme · ? help · q quit`);
