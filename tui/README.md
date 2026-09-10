@@ -15,6 +15,7 @@ Or yourself, with Node 18 or newer installed:
 ```
 node ~/nightshift/tui/bin/nightshift-tui            # in this terminal
 node ~/nightshift/tui/bin/nightshift-tui --launch   # in a new, bigger window
+node ~/nightshift/tui/bin/nightshift-tui --launch --fullscreen   # the same, filling the screen
 node ~/nightshift/tui/bin/nightshift-tui --demo     # a made-up month, for a look around
 ```
 
@@ -36,7 +37,8 @@ Bigger windows show more. Small ones show the middle only.
 ← →        older / newer night     r    the reviewer's shifts
 ↵          read the report         d    the 3D field, full screen
 m          the charts              t    green screen on / off
-?          help                    q    quit
+F          fullscreen on / off     ?    help
+q          quit
 ```
 
 ## Continue a conversation

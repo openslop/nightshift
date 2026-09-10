@@ -148,6 +148,7 @@ class App {
     if (k === "?") { this.overlay = "help"; return; }
     if (k === "R") { this.reload(); this.say("state reloaded"); return; }
     if (k === "d") { this.overlay = this.overlay === "deep" ? null : "deep"; return; }
+    if (k === "F") return this.toggleFullscreen();
     if (k === "f") { this.fieldStyle = this.fieldStyle === "ridge" ? "mesh" : "ridge"; this.say("deep field: " + this.fieldStyle); return; }
     if (k === "m") { this.overlay = this.overlay === "metrics" ? null : "metrics"; this.overlayT = Date.now(); return; }
     if (k === "<" || k === ",") { this.cam.speed = Math.max(-1.2, this.cam.speed - 0.1); return; }
@@ -195,6 +196,25 @@ class App {
     const cmd = process.platform === "darwin" ? "open" : "xdg-open";
     try { spawn(cmd, [url], { detached: true, stdio: "ignore" }).unref(); this.say("opened " + url); }
     catch { this.say("could not open a browser for " + url); }
+  }
+
+  // F: make the terminal window fullscreen (and back). A TUI cannot resize its own window, so this
+  // asks the terminal in every way it might listen: the xterm window op, then a tool that can press
+  // the terminal's own fullscreen key. NIGHTSHIFT_FULLSCREEN overrides all of it with a shell command.
+  toggleFullscreen() {
+    const has = (bin) => spawnSync("sh", ["-c", "command -v " + bin], { stdio: "ignore" }).status === 0;
+    const run = (cmd, args) => spawnSync(cmd, args, { stdio: "ignore", timeout: 3000 }).status === 0;
+    this.scr.out.write("\x1b[10;2t"); // xterm, urxvt, and friends toggle on this; others ignore it
+    const custom = process.env.NIGHTSHIFT_FULLSCREEN;
+    if (custom) return this.say(run("sh", ["-c", custom]) ? "fullscreen toggled" : "NIGHTSHIFT_FULLSCREEN failed: " + custom);
+    if (process.env.KITTY_WINDOW_ID && run("kitty", ["@", "resize-os-window", "--action", "toggle-fullscreen"])) return this.say("fullscreen toggled");
+    if (process.platform === "darwin" && run("osascript", ["-e", 'tell application "System Events" to keystroke "f" using {command down, control down}'])) return this.say("fullscreen toggled");
+    if (process.env.DISPLAY && !process.env.WAYLAND_DISPLAY) {
+      if (has("xdotool") && run("xdotool", ["key", "--clearmodifiers", "F11"])) return this.say("fullscreen toggled");
+      if (has("wmctrl") && run("wmctrl", ["-r", ":ACTIVE:", "-b", "toggle,fullscreen"])) return this.say("fullscreen toggled");
+    }
+    if (has("ydotool") && run("ydotool", ["key", "87:1", "87:0"])) return this.say("fullscreen toggled");
+    this.say("press F11 for fullscreen (or set NIGHTSHIFT_FULLSCREEN to a command; --launch --fullscreen opens it that way)");
   }
 
   continueConversation() {
@@ -712,7 +732,7 @@ class App {
 
   renderHelp(t) {
     const scr = this.scr, th = this.th, d = this.data;
-    const bw = Math.min(scr.w - 4, 78), bh = 26;
+    const bw = Math.min(scr.w - 4, 78), bh = 27;
     const x = (scr.w - bw) >> 1, y = (scr.h - bh) >> 1;
     scr.fill(x, y, bw, bh, " ", { bg: th.panel });
     W.box(scr, x, y, bw, bh, "help", "esc closes", th, true);
@@ -730,6 +750,7 @@ class App {
       ["r", "PR review shifts (every 2h)"],
       ["o", "open the job's pull request in the browser"],
       ["t", "toggle palette: night / phosphor"],
+      ["F", "fullscreen the terminal window (F11 works too)"],
       ["R", "reload state from disk"],
       ["q", "quit"],
     ];
