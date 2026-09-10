@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/openslop/nightshift"><img src="https://img.shields.io/github/stars/openslop/nightshift?style=flat&amp;label=%E2%98%85&amp;color=6b6bcf" alt="GitHub 스타"></a>
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b6bcf?style=flat" alt="라이선스: MIT"></a>
-  <a href="https://discord.gg/nightshift"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Nightshift Discord에 참여하기"></a>
+  <a href="https://discord.gg/zeP5482ced"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Nightshift Discord에 참여하기"></a>
   <img src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-1c1720?style=flat" alt="macOS, Linux, Windows에서 실행됩니다">
   <img src="https://img.shields.io/badge/works%20with-any%20coding%20agent-6b6bcf?style=flat" alt="어떤 코딩 에이전트와도 함께 쓸 수 있습니다">
 </p>
@@ -242,7 +242,7 @@ Node가 필요합니다. 작업에서 `c`를 누르면 에이전트와 그 일�
 
 ## 커뮤니티 &amp; 지원
 
-- **Discord:** **[Discord](https://discord.gg/nightshift)** 커뮤니티에 참여하세요.
+- **Discord:** **[Discord](https://discord.gg/zeP5482ced)** 커뮤니티에 참여하세요.
 - **아이디어와 버그:** 빠진 작업이 있나요? 잘못된 밤을 발견했나요? [이슈를 여세요](https://github.com/openslop/nightshift/issues).
 - **작업 공유:** 잘 되는 작업 페이지를 쓰셨나요? 풀 리퀘스트를 열고 `jobs/`에 넣어 주세요.
 - **응원하기:** 이 저장소에 [스타](https://github.com/openslop/nightshift)를 눌러 소식을 받아 보세요.

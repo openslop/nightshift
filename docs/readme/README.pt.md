@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/openslop/nightshift"><img src="https://img.shields.io/github/stars/openslop/nightshift?style=flat&amp;label=%E2%98%85&amp;color=6b6bcf" alt="Estrelas no GitHub"></a>
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b6bcf?style=flat" alt="Licença: MIT"></a>
-  <a href="https://discord.gg/nightshift"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Entre no Discord do Nightshift"></a>
+  <a href="https://discord.gg/zeP5482ced"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Entre no Discord do Nightshift"></a>
   <img src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-1c1720?style=flat" alt="Roda no macOS, Linux e Windows">
   <img src="https://img.shields.io/badge/works%20with-any%20coding%20agent-6b6bcf?style=flat" alt="Funciona com qualquer agente de código">
 </p>
@@ -242,7 +242,7 @@ Diga ao seu agente: "Turn off Nightshift." (Em português: "Desligue o Nightshif
 
 ## Comunidade &amp; suporte
 
-- **Discord:** Entre na comunidade no **[Discord](https://discord.gg/nightshift)**.
+- **Discord:** Entre na comunidade no **[Discord](https://discord.gg/zeP5482ced)**.
 - **Ideias e bugs:** Falta um trabalho? Uma noite deu errado? [Abra uma issue](https://github.com/openslop/nightshift/issues).
 - **Compartilhe um trabalho:** Escreveu uma página de trabalho que funciona bem? Abra um pull request e coloque em `jobs/`.
 - **Mostre apoio:** Dê uma [estrela](https://github.com/openslop/nightshift) neste repositório para acompanhar.

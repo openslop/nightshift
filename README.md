@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/openslop/nightshift"><img src="https://img.shields.io/github/stars/openslop/nightshift?style=flat&amp;label=%E2%98%85&amp;color=6b6bcf" alt="GitHub stars"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b6bcf?style=flat" alt="License: MIT"></a>
-  <a href="https://discord.gg/nightshift"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Join the Nightshift Discord"></a>
+  <a href="https://discord.gg/zeP5482ced"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Join the Nightshift Discord"></a>
   <img src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-1c1720?style=flat" alt="Runs on macOS, Linux, and Windows">
   <img src="https://img.shields.io/badge/works%20with-any%20coding%20agent-6b6bcf?style=flat" alt="Works with any coding agent">
 </p>
@@ -238,7 +238,7 @@ Tell your agent: "Turn off Nightshift." It removes the two timers. Your code is 
 
 ## Community &amp; support
 
-- **Discord:** Join the community on **[Discord](https://discord.gg/nightshift)**.
+- **Discord:** Join the community on **[Discord](https://discord.gg/zeP5482ced)**.
 - **Ideas and bugs:** Missing a job? Found a night that went wrong? [Open an issue](https://github.com/openslop/nightshift/issues).
 - **Share a job:** Wrote a job page that works well? Open a pull request and put it in `jobs/`.
 - **Show support:** [Star](https://github.com/openslop/nightshift) this repo to follow along.

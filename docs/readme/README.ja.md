@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/openslop/nightshift"><img src="https://img.shields.io/github/stars/openslop/nightshift?style=flat&amp;label=%E2%98%85&amp;color=6b6bcf" alt="GitHub スター"></a>
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b6bcf?style=flat" alt="ライセンス: MIT"></a>
-  <a href="https://discord.gg/nightshift"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Nightshift の Discord に参加"></a>
+  <a href="https://discord.gg/zeP5482ced"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Nightshift の Discord に参加"></a>
   <img src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-1c1720?style=flat" alt="macOS、Linux、Windows で動きます">
   <img src="https://img.shields.io/badge/works%20with-any%20coding%20agent-6b6bcf?style=flat" alt="どのコーディングエージェントでも使えます">
 </p>
@@ -242,7 +242,7 @@ Node が必要です。ジョブの上で `c` を押すと、何をしたかエ�
 
 ## コミュニティ &amp; サポート
 
-- **Discord:** **[Discord](https://discord.gg/nightshift)** のコミュニティに参加してください。
+- **Discord:** **[Discord](https://discord.gg/zeP5482ced)** のコミュニティに参加してください。
 - **アイデアとバグ:** 欲しいジョブがない？ うまくいかなかった夜があった？ [issue を開いてください](https://github.com/openslop/nightshift/issues)。
 - **ジョブを共有:** よく動くジョブのページを書いた？ プルリクエストを開いて、`jobs/` に入れてください。
 - **応援する:** このリポジトリに [スター](https://github.com/openslop/nightshift) をつけて、動きを追ってください。

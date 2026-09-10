@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/openslop/nightshift"><img src="https://img.shields.io/github/stars/openslop/nightshift?style=flat&amp;label=%E2%98%85&amp;color=6b6bcf" alt="Étoiles GitHub"></a>
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b6bcf?style=flat" alt="Licence : MIT"></a>
-  <a href="https://discord.gg/nightshift"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Rejoindre le Discord Nightshift"></a>
+  <a href="https://discord.gg/zeP5482ced"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="Rejoindre le Discord Nightshift"></a>
   <img src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-1c1720?style=flat" alt="Fonctionne sur macOS, Linux et Windows">
   <img src="https://img.shields.io/badge/works%20with-any%20coding%20agent-6b6bcf?style=flat" alt="Fonctionne avec n'importe quel agent de code">
 </p>
@@ -242,7 +242,7 @@ Dites à votre agent : « Désactive Nightshift. » Il retire les deux minuteurs
 
 ## Communauté &amp; support
 
-- **Discord :** Rejoignez la communauté sur **[Discord](https://discord.gg/nightshift)**.
+- **Discord :** Rejoignez la communauté sur **[Discord](https://discord.gg/zeP5482ced)**.
 - **Idées et bugs :** Il manque un job ? Une nuit a mal tourné ? [Ouvrez une issue](https://github.com/openslop/nightshift/issues).
 - **Partagez un job :** Vous avez écrit une page de job qui marche bien ? Ouvrez une pull request et mettez-la dans `jobs/`.
 - **Soutenez le projet :** Mettez une [étoile](https://github.com/openslop/nightshift) à ce dépôt pour suivre l'aventure.

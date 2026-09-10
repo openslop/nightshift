@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/openslop/nightshift"><img src="https://img.shields.io/github/stars/openslop/nightshift?style=flat&amp;label=%E2%98%85&amp;color=6b6bcf" alt="GitHub 星标"></a>
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-6b6bcf?style=flat" alt="许可证：MIT"></a>
-  <a href="https://discord.gg/nightshift"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="加入 Nightshift 的 Discord"></a>
+  <a href="https://discord.gg/zeP5482ced"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&amp;logoColor=white" alt="加入 Nightshift 的 Discord"></a>
   <img src="https://img.shields.io/badge/macOS%20%7C%20Linux%20%7C%20Windows-1c1720?style=flat" alt="可在 macOS、Linux 和 Windows 上运行">
   <img src="https://img.shields.io/badge/works%20with-any%20coding%20agent-6b6bcf?style=flat" alt="适用于任何编码代理">
 </p>
@@ -242,7 +242,7 @@ Nightshift 是一个在夜里干活的小帮手。
 
 ## 社区与支持
 
-- **Discord：** 到 **[Discord](https://discord.gg/nightshift)** 加入社区。
+- **Discord：** 到 **[Discord](https://discord.gg/zeP5482ced)** 加入社区。
 - **想法和 bug：** 缺一个任务？有一夜出了问题？[开一个 issue](https://github.com/openslop/nightshift/issues)。
 - **分享任务：** 写了一页好用的任务？开一个 pull request，把它放进 `jobs/`。
 - **表示支持：** 给这个仓库点个 [Star](https://github.com/openslop/nightshift)，跟着看进展。
