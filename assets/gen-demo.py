@@ -5,7 +5,7 @@ import math
 import pathlib
 
 LOOP = 32.0
-W, H = 1280, 640
+W, H = 1280, 660
 BG, LINE, LINEHI = "#140e11", "#2e282b", "#4a4046"
 DIM, MUTED, FG2, TEXT, INK = "#4f454a", "#6f6167", "#9d8b93", "#ded6da", "#f3eef0"
 ACCENT, ACCENT2, GREEN, ROSE, WARN = "#9d9df0", "#6b6bcf", "#5fbf8a", "#d29cb8", "#b57e38"
@@ -46,8 +46,8 @@ def grow(t0, t1):
     return c
 
 
-def text(x, y, s, size=13, fill=TEXT, cls="", anchor="start", weight=400):
-    body.append(f'<text x="{x}" y="{y}" font-family="{MONO}" font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}" class="{cls}" style="white-space:pre">{html.escape(s)}</text>')
+def text(x, y, s, size=13, fill=TEXT, cls="", anchor="start", weight=400, extra=""):
+    body.append(f'<text x="{x}" y="{y}" font-family="{MONO}" font-size="{size}" font-weight="{weight}" fill="{fill}" text-anchor="{anchor}" class="{cls}" style="white-space:pre" {extra}>{html.escape(s)}</text>')
 
 
 def caption(x, y, w, left, right):
@@ -90,64 +90,92 @@ def bignum(x, y, s, col=INK, cls="", w=18, h=34, gap=10):
     return x
 
 
+# ---- dot art rendered by the console itself (tui/scripts/demo-frames.js)
+import json
+import subprocess
+ART = json.loads(subprocess.check_output(["node", str(pathlib.Path(__file__).parent.parent / "tui" / "scripts" / "demo-frames.js")]))
+DOT = 3.0  # px per braille dot; a cell is 2 × 4 dots
+ACOL = {"d": DIM, "m": MUTED, "f": TEXT, "g": GREEN, "a": ACCENT, "r": ROSE, "b": INK}
+
+
+def dotart(name, x, y, loop=None, cls="", dot=DOT):
+    """Draws ART[name] at x,y. Multi-frame art cycles every `loop` seconds with stepped keyframes."""
+    art = ART[name]
+    frames = art["frames"]
+    body.append(f'<g class="{cls}" transform="translate({x + dot / 2},{y + dot / 2}) scale({dot})" stroke-width="0.62" stroke-linecap="round" stroke-dasharray="0.01 1" fill="none">')
+    for k, runs in enumerate(frames):
+        fc = ""
+        if len(frames) > 1:
+            global n
+            n += 1
+            fc = f"k{n}"
+            css.append(f".{fc}{{animation:kf-{fc} {loop}s steps(1) infinite}}@keyframes kf-{fc}{{0%{{opacity:0}}{k / len(frames) * 100:.3f}%{{opacity:1}}{(k + 1) / len(frames) * 100:.3f}%,100%{{opacity:0}}}}")
+        body.append(f'<g class="{fc}">')
+        for c, segs in runs.items():
+            d = "".join(f"M{x} {y}h{n_ - 1}" if n_ > 1 else f"M{x} {y}h0.01" for x, y, n_ in segs)
+            body.append(f'<path d="{d}" stroke="{ACOL[c]}"/>')
+        body.append("</g>")
+    body.append("</g>")
+    return art["cols"] * 2 * dot, art["rows"] * 4 * dot
+
+
+
 # ---- backdrop with the dot field
 body.append(f'<rect width="{W}" height="{H}" fill="{BG}"/>')
+body.append(f'<rect x="0" y="0" width="{W}" height="36" fill="#1a1316"/><line x1="0" y1="36.5" x2="{W}" y2="36.5" stroke="{LINE}"/>')
 body.append(f'<defs><pattern id="dots" width="40" height="28" patternUnits="userSpaceOnUse"><circle cx="20" cy="14" r="1" fill="{LINE}"/></pattern></defs>')
 body.append(f'<rect width="{W}" height="{H}" fill="url(#dots)"/>')
 
+# ---- top bar: the mark and the tagline
+body.append(f'<defs><clipPath id="moonclip"><circle cx="0" cy="0" r="9"/></clipPath></defs>')
+body.append(f'<g transform="translate(40,18)"><circle r="8" fill="none" stroke="{INK}" stroke-width="2"/><circle r="8" fill="{INK}" clip-path="url(#moonclip)" transform="translate(-5,0)"/></g>')
+text(56, 23, "nightshift", 14, INK, weight=600)
+text(150, 23, "works while you sleep", 12, FG2)
+text(W - 28, 23, "the console", 12, DIM, anchor="end")
+
 # ---- left column: chronometer
 LX, LW = 28, 240
-caption(LX, 34, LW, "SHIFT", "CHRONOMETER")
+caption(LX, 46, LW, "SHIFT", "CHRONOMETER")
 times = [(0, "23:41"), (3.2, "05:12"), (7.5, "05:19"), (11, "05:43"), (14.5, "06:14"), (18, "06:41"), (21.5, "07:02"), (25, "07:31"), (28.5, "08:00")]
 for i, (t, s) in enumerate(times):
     end = times[i + 1][0] if i + 1 < len(times) else LOOP
-    bignum(LX + 4, 58, s, INK, span(t, end, fade=0.15), w=26, h=44, gap=14)
-text(LX, 130, "2026", 11, DIM); text(LX, 146, "SEP 07", 12, FG2)
-text(LX + 80, 130, "UPTIME", 11, DIM); text(LX + 80, 146, "0:04:12", 12, FG2)
-text(LX + 160, 130, "SHIFT", 11, DIM)
+    bignum(LX + 4, 66, s, INK, span(t, end, fade=0.15), w=26, h=44, gap=14)
+text(LX, 134, "2026", 11, DIM); text(LX, 150, "SEP 07", 12, FG2)
+text(LX + 70, 134, "UPTIME", 11, DIM); text(LX + 70, 150, "0:04:12", 12, FG2)
+text(LX + 140, 134, "SHIFT", 11, DIM)
 for t, until, s, col in [(0, 3.2, "IDLE", FG2), (3.2, 22.0, "RUNNING", ACCENT), (22.0, LOOP, "DONE", GREEN)]:
-    text(LX + 160, 146, s, 12, col, span(t, until, fade=0.15))
+    text(LX + 140, 150, s, 12, col, span(t, until, fade=0.15))
+# the moon fills up as the next shift gets close
+dotart("moon0", LX + LW - 38, 128, cls=span(0, 22.0, fade=0.2))
+dotart("moon1", LX + LW - 38, 128, cls=appear(22.0, dy=0))
 
-# deep field: an isometric mesh, one row lit
 caption(LX, 176, LW, "DEEP FIELD", "NIGHTS × JOBS")
-R, C = 9, 8
-cx, cy = LX + LW / 2, 262
-heights = [[0.25 + 0.5 * abs(math.sin(r * 1.7 + c * 0.9)) for c in range(C)] for r in range(R)]
+dotart("field", LX + (LW - ART["field"]["cols"] * 2 * DOT) / 2, 190, loop=12)
+text(LX, 358, "ROT  ∞", 11, DIM); text(LX + LW, 358, "10N × 8J", 11, DIM, anchor="end")
+# one job's trace
+text(LX, 382, "JOB L1  MAINTAINABILITY", 11, FG2); text(LX + LW, 382, "24m", 11, DIM, anchor="end")
+text(LX, 398, "L M H", 10, LINE)
+dotart("scope", LX + 40, 386, loop=6)
 
-
-def iso(r, c, z):
-    return cx + (c - r) * 13, cy + (c + r) * 5.5 - z * 38
-
-
-body.append(f'<g stroke="{MUTED}" stroke-width="1" fill="none" opacity=".9">')
-for r in range(R):
-    pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in (iso(r, c, heights[r][c]) for c in range(C)))
-    body.append(f'<polyline points="{pts}" stroke="{ACCENT if r == R - 1 else MUTED}" stroke-width="{2 if r == R - 1 else 1}"/>')
-for c in range(C):
-    pts = " ".join(f"{x:.1f},{y:.1f}" for x, y in (iso(r, c, heights[r][c]) for r in range(R)))
-    body.append(f'<polyline points="{pts}" stroke="{ROSE if c == 1 else DIM}" stroke-width="{1.5 if c == 1 else 1}"/>')
-body.append("</g>")
-px, py = iso(R - 1, 1, heights[R - 1][1])
-css.append(".bob{animation:kf-bob 2.4s ease-in-out infinite}@keyframes kf-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}")
-body.append(f'<g class="bob"><line x1="{px}" y1="{py - 6}" x2="{px}" y2="{py - 22}" stroke="{INK}" stroke-width="2"/><circle cx="{px}" cy="{py - 24}" r="2.5" fill="{INK}"/></g>')
-text(LX, 356, "ROT  67°", 11, DIM); text(LX + LW, 356, "28N × 8J", 11, DIM, anchor="end")
-
-# system map: dots, tonight's turns green when done
-caption(LX, 386, LW, "SYSTEM MAP", "NIGHT GRID")
-for i in range(60):
-    x = LX + 6 + (i % 20) * 12
-    y = 408 + (i // 20) * 16
-    if i == 59:
-        body.append(f'<circle cx="{x}" cy="{y}" r="3.5" fill="{FG2}" class="{span(0, 22.0)}"/>')
-        body.append(f'<circle cx="{x}" cy="{y}" r="3.5" fill="{GREEN}" class="{appear(22.0, dy=0)}"/>')
-    else:
-        col = GREEN if (i * 7) % 5 else FG2
-        body.append(f'<circle cx="{x}" cy="{y}" r="{3.5 if col == GREEN else 2}" fill="{col}" opacity=".85"/>')
-text(LX, 470, "NIGHT", 11, DIM); text(LX + LW, 470, "NORMAL", 11, DIM, anchor="end")
+# system map: one glyph per night, tonight's turns green when done
+caption(LX, 420, LW, "SYSTEM MAP", "NIGHT GRID")
+pat = "●●·●●●●○●●●●·●●●●●○●●●●●●·●●●●●●●○●●●●●"
+for row in range(2):
+    line = pat[row * 20:(row + 1) * 20]
+    for i, ch in enumerate(line):
+        x = LX + 4 + i * 12
+        y = 446 + row * 16
+        if row == 1 and i == 19:
+            text(x, y, "○", 12, FG2, span(0, 22.0), anchor="middle")
+            text(x, y, "●", 12, GREEN, appear(22.0, dy=0), anchor="middle")
+        else:
+            text(x, y, ch, 12, GREEN if ch == "●" else FG2 if ch == "○" else DIM, anchor="middle")
+text(LX, 486, "NIGHT", 11, DIM); text(LX + LW, 486, "NORMAL", 11, DIM, anchor="end")
 
 # ---- centre: the terminal panel
-TX, TY, TW, TH = 300, 34, 640, 440
+TX, TY, TW, TH = 300, 46, 640, 440
 box(TX, TY, TW, TH, "TERMINAL", "MAIN")
+body.append(f'<defs><clipPath id="panel"><rect x="{TX + 1}" y="{TY + 1}" width="{TW - 18}" height="{TH - 2}"/></clipPath></defs>')
 text(TX + 16, TY + 26, "shift SUN 05:12  ·  review every 2h  ·  github.com/you/your-app", 12, FG2)
 
 # timeline
@@ -175,33 +203,35 @@ for i, (name, t0, t1, c0, c1, res, pr) in enumerate(jobs):
     text(TX + 16, y + 4, name, 12, FG2)
     x0, x1 = gx(c0), gx(c1)
     col = GREEN if pr else FG2
-    body.append(f'<rect x="{x0}" y="{y - 6}" width="{x1 - x0}" height="12" fill="{col}" opacity=".85" class="{grow(t0, t1)}" style="transform-origin:{x0}px {y}px"/>')
+    n += 1
+    body.append(f'<clipPath id="c{n}"><rect x="{x0}" y="{y - 8}" width="{x1 - x0}" height="16" class="{grow(t0, t1)}" style="transform-origin:{x0}px {y}px"/></clipPath>')
+    text(x0, y + 4, "█" * int((x1 - x0) / 7.6 + 1), 12, col, extra=f'clip-path="url(#c{n})"')
     text(x1 + 8, y + 4, f"{c1 - c0}m" + (f"  {pr}" if pr else ""), 11, GREEN if pr else DIM, appear(t1, dy=0))
     y += 20
 
 # job table
 ty = TY + 258
 body.append(f'<rect x="{TX + 12}" y="{ty - 12}" width="{TW - 24}" height="18" fill="{SELBAR}"/>')
-for x, s in [(TX + 16, "JOB"), (TX + 190, "STATUS"), (TX + 300, "START"), (TX + 360, "DUR"), (TX + 420, "PR"), (TX + 480, "REPORT")]:
+for x, s in [(TX + 16, "JOB"), (TX + 180, "STATUS"), (TX + 280, "START"), (TX + 332, "DUR"), (TX + 378, "PR"), (TX + 430, "REPORT")]:
     text(x, ty + 1, s, 11.5, FG2)
 text(TX + 16, ty + 22, "nightly 2026-09-07", 12, TEXT)
 for t, until, s in [(3.2, 22.0, "running"), (22.0, LOOP, "complete")]:
-    text(TX + 190, ty + 22, s, 12, WARN if s == "running" else FG2, span(t, until, fade=0.1))
+    text(TX + 180, ty + 22, s, 12, WARN if s == "running" else FG2, span(t, until, fade=0.1))
 y = ty + 42
 for i, (name, t0, t1, c0, c1, res, pr) in enumerate(jobs):
     row = appear(t0, dy=0)
     body.append(f'<g class="{row}">')
     text(TX + 16, y, ("└─ " if i == len(jobs) - 1 else "├─ ") + name, 12, TEXT)
-    text(TX + 300, y, f"{5 + (12 + c0) // 60:02d}:{(12 + c0) % 60:02d}", 12, FG2)
+    text(TX + 280, y, f"{5 + (12 + c0) // 60:02d}:{(12 + c0) % 60:02d}", 12, FG2)
     body.append("</g>")
     running = span(t0, t1, fade=0.1)
-    body.append(f'<g class="{running}"><text x="{TX + 190}" y="{y}" font-family="{MONO}" font-size="12" fill="{ACCENT}" class="blink">◉ RUNNING</text></g>')
+    body.append(f'<g class="{running}"><text x="{TX + 180}" y="{y}" font-family="{MONO}" font-size="12" fill="{ACCENT}" class="blink">◉ RUNNING</text></g>')
     done = appear(t1, dy=0)
     body.append(f'<g class="{done}">')
-    text(TX + 190, y, ("● " if pr else "○ ") + res, 12, GREEN if pr else FG2)
-    text(TX + 360, y, f"{c1 - c0}m", 12, FG2)
-    text(TX + 420, y, pr or "—", 12, GREEN if pr else DIM)
-    text(TX + 480, y, {"security": "No exploitable issue.", "maintainability": "Three guards → one helper.", "performance": "Nothing users would feel.", "conventions": "Four rule breaks fixed.", "architecture": "Provider seam made total.", "smoke-tests": "Still opens. No test needed.", "issues": "Toast opens the right panel."}[name], 12, MUTED)
+    text(TX + 180, y, ("● " if pr else "○ ") + res, 12, GREEN if pr else FG2)
+    text(TX + 332, y, f"{c1 - c0}m", 12, FG2)
+    text(TX + 378, y, pr or "—", 12, GREEN if pr else DIM)
+    text(TX + 430, y, {"security": "No exploitable issue.", "maintainability": "Three guards, one helper.", "performance": "Nothing users would feel.", "conventions": "Four rule breaks fixed.", "architecture": "Provider seam made total.", "smoke-tests": "Still opens. No test.", "issues": "Toast opens right panel."}[name], 12, MUTED, extra='clip-path="url(#panel)"')
     body.append("</g>")
     y += 18
 css.append(".blink{animation:kf-blink 1s steps(1) infinite}@keyframes kf-blink{0%,49%{opacity:1}50%,100%{opacity:.3}}")
@@ -211,58 +241,51 @@ text(TX + 16, TY + TH + 4, "↑↓Job  ←→Night  ↵Report  dDeep field  mMet
 
 # ---- right column: radar + analytics
 RX, RW = 972, 280
-caption(RX, 34, RW, "SIGNALS", "RADAR")
-rcx, rcy, rr = RX + RW / 2, 126, 66
-for k in range(1, 5):
-    body.append(f'<circle cx="{rcx}" cy="{rcy}" r="{rr * k / 4}" fill="none" stroke="{LINE}"/>')
-body.append(f'<line x1="{rcx - rr}" y1="{rcy}" x2="{rcx + rr}" y2="{rcy}" stroke="{LINE}"/><line x1="{rcx}" y1="{rcy - rr}" x2="{rcx}" y2="{rcy + rr}" stroke="{LINE}"/>')
-css.append(".sweep{animation:kf-sweep 6s linear infinite}@keyframes kf-sweep{to{transform:rotate(360deg)}}")
-body.append(f'<defs><linearGradient id="wedge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{ACCENT}" stop-opacity="0"/><stop offset="1" stop-color="{ACCENT}" stop-opacity=".45"/></linearGradient></defs>')
-body.append(f'<g class="sweep" style="transform-origin:{rcx}px {rcy}px"><path d="M{rcx},{rcy} L{rcx + rr * math.cos(-0.6)},{rcy + rr * math.sin(-0.6)} A{rr},{rr} 0 0 1 {rcx + rr},{rcy} Z" fill="url(#wedge)"/><line x1="{rcx}" y1="{rcy}" x2="{rcx + rr}" y2="{rcy}" stroke="{INK}" stroke-width="1.5"/></g>')
-for i in range(40):
-    a = i / 40 * math.tau - 1.6
-    d = rr * (0.3 + 0.65 * ((i * 13) % 7) / 7)
-    hot = (i * 7) % 3 == 0
-    body.append(f'<circle cx="{rcx + d * math.cos(a)}" cy="{rcy + d * math.sin(a)}" r="{2.2 if hot else 1.2}" fill="{ACCENT if hot else MUTED}"/>')
-tonight = f'<circle cx="{rcx + rr * 0.92 * math.cos(-1.6)}" cy="{rcy + rr * 0.92 * math.sin(-1.6)}" r="3" fill="{INK}" class="{appear(22.0, dy=0)}"/>'
-body.append(tonight)
-text(RX, 214, "INSPECTION OF", 11, DIM); text(RX, 228, "LAST 40 NIGHTS", 11, DIM); text(RX + RW, 228, "35 HOT", 11, ACCENT, anchor="end")
+caption(RX, 46, RW, "SIGNALS", "RADAR")
+text(RX, 68, "NIGHTS", 10.5, DIM); text(RX + RW, 68, "RADAR VISUALIZATION", 10.5, DIM, anchor="end")
+dotart("radar", RX + (RW - ART["radar"]["cols"] * 2 * DOT) / 2, 74, loop=6)
+text(RX, 228, "INSPECTION OF", 11, DIM); text(RX, 242, "LAST 40 NIGHTS", 11, DIM); text(RX + RW, 242, "35 HOT", 11, ACCENT, anchor="end")
 
-caption(RX, 262, RW, "ANALYTICS", "TONIGHT")
+caption(RX, 270, RW, "ANALYTICS", "TONIGHT")
 counts = [(0, "0"), (11.0, "1"), (14.5, "2"), (18.0, "3"), (21.5, "4")]
 for i, (t, s) in enumerate(counts):
     end = counts[i + 1][0] if i + 1 < len(counts) else LOOP
-    bignum(RX + 4, 282, s, GREEN, span(t, end, fade=0.15), w=22, h=38)
-text(RX, 340, "PRS OPENED", 11, DIM)
-bignum(RX + 100, 282, "57", ACCENT, "", w=22, h=38)
-text(RX + 168, 320, "%", 12, FG2)
-text(RX + 100, 340, "PR YIELD", 11, DIM)
-bignum(RX + 200, 282, "6", ROSE, "", w=22, h=38)
-text(RX + 200, 340, "STREAK", 11, DIM)
+    bignum(RX + 4, 290, s, GREEN, span(t, end, fade=0.15), w=22, h=38)
+text(RX, 348, "PRS OPENED", 11, DIM)
+bignum(RX + 100, 290, "57", ACCENT, "", w=22, h=38)
+text(RX + 168, 328, "%", 12, FG2)
+text(RX + 100, 348, "PR YIELD", 11, DIM)
+bignum(RX + 200, 290, "6", ROSE, "", w=22, h=38)
+text(RX + 200, 348, "STREAK", 11, DIM)
 
-text(RX, 372, "┼ PR YIELD BY JOB", 12, FG2)
-body.append(f'<line x1="{RX}" y1="{380}" x2="{RX + RW}" y2="{380}" stroke="{LINE}"/>')
+text(RX, 378, "┼ PR YIELD BY JOB", 12, FG2)
+body.append(f'<line x1="{RX}" y1="{386}" x2="{RX + RW}" y2="{386}" stroke="{LINE}"/>')
 yields = [("security", 0.15), ("maintainability", 0.7), ("performance", 0.35), ("conventions", 0.55), ("architecture", 0.4), ("smoke-tests", 0.1), ("issues", 0.45)]
-y = 398
+y = 404
 for name, v in yields:
     text(RX, y + 4, name, 11, FG2)
-    bw = 120
-    body.append(f'<rect x="{RX + 128}" y="{y - 5}" width="{bw}" height="9" fill="{LINE}"/>')
-    body.append(f'<rect x="{RX + 128}" y="{y - 5}" width="{bw * v}" height="9" fill="{GREEN}" class="{grow(0.5, 2.5)}" style="transform-origin:{RX + 128}px {y}px"/>')
+    cells = 15
+    full = int(round(v * cells))
+    text(RX + 128, y + 4, "█" * full, 11, GREEN, extra=f'class="{grow(0.5, 2.5)}" style="transform-origin:{RX + 128}px {y}px"')
+    text(RX + 128 + full * 6.6, y + 4, "░" * (cells - full), 11, LINE)
     text(RX + RW, y + 4, f"{int(v * 100)}%", 11, TEXT, anchor="end")
     y += 17
 
+text(RX, 534, "┼ PR ACTIVITY", 12, FG2); text(RX + RW, 534, "PRS / NIGHT", 10.5, DIM, anchor="end")
+body.append(f'<line x1="{RX}" y1="{542}" x2="{RX + RW}" y2="{542}" stroke="{LINE}"/>')
+dotart("spikes", RX + (RW - ART["spikes"]["cols"] * 2 * DOT) / 2, 548)
+
 # ---- status line + timeline
-sy = 548
+sy = 592
 text(28, sy, "›", 13, ACCENT)
 sleep = span(0, 28.3, fade=0.3)
 text(44, sy, "~/.local/state/nightshift  ·  ~/code/your-app", 12.5, MUTED, sleep)
 css.append(".z{animation:kf-z 2.4s ease-in-out infinite}@keyframes kf-z{0%,100%{opacity:.25}50%{opacity:1}}")
-body.append(f'<g class="{sleep}"><text x="{W - 120}" y="{sy}" font-family="{MONO}" font-size="13" fill="{DIM}" class="z">z</text><text x="{W - 106}" y="{sy - 6}" font-family="{MONO}" font-size="15" fill="{DIM}" class="z" style="animation-delay:-.8s">z</text><text x="{W - 90}" y="{sy - 13}" font-family="{MONO}" font-size="17" fill="{DIM}" class="z" style="animation-delay:-1.6s">z</text></g>')
+body.append(f'<g class="{sleep}"><text x="{400}" y="{sy}" font-family="{MONO}" font-size="13" fill="{DIM}" class="z">z</text><text x="{414}" y="{sy - 6}" font-family="{MONO}" font-size="15" fill="{DIM}" class="z" style="animation-delay:-.8s">z</text><text x="{430}" y="{sy - 13}" font-family="{MONO}" font-size="17" fill="{DIM}" class="z" style="animation-delay:-1.6s">z</text></g>')
 morning = span(28.5, LOOP, fade=0.4)
 text(44, sy, "good morning. four PRs are waiting. press c to talk about any of them.", 12.5, INK, morning)
 
-tx0, tx1, ty = 28, W - 28, 600
+tx0, tx1, ty = 28, W - 28, 622
 body.append(f'<line x1="{tx0}" y1="{ty}" x2="{tx1}" y2="{ty}" stroke="{LINE}" stroke-width="2"/>')
 for frac, label in [(0, "23:00"), (0.34, "05:12"), (0.66, "08:00"), (1, "noon")]:
     x = tx0 + (tx1 - tx0) * frac
