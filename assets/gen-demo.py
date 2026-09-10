@@ -266,7 +266,9 @@ for name, v in yields:
     text(RX, y + 4, name, 11, FG2)
     cells = 15
     full = int(round(v * cells))
-    text(RX + 128, y + 4, "█" * full, 11, GREEN, extra=f'class="{grow(0.5, 2.5)}" style="transform-origin:{RX + 128}px {y}px"')
+    body.append(f'<g class="{grow(0.5, 2.5)}" style="transform-origin:{RX + 128}px {y}px">')
+    text(RX + 128, y + 4, "█" * full, 11, GREEN)
+    body.append("</g>")
     text(RX + 128 + full * 6.6, y + 4, "░" * (cells - full), 11, LINE)
     text(RX + RW, y + 4, f"{int(v * 100)}%", 11, TEXT, anchor="end")
     y += 17
