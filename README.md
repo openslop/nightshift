@@ -229,7 +229,6 @@ It needs Node. Press `c` on a job to talk to the agent about what it did. Press 
 - Turn a job off by taking its name out of the `JOBS` line in your settings.
 - Change how a job thinks by editing its page in `jobs/`. Keep the words plain.
 - Add a job by adding a new page in `jobs/` and putting its name in `JOBS`.
-- Run a job at its own hour by giving its name to the script from a timer of its own: `bin/nightly.sh readability`. The night batch then skips it.
 - Use a different agent by picking a different `AGENT` line in your settings.
 
 ## Turn it off
