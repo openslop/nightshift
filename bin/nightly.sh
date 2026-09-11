@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Runs every job in JOBS, one after another, once per night.
+# Give it job names to run only those, from a timer of their own: nightly.sh readability
 set -u
 . "$(dirname "$0")/lib.sh"
+JOBS=${*:-$JOBS}
 
 DATE=$(date +%Y%m%d)
 RUN_DIR="$STATE_DIR/runs/$DATE"
@@ -46,10 +48,10 @@ PROMPT
 
 for job in $JOBS; do
   [ -f "$NIGHTSHIFT_DIR/jobs/$job.md" ] || { log "$BLOG" "no job named $job"; continue; }
+  [ -f "$RUN_DIR/$job.log" ] && { log "$BLOG" "SKIP  $job ran earlier tonight"; continue; }
   log "$BLOG" "START $job (branch=$(git branch --show-current))"
   run_agent "$JOB_TIMEOUT" "$AGENT" "$(prompt "$job")" >"$RUN_DIR/$job.log" 2>&1
   log "$BLOG" "END   $job exit=$?"
 done
 
-touch "$DONE"
-log "$BLOG" "batch done"
+[ $# = 0 ] && { touch "$DONE"; log "$BLOG" "batch done"; }

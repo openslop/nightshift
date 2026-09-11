@@ -43,7 +43,7 @@ Every two hours, it also reads any open pull requests and leaves a short review.
 
 ### One small job at a time
 
-Nine jobs, run one after another. Security, bugs, maintainability, performance, conventions, architecture, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
+Ten jobs, run one after another. Security, bugs, readability, maintainability, performance, conventions, architecture, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
 
 [The jobs →](#the-jobs)
 
@@ -140,6 +140,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | ---------------------- | -------------------------------------------------------------------------- |
 | `security`             | Real holes a bad actor could use. Not "maybe someday" worries.             |
 | `bugs`                 | Bugs a user would notice. Only clear ones.                                 |
+| `readability`          | Names that say nothing. Code that takes a second read. Fewer lines, not more. |
 | `maintainability`      | Code that is hard to change. It makes it simpler.                          |
 | `performance`          | Slow spots people feel. It measures first.                                 |
 | `conventions`          | Places that break your own written rules. Safe fixes only.                 |
@@ -228,6 +229,7 @@ It needs Node. Press `c` on a job to talk to the agent about what it did. Press 
 - Turn a job off by taking its name out of the `JOBS` line in your settings.
 - Change how a job thinks by editing its page in `jobs/`. Keep the words plain.
 - Add a job by adding a new page in `jobs/` and putting its name in `JOBS`.
+- Run a job at its own hour by giving its name to the script from a timer of its own: `bin/nightly.sh readability`. The night batch then skips it.
 - Use a different agent by picking a different `AGENT` line in your settings.
 
 ## Turn it off

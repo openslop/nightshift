@@ -43,7 +43,7 @@ A cada duas horas, ele também lê os pull requests abertos e deixa uma revisão
 
 ### Um trabalho pequeno de cada vez
 
-Nove trabalhos, um depois do outro. Segurança, bugs, manutenibilidade, desempenho, convenções, arquitetura, testes de fumaça e issues. Cada um recebe o agente inteiro para um trabalho e nada mais.
+Dez trabalhos, um depois do outro. Segurança, bugs, legibilidade, manutenibilidade, desempenho, convenções, arquitetura, testes de fumaça e issues. Cada um recebe o agente inteiro para um trabalho e nada mais.
 
 [Os trabalhos →](#os-trabalhos)
 
@@ -140,6 +140,7 @@ Aperte `c` em qualquer trabalho e o console reabre a transcrição daquela noite
 | ---------------------- | ---------------------------------------------------------------------------------- |
 | `security`             | Falhas reais que alguém mal-intencionado poderia usar. Não preocupações de "talvez um dia". |
 | `bugs`                 | Bugs que um usuário notaria. Só os claros.                                         |
+| `readability`          | Nomes que não dizem nada. Código que precisa ser lido duas vezes. Menos linhas, não mais. |
 | `maintainability`      | Código difícil de mudar. Ele deixa mais simples.                                   |
 | `performance`          | Pontos lentos que as pessoas sentem. Ele mede primeiro.                            |
 | `conventions`          | Lugares que quebram suas próprias regras escritas. Só correções seguras.           |

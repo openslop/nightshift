@@ -43,7 +43,7 @@ Toutes les deux heures, il lit aussi les pull requests ouvertes et laisse une co
 
 ### Une petite tâche à la fois
 
-Neuf jobs, lancés l'un après l'autre. Sécurité, bugs, maintenabilité, performance, conventions, architecture, tests de fumée et issues. Chacun a l'agent entier pour un seul job et rien d'autre.
+Dix jobs, lancés l'un après l'autre. Sécurité, bugs, lisibilité, maintenabilité, performance, conventions, architecture, tests de fumée et issues. Chacun a l'agent entier pour un seul job et rien d'autre.
 
 [Les jobs →](#les-jobs)
 
@@ -140,6 +140,7 @@ Appuyez sur `c` sur n'importe quel job et la console rouvre la transcription de 
 | ---------------------- | ----------------------------------------------------------------------------------- |
 | `security`             | De vraies failles qu'un attaquant pourrait utiliser. Pas des « peut-être un jour ».  |
 | `bugs`                 | Des bugs qu'un utilisateur remarquerait. Seulement les évidents.                    |
+| `readability`          | Des noms qui ne disent rien. Du code qu'il faut relire. Moins de lignes, pas plus.  |
 | `maintainability`      | Du code difficile à changer. Il le rend plus simple.                                |
 | `performance`          | Des lenteurs que les gens ressentent. Il mesure d'abord.                            |
 | `conventions`          | Les endroits qui cassent vos propres règles écrites. Corrections sûres uniquement.  |

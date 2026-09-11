@@ -19,7 +19,7 @@ You need `bash`, `git`, `gh` logged in, and one coding agent on your path.
 git clone https://github.com/openslop/nightshift ~/nightshift
 cd ~/nightshift
 cp nightshift.conf.example nightshift.conf   # fill it in for a repo you own
-WINDOW_END_HOUR=24 JOBS=security bin/nightly.sh
+WINDOW_END_HOUR=24 bin/nightly.sh security
 ```
 
 Point it at a throwaway repo the first time. Logs land in `STATE_DIR`, under `runs/` and the date.
@@ -34,7 +34,7 @@ node tui/bin/nightshift-tui --demo
 
 1. Copy the closest page in `jobs/` and give it a plain name, like `docs.md`.
 2. Write it the way the others are written. Short sentences. Say what to look for, what to leave alone, and when to do nothing.
-3. Run one night with `JOBS` set to only your job. Read the pull request it opens. Read the log when it opens nothing.
+3. Run one night with only your job: `bin/nightly.sh yourjob`. Read the pull request it opens. Read the log when it opens nothing.
 4. Add the job name to the `JOBS` comment in `nightshift.conf.example` and to the table in `README.md`.
 
 A good job does nothing most nights. If yours opens a pull request every night, it is too eager.

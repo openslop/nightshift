@@ -16,8 +16,8 @@ OWNER=me
 CHECKS="npm run lint && npm run typecheck && npm test"
 
 # The jobs to run each night, in this order. Take out any you do not want.
-# Options: security bugs maintainability performance conventions-followup conventions architecture smoke-tests issues
-JOBS="security maintainability performance conventions-followup conventions architecture smoke-tests issues"
+# Options: security bugs readability maintainability performance conventions-followup conventions architecture smoke-tests issues
+JOBS="security readability maintainability performance conventions-followup conventions architecture smoke-tests issues"
 
 # Your coding agent. Pick one line and remove the # in front.
 # Nightshift runs this command and adds the job text at the end.
