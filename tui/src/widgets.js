@@ -8,7 +8,7 @@ const { mix } = require("./term");
 const DOT = [[0x01, 0x08], [0x02, 0x10], [0x04, 0x20], [0x40, 0x80]];
 
 class Braille {
-  constructor(w, h) { this.w = w; this.h = h; this.cells = new Uint8Array(w * h); this.val = new Float32Array(w * h).fill(-1); }
+  constructor(w, h) { w = Math.max(0, w | 0); h = Math.max(0, h | 0); this.w = w; this.h = h; this.cells = new Uint8Array(w * h); this.val = new Float32Array(w * h).fill(-1); }
   set(px, py, v = 1) {
     const cx = px >> 1, cy = py >> 2;
     if (px < 0 || py < 0 || cx >= this.w || cy >= this.h) return;
@@ -17,6 +17,8 @@ class Braille {
     if (v > this.val[i]) this.val[i] = v;
   }
   line(x0, y0, x1, y1, v = 1) {
+    // a NaN or runaway endpoint would never reach x1/y1 and spin forever
+    if (![x0, y0, x1, y1].every((n) => Number.isFinite(n) && Math.abs(n) < 1e4)) return;
     const dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
     let err = dx - dy;
     for (;;) {
@@ -228,7 +230,7 @@ function nightGrid(scr, x, y, w, h, nights, selected, th, t) {
     if (!n) { scr.put(cx, cy, "·", { fg: th.line }); continue; }
     let ch = "·", fg = th.muted;
     if (n.jobs.some((j) => j.status === "running")) { ch = "◉"; fg = ((t * 2) | 0) % 2 ? th.accent : th.accent2; }
-    else if (n.jobs.some((j) => j.status === "error" || j.status === "timeout")) { ch = "×"; fg = th.bad; }
+    else if (n.jobs.some((j) => j.status === "error" || j.status === "timeout" || j.status === "stopped")) { ch = "×"; fg = th.bad; }
     else if (n.prs > 0) { ch = "●"; fg = mix(th.fg2, th.ok, Math.min(1, n.prs / 5)); }
     else if (n.dropped && !n.jobs.length) { ch = "·"; fg = th.dim; }
     else if (n.jobs.length) { ch = "○"; fg = th.fg2; }

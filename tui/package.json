@@ -8,6 +8,7 @@
   "engines": { "node": ">=18" },
   "scripts": {
     "start": "node bin/nightshift-tui",
-    "frame": "node bin/nightshift-tui --frame 160x45"
+    "frame": "node bin/nightshift-tui --frame 160x45",
+    "test": "node --test test/stability.test.js"
   }
 }

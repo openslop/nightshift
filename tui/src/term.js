@@ -19,8 +19,8 @@ function mix(a, b, t) {
 class Screen {
   constructor(out = process.stdout) {
     this.out = out;
-    this.w = out.columns || 80;
-    this.h = out.rows || 24;
+    this.w = Math.max(1, out.columns || 80);
+    this.h = Math.max(1, out.rows || 24);
     this.front = null; // last painted frame
     this.back = this.blank();
   }
@@ -34,8 +34,8 @@ class Screen {
     return rows;
   }
   resize() {
-    this.w = this.out.columns || 80;
-    this.h = this.out.rows || 24;
+    this.w = Math.max(1, this.out.columns || 80);
+    this.h = Math.max(1, this.out.rows || 24);
     this.front = null;
     this.back = this.blank();
     this.out.write(ESC + "2J");
@@ -47,9 +47,14 @@ class Screen {
         c.ch = " "; c.fg = null; c.bg = bg || null; c.b = false; c.d = false;
       }
   }
+  // The cell at (x, y), or null off screen. Written so NaN coordinates count as off screen.
+  cell(x, y) {
+    if (!(x >= 0 && y >= 0 && x < this.w && y < this.h)) return null;
+    return this.back[y | 0][x | 0];
+  }
   put(x, y, ch, st = {}) {
-    if (x < 0 || y < 0 || x >= this.w || y >= this.h) return;
-    const c = this.back[y][x];
+    const c = this.cell(x, y);
+    if (!c) return;
     c.ch = ch;
     if (st.fg !== undefined) c.fg = st.fg;
     if (st.bg !== undefined) c.bg = st.bg;

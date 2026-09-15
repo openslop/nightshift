@@ -1,6 +1,7 @@
 // The bridge: layout, views, input, and the hand-off into Claude Code.
 "use strict";
 
+const fs = require("node:fs");
 const os = require("node:os");
 const { spawnSync, spawn } = require("node:child_process");
 const { Screen, enter, leave, decodeKeys, mix } = require("./term");
@@ -60,7 +61,12 @@ const STATUS = {
   running: { ch: "◉", label: "RUNNING", color: "accent" },
   timeout: { ch: "◔", label: "TIMEOUT", color: "warn" },
   error: { ch: "×", label: "ERROR", color: "bad" },
+  stopped: { ch: "◇", label: "STOPPED", color: "warn" }, // no END: the batch died under it
 };
+
+const EMPTY = { nights: [], review: { ticks: [], ledger: {} }, timers: [], sessions: [], stateDir: "", repoDir: "", jobsOrder: [] };
+// The most of a report that fits in one argv string (Linux caps each at 128 KiB).
+const MAX_SEED_BYTES = 100000;
 
 // ---------- banner font ----------
 const FONT = {
@@ -107,17 +113,19 @@ class App {
 
   reload() {
     try {
-      this.data = data.load(this.opts);
-      this.err = null;
+      const d = data.load(this.opts);
+      const order = this.jobOrder(d);
+      this.metrics = M.compute(d, order);
+      this.data = d; this.order = order; this.err = null;
     } catch (e) {
-      this.err = e.message; this.data = { nights: [], review: { ticks: [], ledger: {} }, timers: [], sessions: [], stateDir: "", repoDir: "", jobsOrder: [] };
+      // Keep showing the last good state if there is one; only a failed first load takes the screen.
+      if (this.data && !this.err) this.say("reload failed: " + e.message);
+      else { this.err = e.message; this.data = EMPTY; this.order = []; this.metrics = M.compute(EMPTY, []); }
     }
     this.nightIdx = Math.min(this.nightIdx, Math.max(0, this.data.nights.length - 1));
     this.lastLoad = Date.now();
     const d = this.data;
     this.pool = [...Object.values(d.review.ledger), ...d.sessions.map((s) => s.id.replace(/-/g, "")), ...Object.keys(d.review.ledger).map((n) => "#" + n)];
-    this.order = this.jobOrder();
-    this.metrics = M.compute(this.data, this.order);
     while (this.stream.length < 8) this.stream.push(FX.streamLine(this.pool));
   }
 
@@ -129,11 +137,11 @@ class App {
 
   say(m) { this.msg = m; this.msgT = Date.now(); }
 
-  jobOrder() {
+  jobOrder(d) {
     const seen = new Map();
-    for (const n of this.data.nights) for (const j of n.jobs) seen.set(j.name, (seen.get(j.name) || 0) + 1);
-    const cfg = (this.data.jobsOrder || []).filter((n) => seen.has(n));
-    if (this.data.nights[0]) for (const j of this.data.nights[0].jobs) if (!cfg.includes(j.name)) cfg.push(j.name);
+    for (const n of d.nights) for (const j of n.jobs) seen.set(j.name, (seen.get(j.name) || 0) + 1);
+    const cfg = (d.jobsOrder || []).filter((n) => seen.has(n));
+    if (d.nights[0]) for (const j of d.nights[0].jobs) if (!cfg.includes(j.name)) cfg.push(j.name);
     for (const [n] of [...seen].sort((a, b) => b[1] - a[1])) if (!cfg.includes(n)) cfg.push(n);
     return cfg;
   }
@@ -181,9 +189,9 @@ class App {
     };
     if (this.view === "review") return listNav(this.reviews.length, "reviewIdx");
     const nights = this.data.nights.length;
-    if (k === "left" || k === "h") { this.nightIdx = Math.min(nights - 1, this.nightIdx + 1); this.clampJob(); this.nightT = Date.now(); return; }
+    if (k === "left" || k === "h") { this.nightIdx = Math.max(0, Math.min(nights - 1, this.nightIdx + 1)); this.clampJob(); this.nightT = Date.now(); return; }
     if (k === "right" || k === "l") { this.nightIdx = Math.max(0, this.nightIdx - 1); this.clampJob(); this.nightT = Date.now(); return; }
-    if (k === "pgup") { this.nightIdx = Math.min(nights - 1, this.nightIdx + 7); this.clampJob(); this.nightT = Date.now(); return; }
+    if (k === "pgup") { this.nightIdx = Math.max(0, Math.min(nights - 1, this.nightIdx + 7)); this.clampJob(); this.nightT = Date.now(); return; }
     if (k === "pgdn") { this.nightIdx = Math.max(0, this.nightIdx - 7); this.clampJob(); this.nightT = Date.now(); return; }
     listNav(this.night ? this.night.jobs.length : 0, "jobIdx");
   }
@@ -194,8 +202,13 @@ class App {
     const url = j && j.prs[0] && j.prs[0].url;
     if (!url) return this.say("no pull request on this row");
     const cmd = process.platform === "darwin" ? "open" : "xdg-open";
-    try { spawn(cmd, [url], { detached: true, stdio: "ignore" }).unref(); this.say("opened " + url); }
-    catch { this.say("could not open a browser for " + url); }
+    const fail = () => this.say("could not open a browser for " + url);
+    try {
+      const child = spawn(cmd, [url], { detached: true, stdio: "ignore" });
+      child.on("error", fail); // a missing opener arrives as an event; unheard, it would crash the app
+      child.unref();
+      this.say("opened " + url);
+    } catch { fail(); }
   }
 
   // F: make the terminal window fullscreen (and back). A TUI cannot resize its own window, so this
@@ -218,6 +231,7 @@ class App {
   }
 
   continueConversation() {
+    if (this.warpState) return; // a hand-off is already under way
     let session, title, report, tag;
     if (this.view === "review") {
       const tk = this.tick; if (!tk) return this.say("no review to continue");
@@ -229,6 +243,7 @@ class App {
       tag = j.name + " · " + this.night.label;
     }
     if (!report && !session) return this.say("nothing to continue: no session and no report");
+    if (report && Buffer.byteLength(report) > MAX_SEED_BYTES) report = "(earlier output trimmed)\n" + Buffer.from(report).subarray(-MAX_SEED_BYTES).toString("utf8");
     const args = session ? ["--resume", session, "--fork-session"]
       : ["You are continuing a Nightshift conversation with the repo owner. Context: " + title + " in " + this.data.repoDir +
         ". The original session transcript is not on this machine, so its final report is pasted below. Read it, then wait for my instructions.\n\n" + report];
@@ -237,13 +252,15 @@ class App {
     this.warpLabel = "  HANDOFF ▸ " + tag + (session ? "  ▸ session " + session.slice(0, 8) : "  ▸ seeded from report") + "  ";
     const go = () => {
       this.warpState = null;
+      let failed = null;
       this.suspend(() => {
         process.stdout.write("\x1b[2m» nightshift bridge: claude " + (session ? "--resume " + session + " --fork-session" : "(fresh session seeded with the report)") + "\x1b[0m\n\n");
-        const r = spawnSync("claude", args, { stdio: "inherit", cwd: this.data.repoDir || process.cwd() });
-        if (r.error) process.stdout.write("\x1b[31mcould not start claude: " + r.error.message + "\x1b[0m\n");
+        const repo = this.data.repoDir;
+        const r = spawnSync("claude", args, { stdio: "inherit", cwd: repo && fs.existsSync(repo) ? repo : process.cwd() });
+        if (r.error) failed = r.error.message;
       });
       this.reload();
-      this.say(session ? "returned from forked session " + session.slice(0, 8) : "returned from seeded session");
+      this.say(failed ? "could not start claude: " + failed : session ? "returned from forked session " + session.slice(0, 8) : "returned from seeded session");
     };
     if (this.opts.noWarp) go(); else setTimeout(go, 1100);
   }
@@ -331,7 +348,7 @@ class App {
     W.bigClock(scr, x, y + 3, hhmmss(now), th, now.getMilliseconds() > 150);
     const nextShift = d.timers.find((k) => /night/i.test(k.unit));
     const running = d.running;
-    const todayKey = now.toISOString().slice(0, 10).replace(/-/g, "");
+    const todayKey = data.dayKey(now).replace(/-/g, "");
     const today = d.nights[0] && d.nights[0].date === todayKey ? d.nights[0] : null;
     const shift = running ? "RUNNING" : today && today.complete ? "DONE" : "IDLE";
     const cells = [
@@ -489,7 +506,7 @@ class App {
     if (ch >= 5) {
       FX.ruler(scr, ix, y, iw, th);
       scr.text(ix + 1, y, " REVIEW CADENCE · last 14 days · " + m.reviewComments + " comments ", { fg: th.fg2 });
-      const todayKey = new Date().toISOString().slice(0, 10);
+      const todayKey = data.dayKey(Date.now());
       CH.columns(scr, ix, y + 2, Math.min(iw, 14 * 6), ch - 1, m.days.map((d) => ({ label: d.label, values: [d.passes, d.comments], today: d.key === todayKey })), th, t, { reveal, names: ["passes", "comments"] });
     }
   }
@@ -574,7 +591,7 @@ class App {
       scr.text(ix + 54, yy, pad(j.prs.length ? "#" + j.prs[0].n : "—", 6), { fg: j.prs.length ? th.ok : th.dim, bg });
       scr.text(ix + 60, yy, pad(j.session ? j.session.slice(0, 8) : "—", 9), { fg: j.session ? th.accent : th.dim, bg });
       scr.text(ix + 69, yy, j.summary, { fg: sel ? th.fg : th.muted, bg }, iw - 69);
-      if (sel) { const sw = Math.floor(((t * 0.5) % 1) * iw); for (let k = 0; k < 3; k++) { const c = scr.back[yy][ix + sw + k]; if (c && ix + sw + k < ix + iw) c.bg = mix(th.selBar, th.accent2, 0.35 - k * 0.1); } }
+      if (sel) { const sw = Math.floor(((t * 0.5) % 1) * iw); for (let k = 0; k < 3; k++) { const c = scr.cell(ix + sw + k, yy); if (c && ix + sw + k < ix + iw) c.bg = mix(th.selBar, th.accent2, 0.35 - k * 0.1); } }
       yy++;
     }
     if (jobs.length > tableH) scr.text(ix + iw - 12, yy - 1, rpad("+" + (jobs.length - first - tableH) + " more", 11), { fg: th.dim });
@@ -641,8 +658,7 @@ class App {
       const k = revs[i], sel = i === this.reviewIdx;
       const bg = sel ? th.selBar : undefined;
       if (sel) scr.fill(ix, yy, iw, 1, " ", { bg });
-      const dt = new Date(k.t);
-      scr.text(ix, yy, (sel ? "▶ " : "  ") + pad(dt.toISOString().slice(0, 10) + " " + hhmm(k.t), 18), { fg: sel ? th.bright : th.fg, bg });
+      scr.text(ix, yy, (sel ? "▶ " : "  ") + pad(data.dayKey(k.t) + " " + hhmm(k.t), 18), { fg: sel ? th.bright : th.fg, bg });
       scr.text(ix + 20, yy, pad(k.end ? fmtDur(k.end - k.t) : "—", 7), { fg: th.fg2, bg });
       scr.text(ix + 27, yy, pad(k.prs.map((n) => "#" + n).join(" "), 33), { fg: th.ok, bg });
       scr.text(ix + 61, yy, pad(k.session ? k.session.slice(0, 8) : "—", 10), { fg: k.session ? th.accent : th.dim, bg });
@@ -699,8 +715,8 @@ class App {
     W.caption(scr, x, yy, w, "error log", "", th);
     yy += 3;
     const errs = [];
-    for (const n of d.nights) for (const j of n.jobs) if (j.status === "error" || j.status === "timeout") errs.push({ t: j.start, s: n.label.slice(5) + " " + j.name + " exit " + j.exit });
-    for (const k of d.review.ticks) if (k.kind === "error") errs.push({ t: k.t, s: new Date(k.t).toISOString().slice(5, 10) + " " + k.msg.replace(/^ERROR:?\s*/i, "").replace(/\(124=timeout\).*/, "") });
+    for (const n of d.nights) for (const j of n.jobs) if (j.status === "error" || j.status === "timeout" || j.status === "stopped") errs.push({ t: j.start, s: n.label.slice(5) + " " + j.name + (j.exit == null ? " stopped" : " exit " + j.exit) });
+    for (const k of d.review.ticks) if (k.kind === "error") errs.push({ t: k.t, s: data.dayKey(k.t).slice(5) + " " + k.msg.replace(/^ERROR:?\s*/i, "").replace(/\(124=timeout\).*/, "") });
     errs.sort((a, b) => b.t - a.t);
     const eh = Math.max(1, Math.min(3, Math.floor(h * 0.08)));
     if (!errs.length) scr.text(x + Math.floor((w - 4) / 2), yy, "NONE", { fg: th.dim });
@@ -764,21 +780,34 @@ class App {
   }
 
   // ---- loop ----
+  // One bad frame or key must never take the terminal down with it: show the error and keep going.
+  frame() {
+    try { this.render(); } catch (e) { this.fault(e); }
+  }
+  fault(e) {
+    this.say("error: " + ((e && e.message) || e) + "  ·  R reloads, q quits");
+    try { this.scr.clear(this.bg); this.scr.text(1, 1, this.msg, { fg: this.th.bad }, this.scr.w - 2); this.scr.flush(); } catch { /* nothing left to draw with */ }
+  }
+
   start() {
     clearInterval(this.timer);
     this.timer = setInterval(() => {
       if (Date.now() - this.lastLoad > (this.data.running ? 5000 : 30000)) this.reload();
-      this.render();
+      this.frame();
     }, 66);
   }
 
   run() {
+    // Anything that still escapes: give the terminal back before dying, so the shell is usable.
+    const die = (e) => { clearInterval(this.timer); try { leave(this.scr.out); } catch { /* terminal gone */ } console.error((e && e.stack) || e); process.exit(1); };
+    process.on("uncaughtException", die);
+    process.on("unhandledRejection", die);
+    process.stdout.on("error", () => process.exit(0)); // the terminal closed under us
     enter(this.scr.out);
-    process.stdin.on("data", (buf) => { for (const k of decodeKeys(buf)) this.key(k); });
-    process.stdout.on("resize", () => { this.scr.resize(); this.render(); });
-    process.on("SIGINT", () => this.quit());
-    process.on("SIGTERM", () => this.quit());
-    this.render();
+    process.stdin.on("data", (buf) => { for (const k of decodeKeys(buf)) { try { this.key(k); } catch (e) { this.fault(e); } } });
+    process.stdout.on("resize", () => { this.scr.resize(); this.frame(); });
+    for (const sig of ["SIGINT", "SIGTERM", "SIGHUP"]) process.on(sig, () => this.quit());
+    this.frame();
     this.start();
   }
 }

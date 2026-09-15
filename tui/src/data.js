@@ -14,10 +14,37 @@ const { execFileSync } = require("node:child_process");
 
 const HOME = os.homedir();
 
+// State files are written by other processes while we read them. A file that is missing,
+// unreadable, or not a file reads as empty rather than taking the bridge down.
+function readText(file) {
+  try { return fs.readFileSync(file, "utf8"); } catch { return ""; }
+}
+function listDir(dir) {
+  try { return fs.readdirSync(dir); } catch { return []; }
+}
+function isDir(p) {
+  try { return fs.statSync(p).isDirectory(); } catch { return false; }
+}
+function mtime(file) {
+  try { return fs.statSync(file).mtimeMs; } catch { return 0; }
+}
+
+// Local calendar day, YYYY-MM-DD. Nights are named by local date, so never bucket by UTC.
+function dayKey(t) {
+  const d = new Date(t);
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+// timeout(1) durations as nightshift.conf writes them: "45m", "2h", "90s", "600". 0 if unknown.
+function durationMs(s) {
+  const m = String(s || "").trim().match(/^(\d+(?:\.\d+)?)([smhd]?)$/);
+  return m ? +m[1] * { "": 1, s: 1, m: 60, h: 3600, d: 86400 }[m[2]] * 1000 : 0;
+}
+
 function readConf(file) {
   const conf = {};
-  if (!file || !fs.existsSync(file)) return conf;
-  for (const raw of fs.readFileSync(file, "utf8").split("\n")) {
+  if (!file) return conf;
+  for (const raw of readText(file).split("\n")) {
     const line = raw.trim();
     if (!line || line.startsWith("#")) continue;
     const m = line.match(/^([A-Z_]+)=(.*)$/);
@@ -47,6 +74,14 @@ function parseStamp(s) {
   return Date.parse(s.replace(/\s+/g, " ").replace(/ [A-Z]{2,5} (\d{4})$/, " $1"));
 }
 
+// "[stamp] message" → {t, msg}, or null when the brackets hold no date (e.g. "[nightshift] retrying").
+function stamped(line) {
+  const m = line.match(/^\[(.+?)\]\s+(.*)$/);
+  if (!m) return null;
+  const t = parseStamp(m[1]);
+  return Number.isFinite(t) ? { t, msg: m[2] } : null;
+}
+
 const PR_RE = /https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/pull\/(\d+)/g;
 
 function classify(log, exit, ended) {
@@ -62,35 +97,40 @@ function firstLine(log) {
   return (log || "").split("\n").map((s) => s.replace(/[*#`_]/g, "").trim()).find((s) => s.length > 20) || "";
 }
 
-function loadNight(dir, date) {
-  const blogFile = path.join(dir, "_batch.log");
-  const blog = fs.existsSync(blogFile) ? fs.readFileSync(blogFile, "utf8") : "";
+function loadNight(dir, date, opts = {}) {
+  const blog = readText(path.join(dir, "_batch.log"));
   const jobs = new Map();
   const events = [];
   let dropped = null;
   for (const line of blog.split("\n")) {
-    const m = line.match(/^\[(.+?)\]\s+(.*)$/);
-    if (!m) continue;
-    const t = parseStamp(m[1]), msg = m[2];
+    const s = stamped(line);
+    if (!s) continue;
+    const { t, msg } = s;
     events.push({ t, msg });
     let mm;
     if ((mm = msg.match(/^START\s+(\S+)(?:\s+\(branch=([^)]*)\))?/))) jobs.set(mm[1], { name: mm[1], start: t, end: null, exit: null, branch: mm[2] || "" });
     else if ((mm = msg.match(/^END\s+(\S+)\s+exit=(\d+)/))) { const j = jobs.get(mm[1]); if (j) { j.end = t; j.exit = +mm[2]; } }
     else if (/skipping|past \d+:00|outside/i.test(msg)) dropped = msg;
   }
+  const complete = /batch done|BATCH COMPLETE/i.test(blog);
+  // A job with no END is running only while it still could be: the newest job of the newest night,
+  // batch not done, younger than the job timeout. Otherwise the batch died under it (reboot, kill).
+  const newest = [...jobs.values()].reduce((a, j) => (!a || j.start >= a.start ? j : a), null);
+  const limit = (opts.jobLimit || 12 * 3600e3) + 10 * 60e3;
   const list = [];
   for (const j of jobs.values()) {
     const lf = path.join(dir, j.name + ".log");
-    j.log = fs.existsSync(lf) ? fs.readFileSync(lf, "utf8") : "";
+    j.log = readText(lf);
     j.prs = [...new Map([...j.log.matchAll(PR_RE)].map((m) => [+m[1], { url: m[0], n: +m[1] }])).values()];
-    j.status = classify(j.log, j.exit, j.end != null);
-    j.dur = j.end ? j.end - j.start : Date.now() - j.start;
+    const ended = j.end != null;
+    const live = !ended && opts.latest && !complete && j === newest && Date.now() - j.start < limit;
+    j.status = ended || live ? classify(j.log, j.exit, ended) : "stopped";
+    j.dur = ended ? j.end - j.start : live ? Date.now() - j.start : Math.max(0, mtime(lf) - j.start);
     j.summary = firstLine(j.log);
     j.session = null;
     list.push(j);
   }
   list.sort((a, b) => a.start - b.start);
-  const complete = /batch done|BATCH COMPLETE/i.test(blog);
   return {
     date, dir, jobs: list, events, dropped, complete,
     start: list.length ? list[0].start : events.length ? events[0].t : NaN,
@@ -101,28 +141,31 @@ function loadNight(dir, date) {
   };
 }
 
-function loadNights(stateDir) {
+function loadNights(stateDir, conf = {}) {
   const runsDir = path.join(stateDir, "runs");
-  if (!fs.existsSync(runsDir)) return [];
-  return fs.readdirSync(runsDir).filter((n) => /^\d{8}$/.test(n)).map((n) => loadNight(path.join(runsDir, n), n)).sort((a, b) => (a.date < b.date ? 1 : -1));
+  const dates = listDir(runsDir).filter((n) => /^\d{8}$/.test(n) && isDir(path.join(runsDir, n))).sort().reverse();
+  const jobLimit = durationMs(conf.JOB_TIMEOUT);
+  return dates.map((n, i) => loadNight(path.join(runsDir, n), n, { latest: i === 0, jobLimit }));
 }
 
 function loadReview(stateDir) {
   const ledgerFile = path.join(stateDir, "review-ledger.json"), logFile = path.join(stateDir, "review.log");
   let ledger = {};
-  try { ledger = JSON.parse(fs.readFileSync(ledgerFile, "utf8")); } catch { /* none yet */ }
-  const lines = fs.existsSync(logFile) ? fs.readFileSync(logFile, "utf8").split("\n") : [];
+  try { ledger = JSON.parse(readText(ledgerFile)); } catch { /* none yet */ }
+  // PR number -> head SHA. Anything else in the file is not ours to show.
+  ledger = ledger && typeof ledger === "object" && !Array.isArray(ledger) ? Object.fromEntries(Object.entries(ledger).filter(([, v]) => typeof v === "string")) : {};
+  const lines = readText(logFile).split("\n");
   const ticks = [];
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^\[(.+?)\]\s+(.*)$/);
-    if (!m) continue;
-    const msg = m[2];
+    const s = stamped(lines[i]);
+    if (!s) continue; // untimed lines, like "[nightshift] retrying", belong to the report above them
+    const { t, msg } = s;
     let kind = "noop", prs = [];
     if (/reviewing PRs?:/i.test(msg)) { kind = "review"; prs = (msg.match(/\d+/g) || []).map(Number); }
     else if (/ERROR/i.test(msg)) kind = "error";
     else if (/done|complete|ledger updated/i.test(msg)) kind = "done";
     else if (/another review|batch is running/i.test(msg)) kind = "skip";
-    ticks.push({ t: parseStamp(m[1]), msg, kind, prs, line: i });
+    ticks.push({ t, msg, kind, prs, line: i });
   }
   for (let k = 0; k < ticks.length; k++) {
     if (ticks[k].kind !== "review") continue;
@@ -153,9 +196,8 @@ function loadTimers() {
 function loadSessions(repoDir) {
   if (!repoDir) return [];
   const pdir = path.join(HOME, ".claude", "projects", repoDir.replace(/[^a-zA-Z0-9]/g, "-"));
-  if (!fs.existsSync(pdir)) return [];
   const out = [];
-  for (const f of fs.readdirSync(pdir)) {
+  for (const f of listDir(pdir)) {
     if (!f.endsWith(".jsonl")) continue;
     try {
       const fd = fs.openSync(path.join(pdir, f), "r");
@@ -182,7 +224,8 @@ function linkSessions(nights, review, sessions) {
     for (const j of night.jobs) {
       const end = j.end || Date.now();
       const cands = sessions.filter((s) => s.t >= j.start - slack && s.t <= end + slack);
-      const byName = cands.filter((s) => new RegExp("\\b" + j.name + "\\b", "i").test(s.prompt));
+      const name = new RegExp("\\b" + j.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "i");
+      const byName = cands.filter((s) => name.test(s.prompt));
       const pick = (byName.length ? byName : cands).sort((a, b) => a.t - b.t)[0];
       if (pick) j.session = pick.id;
     }
@@ -200,7 +243,7 @@ function load(opts = {}) {
   const stateDir = findStateDir(opts.state, conf);
   if (!stateDir) throw new Error("No Nightshift state found. Set STATE_DIR in nightshift.conf, or pass --state <dir>, or try --demo.");
   const repoDir = opts.repo || process.env.NIGHTSHIFT_REPO || conf.REPO_DIR || null;
-  const nights = loadNights(stateDir);
+  const nights = loadNights(stateDir, conf);
   const review = loadReview(stateDir);
   const sessions = loadSessions(repoDir);
   linkSessions(nights, review, sessions);
@@ -211,4 +254,4 @@ function load(opts = {}) {
   };
 }
 
-module.exports = { load, PR_RE };
+module.exports = { load, dayKey, PR_RE };

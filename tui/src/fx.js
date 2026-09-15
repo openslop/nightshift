@@ -86,7 +86,7 @@ function ridges(scr, x, y, w, h, t, th, grid, sel = {}, opts = {}) {
   const { cam = { angle: t * 0.26, tilt: 0.62, zoom: 1 }, sparks = new Set(), pulse = new Set(), big = false } = opts;
   const W = w * 2, H = h * 4;
   const R = grid.length, C = R ? grid[0].length : 0;
-  if (!R || !C) return { pin: null };
+  if (!R || !C || w < 1 || h < 1) return { pin: null };
   const dots = new Uint8Array(W * H); // 0 empty · 1 dark shade · 2 light shade · 3 line · 4 selected night · 5 selected job · 6 bright
   const ay = cam.angle, ax = -(cam.tilt + 0.08 * Math.sin(t * 0.3));
   const scale = Math.min(W, H * 1.35) * (big ? 0.4 : 0.48) * cam.zoom;
@@ -235,12 +235,14 @@ function gantt(scr, x, y, w, h, night, selIdx, th, t) {
   const jobs = night.jobs;
   const labelW = Math.min(16, Math.max(8, Math.floor(w * 0.18)));
   const gx = x + labelW + 1, gw = w - labelW - 8;
-  const t0 = night.start, t1 = Math.max(night.end || 0, ...jobs.map((j) => j.end || Date.now()), t0 + 60000);
+  const t0 = night.start;
+  if (!Number.isFinite(t0) || gw < 1) return; // nothing timed yet (the batch log was just created)
+  const t1 = Math.max(night.end || 0, ...jobs.map((j) => j.start + j.dur), t0 + 60000);
   const span = t1 - t0;
   const px = (ms) => gx + Math.round(((ms - t0) / span) * (gw - 1));
   // axis
   const stepMin = span > 3 * 3600e3 ? 60 : span > 90 * 60e3 ? 15 : span > 30 * 60e3 ? 10 : 5;
-  for (let m = 0; ; m += stepMin) {
+  for (let m = 0; m < 500 * stepMin; m += stepMin) {
     const ms = t0 + m * 60e3; if (ms > t1) break;
     const ax = px(ms);
     scr.put(ax, y, "┬", { fg: th.line });
@@ -248,13 +250,13 @@ function gantt(scr, x, y, w, h, night, selIdx, th, t) {
     if (ax + lab.length <= gx + gw) scr.text(ax, y - 1, lab, { fg: th.dim });
     for (let r = 1; r <= jobs.length; r++) if (r <= h - 1) scr.put(ax, y + r, "╎", { fg: th.line });
   }
-  for (let i = 0; i < gw; i++) if (scr.back[y][gx + i].ch === " ") scr.put(gx + i, y, "─", { fg: th.line });
-  const colors = { pr: th.ok, noop: th.fg2, done: th.fg2, empty: th.dim, running: th.accent, timeout: th.warn, error: th.bad };
+  for (let i = 0; i < gw; i++) { const c = scr.cell(gx + i, y); if (c && c.ch === " ") scr.put(gx + i, y, "─", { fg: th.line }); }
+  const colors = { pr: th.ok, noop: th.fg2, done: th.fg2, empty: th.dim, running: th.accent, timeout: th.warn, error: th.bad, stopped: th.warn };
   for (let i = 0; i < jobs.length && i < h - 1; i++) {
     const j = jobs[i], sel = i === selIdx;
     const ry = y + 1 + i;
     scr.text(x, ry, (sel ? "▶ " : "  ") + j.name.slice(0, labelW - 2), { fg: sel ? th.bright : th.fg2 });
-    const a = px(j.start), b = Math.max(a, px(j.end || Date.now()));
+    const a = px(j.start), b = Math.max(a, px(j.start + j.dur));
     const shimmer = sel ? a + Math.floor(((t * 1.5) % 1) * (b - a + 1)) : -1;
     for (let k = a; k <= b; k++) scr.put(k, ry, sel ? "█" : "▓", { fg: k === shimmer || k === shimmer - 1 ? th.bright : sel ? mix(colors[j.status], th.bright, 0.25) : colors[j.status] });
     if (j.status === "running") scr.put(b, ry, ((t * 3) | 0) % 2 ? "▌" : "▐", { fg: th.bright });
@@ -278,7 +280,7 @@ function matrix(scr, x, y, w, h, nights, order, selNight, selJob, th, t) {
     scr.put(gx + i * 2, y, dd[0], { fg: sel ? th.bright : th.dim, bg: sel ? th.selBar : undefined });
     scr.put(gx + i * 2, y + 1, dd[1], { fg: sel ? th.bright : th.dim, bg: sel ? th.selBar : undefined });
   });
-  const glyph = { pr: ["●", th.ok], noop: ["○", th.fg2], done: ["◌", th.fg2], empty: ["·", th.dim], running: ["◉", th.accent], timeout: ["◔", th.warn], error: ["×", th.bad] };
+  const glyph = { pr: ["●", th.ok], noop: ["○", th.fg2], done: ["◌", th.fg2], empty: ["·", th.dim], running: ["◉", th.accent], timeout: ["◔", th.warn], error: ["×", th.bad], stopped: ["◇", th.warn] };
   order.slice(0, h - 2).forEach((name, r) => {
     const ry = y + 2 + r;
     const selRow = name === selJob;
