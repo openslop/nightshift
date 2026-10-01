@@ -43,7 +43,7 @@ Cada dos horas, también lee los pull requests abiertos y deja una reseña corta
 
 ### Un trabajo pequeño a la vez
 
-Diez trabajos, uno tras otro. Seguridad, bugs, legibilidad, mantenibilidad, rendimiento, convenciones, arquitectura, pruebas de humo e issues. Cada uno tiene al agente entero para un solo trabajo y nada más.
+Once trabajos, uno tras otro. Seguridad, bugs, legibilidad, limpieza, mantenibilidad, rendimiento, convenciones, arquitectura, pruebas de humo e issues. Cada uno tiene al agente entero para un solo trabajo y nada más.
 
 [Los trabajos →](#los-trabajos)
 
@@ -141,6 +141,7 @@ Pulsa `c` en cualquier trabajo y la consola vuelve a abrir la transcripción de 
 | `security`             | Agujeros reales que alguien malintencionado podría usar. No preocupaciones de "quizás algún día". |
 | `bugs`                 | Bugs que un usuario notaría. Solo los claros.                              |
 | `readability`          | Nombres que no dicen nada. Código que hay que leer dos veces. Menos líneas, no más. |
+| `cleanliness`          | Un módulo enredado, reconstruido de forma idiomática. Mismo comportamiento, misma velocidad. |
 | `maintainability`      | Código difícil de cambiar. Lo hace más simple.                             |
 | `performance`          | Puntos lentos que la gente nota. Primero mide.                             |
 | `conventions`          | Lugares que rompen tus propias reglas escritas. Solo arreglos seguros.     |

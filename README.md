@@ -43,7 +43,7 @@ Every two hours, it also reads any open pull requests and leaves a short review.
 
 ### One small job at a time
 
-Ten jobs, run one after another. Security, bugs, readability, maintainability, performance, conventions, architecture, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
+Eleven jobs, run one after another. Security, bugs, readability, cleanliness, maintainability, performance, conventions, architecture, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
 
 [The jobs →](#the-jobs)
 
@@ -141,6 +141,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | `security`             | Real holes a bad actor could use. Not "maybe someday" worries.             |
 | `bugs`                 | Bugs a user would notice. Only clear ones.                                 |
 | `readability`          | Names that say nothing. Code that takes a second read. Fewer lines, not more. |
+| `cleanliness`          | One tangled module, rebuilt the idiomatic way. Same behavior, same speed. |
 | `maintainability`      | Code that is hard to change. It makes it simpler.                          |
 | `performance`          | Slow spots people feel. It measures first.                                 |
 | `conventions`          | Places that break your own written rules. Safe fixes only.                 |

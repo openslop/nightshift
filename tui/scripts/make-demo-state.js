@@ -19,6 +19,7 @@ const REPO = "you/your-app";
 const JOBS = [
   ["security", 0.15, 3, 12, "Nightly security report", "No exploitable issue found. Dependencies unchanged since the last sweep; the one open advisory is unreachable from app code."],
   ["readability", 0.6, 4, 12, "Nightly readability pass", "Renamed the three single-letter loop variables in the export module and folded two nested ifs into early returns. 31 lines removed, 9 added."],
+  ["cleanliness", 0.4, 6, 18, "Nightly cleanliness pass", "Folded a three-hop closure chain in the export module into one class with a cache, renamed four helpers to say what they return, and dropped two comments the new names made redundant. Benchmark within noise."],
   ["maintainability", 0.7, 8, 24, "Nightly maintainability report", "Collapsed three hand-rolled guards into the existing helper and removed a dead branch in the export path. Behaviour unchanged, checks green."],
   ["performance", 0.35, 3, 9, "Nightly performance report", "Measured the list view with 2k rows; the memo boundary was recomputing on every scroll. Moved it up one level."],
   ["conventions-followup", 0.5, 4, 10, "Nightly conventions follow-up", "Took the 'one canonical validator' theme: two call sites now share the schema instead of re-checking fields by hand."],
