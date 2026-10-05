@@ -43,7 +43,7 @@ A cada duas horas, ele também lê os pull requests abertos e deixa uma revisão
 
 ### Um trabalho pequeno de cada vez
 
-Onze trabalhos, um depois do outro. Segurança, bugs, legibilidade, limpeza, manutenibilidade, desempenho, convenções, arquitetura, testes de fumaça e issues. Cada um recebe o agente inteiro para um trabalho e nada mais.
+Treze trabalhos, um depois do outro. Segurança, qualidade, bugs, legibilidade, limpeza, manutenibilidade, desempenho, convenções, arquitetura, docs, testes de fumaça e issues. Cada um recebe o agente inteiro para um trabalho e nada mais.
 
 [Os trabalhos →](#os-trabalhos)
 
@@ -139,6 +139,7 @@ Aperte `c` em qualquer trabalho e o console reabre a transcrição daquela noite
 | Trabalho               | O que ele procura                                                                  |
 | ---------------------- | ---------------------------------------------------------------------------------- |
 | `security`             | Falhas reais que alguém mal-intencionado poderia usar. Não preocupações de "talvez um dia". |
+| `quality`              | Um boletim semanal do repositório inteiro. Abre issues para os problemas reais e corrige o pior. |
 | `bugs`                 | Bugs que um usuário notaria. Só os claros.                                         |
 | `readability`          | Nomes que não dizem nada. Código que precisa ser lido duas vezes. Menos linhas, não mais. |
 | `cleanliness`          | Um módulo emaranhado, refeito do jeito idiomático. Mesmo comportamento, mesma velocidade. |
@@ -147,6 +148,7 @@ Aperte `c` em qualquer trabalho e o console reabre a transcrição daquela noite
 | `conventions`          | Lugares que quebram suas próprias regras escritas. Só correções seguras.           |
 | `conventions-followup` | As quebras de regra que precisam de uma mudança de verdade. Um tema por noite.     |
 | `architecture`         | A única grande forma de o código ficar mais simples.                               |
+| `docs`                 | Guias que dizem algo que o código não faz mais. Corrige só o que está errado. |
 | `smoke-tests`          | Alguns testes calmos que checam se o app ainda abre. Normalmente não faz nada.     |
 | `issues`               | Uma issue do GitHub pequena e clara. Deixa as fáceis para quem está chegando.      |
 | `review`               | Lê pull requests abertos a cada duas horas. Fica quieto, a não ser que encontre algo. |
