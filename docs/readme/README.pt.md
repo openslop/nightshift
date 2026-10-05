@@ -139,7 +139,7 @@ Aperte `c` em qualquer trabalho e o console reabre a transcrição daquela noite
 | Trabalho               | O que ele procura                                                                  |
 | ---------------------- | ---------------------------------------------------------------------------------- |
 | `security`             | Falhas reais que alguém mal-intencionado poderia usar. Não preocupações de "talvez um dia". |
-| `quality`              | Um boletim semanal do repositório inteiro. Abre issues para os problemas reais e corrige o pior. |
+| `quality`              | Um boletim semanal do repositório inteiro. Corrige o pior problema que encontrou. |
 | `bugs`                 | Bugs que um usuário notaria. Só os claros.                                         |
 | `readability`          | Nomes que não dizem nada. Código que precisa ser lido duas vezes. Menos linhas, não mais. |
 | `cleanliness`          | Um módulo emaranhado, refeito do jeito idiomático. Mesmo comportamento, mesma velocidade. |

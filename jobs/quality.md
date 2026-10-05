@@ -1,6 +1,6 @@
 # Job: quality
 
-Grade the whole repo the way a skeptical principal engineer would. Turn each real problem into a tracked issue. Then fix the worst one you can finish tonight.
+Grade the whole repo the way a skeptical principal engineer would. Then fix the worst problem the audit found that you can finish tonight. This job never files issues. Its findings live in the ledger.
 
 The grades move slowly, so the full audit runs once a week. The fixing runs every night.
 
@@ -10,7 +10,7 @@ The grades move slowly, so the full audit runs once a week. The fixing runs ever
 
 - `Last audit: YYYY-MM-DD`.
 - One scorecard line per audit: the date and a grade per dimension.
-- One line per finding: `id | status | issue | summary | file:line`. Status is one of `open`, `shipped #N`, `rejected: why`, `blocked: PR #N (date)`, `routed: <job>`.
+- One line per finding: `id | status | summary | file:line`. Status is one of `open`, `shipped #N`, `rejected: why`, `blocked: PR #N (date)`, `routed: <job>`.
 
 Never file or fix a `rejected` or `shipped` finding again.
 
@@ -33,18 +33,17 @@ How:
 3. Every finding cites `file:line`. Before you keep a finding, open the file and confirm it yourself. Drop anything you cannot confirm. A wrong finding costs more than a missed one.
 4. Write the scorecard line and the date to the ledger.
 
-Then track what you found:
+Then record what you found in the ledger, worst first:
 
-- Style, naming, docs drift and written-rule breaks belong to other jobs. Mark them `routed: readability`, `routed: docs`, or `routed: conventions`. No issue.
-- For each real problem left, search open and closed issues for a duplicate. A closed, unplanned issue means `rejected`. A close match gets a comment, not a new issue.
-- File at most five new issues per audit, worst first. If the repo ships an issue-filing skill or template in its agent folders, use it. Each issue says what is wrong, where (`file:line`), the fix in one paragraph, and how to check it is done.
+- Style, naming, docs drift and written-rule breaks belong to other jobs. Mark them `routed: readability`, `routed: docs`, or `routed: conventions`.
+- Every real problem left becomes an `open` line. Never file an issue or comment on one.
+- A finding the owner already turned down (a closed, unmerged PR, or a closed issue) is `rejected`.
 
 ## Fix (every night)
 
-Pick the worst `open` finding that:
+Fix only findings from your own audits. Pick the worst `open` ledger finding that:
 
-- has an issue with no open PR linked to it,
-- is not labeled for newcomers (`good first issue`, or any label the guide files reserve),
+- no open PR already fixes,
 - needs no file an open PR touches,
 - can be finished and tested tonight without a product decision.
 
@@ -55,9 +54,9 @@ Fix the root cause, not the symptom. Behavior changes are allowed here. Name eac
 1. Read the ledger. Audit if it is due.
 2. Pick the finding. Write down what must keep working before you edit.
 3. Fix it. Add or update tests. Run `$CHECKS`. Run `$GUARD`.
-4. Commit: `fix: nightly quality <YYYY-MM-DD>, <finding>`. PR body starts with `Closes #N`.
+4. Commit: `fix: nightly quality <YYYY-MM-DD>, <finding>`. The PR body names the finding and the audit date. If an issue already covers it, add `Closes #N`.
 5. Update the ledger: the fixed finding becomes `shipped #PR`. Skipped ones get their reason and today's date. Do not commit the ledger; it lives outside the repo.
 
 ## Report
 
-The scorecard, with the change since the last audit, or `no audit tonight`. Issues filed. The finding fixed and the PR. What you skipped and why.
+The scorecard, with the change since the last audit, or `no audit tonight`. New findings added to the ledger. The finding fixed and the PR. What you skipped and why.
