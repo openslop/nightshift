@@ -18,6 +18,7 @@ const stamp = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDat
 const REPO = "you/your-app";
 const JOBS = [
   ["security", 0.15, 3, 12, "Nightly security report", "No exploitable issue found. Dependencies unchanged since the last sweep; the one open advisory is unreachable from app code."],
+  ["quality", 0.5, 7, 20, "Nightly quality pass", "Weekly audit: reliability C+ to B-, two new findings in the ledger. Fixed the worst: the job worker now claims a job before it runs, so a repeat delivery no longer bills twice."],
   ["readability", 0.6, 4, 12, "Nightly readability pass", "Renamed the three single-letter loop variables in the export module and folded two nested ifs into early returns. 31 lines removed, 9 added."],
   ["cleanliness", 0.4, 6, 18, "Nightly cleanliness pass", "Folded a three-hop closure chain in the export module into one class with a cache, renamed four helpers to say what they return, and dropped two comments the new names made redundant. Benchmark within noise."],
   ["maintainability", 0.7, 8, 24, "Nightly maintainability report", "Collapsed three hand-rolled guards into the existing helper and removed a dead branch in the export path. Behaviour unchanged, checks green."],
@@ -25,6 +26,7 @@ const JOBS = [
   ["conventions-followup", 0.5, 4, 10, "Nightly conventions follow-up", "Took the 'one canonical validator' theme: two call sites now share the schema instead of re-checking fields by hand."],
   ["conventions", 0.55, 5, 9, "Nightly conventions sweep", "Read the guide files first. Four small rule breaks fixed, two design-level ones flagged for a human."],
   ["architecture", 0.4, 9, 22, "Nightly architecture report", "The provider seam typed as optional forced every adapter to keep a fallback. Made the contract total; four fallbacks deleted."],
+  ["docs", 0.3, 2, 6, "Nightly docs check", "Checked 64 claims in the guide files. Fixed three: a moved config path in CONTRIBUTING.md, a renamed script in README.md, and a pointer to a design rule that is gone."],
   ["smoke-tests", 0.1, 1, 4, "Nightly smoke-test report", "The app still opens, the three main screens render, no new test needed tonight."],
   ["issues", 0.45, 6, 18, "Nightly issue report", "Picked the one small, clear issue: the toast opened the wrong panel after export. Fixed with a test."],
 ];

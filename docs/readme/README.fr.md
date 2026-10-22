@@ -43,7 +43,7 @@ Toutes les deux heures, il lit aussi les pull requests ouvertes et laisse une co
 
 ### Une petite tâche à la fois
 
-Onze jobs, lancés l'un après l'autre. Sécurité, bugs, lisibilité, propreté, maintenabilité, performance, conventions, architecture, tests de fumée et issues. Chacun a l'agent entier pour un seul job et rien d'autre.
+Treize jobs, lancés l'un après l'autre. Sécurité, qualité, bugs, lisibilité, propreté, maintenabilité, performance, conventions, architecture, docs, tests de fumée et issues. Chacun a l'agent entier pour un seul job et rien d'autre.
 
 [Les jobs →](#les-jobs)
 
@@ -139,6 +139,7 @@ Appuyez sur `c` sur n'importe quel job et la console rouvre la transcription de 
 | Job                    | Ce qu'il cherche                                                                    |
 | ---------------------- | ----------------------------------------------------------------------------------- |
 | `security`             | De vraies failles qu'un attaquant pourrait utiliser. Pas des « peut-être un jour ».  |
+| `quality`              | Un bulletin hebdomadaire pour tout le dépôt. Corrige le pire problème qu'il a trouvé. |
 | `bugs`                 | Des bugs qu'un utilisateur remarquerait. Seulement les évidents.                    |
 | `readability`          | Des noms qui ne disent rien. Du code qu'il faut relire. Moins de lignes, pas plus.  |
 | `cleanliness`          | Un module emmêlé, reconstruit de façon idiomatique. Même comportement, même vitesse. |
@@ -147,6 +148,7 @@ Appuyez sur `c` sur n'importe quel job et la console rouvre la transcription de 
 | `conventions`          | Les endroits qui cassent vos propres règles écrites. Corrections sûres uniquement.  |
 | `conventions-followup` | Les règles cassées qui demandent un vrai changement. Un thème par nuit.             |
 | `architecture`         | La seule grande façon dont le code pourrait être plus simple.                       |
+| `docs`                 | Les guides qui disent ce que le code ne fait plus. Corrige seulement ce qui est faux. |
 | `smoke-tests`          | Quelques tests calmes qui vérifient que l'app s'ouvre encore. Souvent ne fait rien. |
 | `issues`               | Une petite issue GitHub claire. Laisse les faciles aux nouveaux.                    |
 | `review`               | Lit les pull requests ouvertes toutes les deux heures. Silencieux sauf s'il trouve. |

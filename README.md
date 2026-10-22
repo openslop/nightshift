@@ -43,7 +43,7 @@ Every two hours, it also reads any open pull requests and leaves a short review.
 
 ### One small job at a time
 
-Eleven jobs, run one after another. Security, bugs, readability, cleanliness, maintainability, performance, conventions, architecture, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
+Thirteen jobs, run one after another. Security, quality, bugs, readability, cleanliness, maintainability, performance, conventions, architecture, docs, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
 
 [The jobs →](#the-jobs)
 
@@ -139,6 +139,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | Job                    | What it looks for                                                          |
 | ---------------------- | -------------------------------------------------------------------------- |
 | `security`             | Real holes a bad actor could use. Not "maybe someday" worries.             |
+| `quality`              | A weekly report card for the whole repo. Fixes the worst problem it found. |
 | `bugs`                 | Bugs a user would notice. Only clear ones.                                 |
 | `readability`          | Names that say nothing. Code that takes a second read. Fewer lines, not more. |
 | `cleanliness`          | One tangled module, rebuilt the idiomatic way. Same behavior, same speed. |
@@ -147,6 +148,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | `conventions`          | Places that break your own written rules. Safe fixes only.                 |
 | `conventions-followup` | The rule breaks that need a real change. One theme a night.                |
 | `architecture`         | The one big way the code could be simpler.                                 |
+| `docs`                 | Guide files that say something the code no longer does. Fixes only what is false. |
 | `smoke-tests`          | A few calm tests that check the app still opens. Usually does nothing.     |
 | `issues`               | One small, clear GitHub issue. Leaves the easy ones for new people.        |
 | `review`               | Reads open pull requests every two hours. Quiet unless it finds something. |
