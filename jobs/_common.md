@@ -15,6 +15,10 @@ The runner gives you these names. Use them.
 - `STATE_DIR`: a folder for notes that live outside the repo.
 - `GUARD`: the script that checks you did not touch a file an open PR touches.
 
+## Scratch files
+
+Put clones, diffs, and notes you throw away in `$TMPDIR`. Never write them to `/tmp`. On many machines `/tmp` is memory, and a few repo copies there can crash the computer. The runner deletes `$TMPDIR` when you finish.
+
 ## Before you start
 
 1. `cd $REPO_DIR`.

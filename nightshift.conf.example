@@ -52,5 +52,5 @@ REVIEW_TIMEOUT=55m
 # This stops it from running in the middle of your day after your laptop wakes up.
 WINDOW_END_HOUR=8
 
-# Where logs and notes go. Outside your repo.
+# Where logs, notes, and each run's scratch files go. Outside your repo, and on disk, not in /tmp.
 STATE_DIR=$HOME/.local/state/nightshift
