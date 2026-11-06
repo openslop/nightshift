@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Fails (exit 1) if the current branch (or the ref given as $1) touches a file that any open PR
-# touches, or would merge-conflict with one. Run it before you push.
+# Fails (exit 1) if the current branch (or the ref given as $1) would merge-conflict with any open PR.
+# Sharing a file with an open PR is fine; it is listed, not failed. Run it before you push.
 # A PR that already conflicts with the base branch on its own is stale. It is skipped.
 set -u
 export LC_ALL=C  # sort and comm must agree on collation
@@ -22,17 +22,17 @@ if [ -z "$FILES" ]; then echo "no changes vs $BASE_BRANCH"; else
   for n in $PRS; do
     ref="refs/nightshift/pr-$n"
     shared=$(comm -12 <(echo "$FILES") <(git diff --name-only "$(git merge-base "$BASE" "$ref")" "$ref" | sort))
-    if [ -n "$shared" ]; then
-      echo "PR #$n: shares files"; echo "$shared" | sed 's/^/    /'; status=1
-    elif ! timeout 60 git merge-tree --write-tree --no-messages "$BASE" "$ref" >/dev/null 2>&1; then
+    if ! timeout 60 git merge-tree --write-tree --no-messages "$BASE" "$ref" >/dev/null 2>&1; then
       echo "PR #$n: stale (conflicts with $BASE_BRANCH on its own); skipped"
     elif ! timeout 60 git merge-tree --write-tree --no-messages "$MINE" "$ref" >/dev/null 2>&1; then
-      echo "PR #$n: merge conflict"; status=1
+      echo "PR #$n: merge conflict"; echo "$shared" | sed '/^$/d; s/^/    /'; status=1
+    elif [ -n "$shared" ]; then
+      echo "PR #$n: clean (shares files, no conflict)"; echo "$shared" | sed 's/^/    /'
     else
       echo "PR #$n: clean"
     fi
   done
 fi
 git for-each-ref --format='%(refname)' refs/nightshift | xargs -r -n1 git update-ref -d
-[ $status -eq 0 ] && [ -n "$FILES" ] && echo "OK: no shared files or merge conflicts with any open PR"
+[ $status -eq 0 ] && [ -n "$FILES" ] && echo "OK: no merge conflicts with any open PR"
 exit $status

@@ -85,13 +85,13 @@ A second timer reads your open pull requests and leaves a short review. It is qu
 
 ### Stays out of your way
 
-Before it pushes, a guard checks every file against every open pull request. If a teammate is already in a file, the job drops that change and says so.
+Before it pushes, a guard test-merges the branch with every open pull request. Sharing a file with a teammate is fine. If a change would conflict with theirs, the job drops it and says so.
 
 [The rules every job follows →](jobs/_common.md)
 
 </td>
 <td width="50%">
-  <a href="jobs/_common.md"><img src="./assets/features/guard.svg" alt="The guard marks a file touched by an open pull request as off limits" width="100%"></a>
+  <a href="jobs/_common.md"><img src="./assets/features/guard.svg" alt="The guard lets a shared file through when it merges clean, and drops a change that conflicts with an open pull request" width="100%"></a>
 </td>
 </tr>
 <tr>

@@ -12,7 +12,7 @@ Make the code easier to change without changing what it does.
 - Check outside data once, where it comes in. Not with little checks all over.
 - Remove hidden backup paths. Replace them with a clear rule and a clear error.
 - Add docs only when they really help someone understand the design or an interface. Short. Skimmable. Every line earns its place.
-- Big, reviewable wins over small churn.
+- The gain must be worth the code. A small PR with a real gain is welcome. A big diff for a small gain is not.
 
 ## Steps
 
