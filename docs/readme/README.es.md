@@ -85,13 +85,13 @@ Un segundo temporizador lee tus pull requests abiertos y deja una reseña corta.
 
 ### No se mete en tu camino
 
-Antes de subir nada, un guardia compara cada archivo con cada pull request abierto. Si un compañero ya está en un archivo, el trabajo descarta ese cambio y lo dice.
+Antes de subir nada, un guardia prueba a fusionar la rama con cada pull request abierto. Compartir un archivo con un compañero no es problema. Si un cambio entraría en conflicto con el suyo, el trabajo lo descarta y lo dice.
 
 [Las reglas que sigue cada trabajo →](../../jobs/_common.md)
 
 </td>
 <td width="50%">
-  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="El guardia marca como prohibido un archivo tocado por un pull request abierto" width="100%"></a>
+  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="El guardia deja pasar un archivo compartido que se fusiona limpio y descarta un cambio que choca con un pull request abierto" width="100%"></a>
 </td>
 </tr>
 <tr>

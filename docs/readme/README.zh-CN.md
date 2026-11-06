@@ -85,13 +85,13 @@ Nightshift 是一个在夜里干活的小帮手。
 
 ### 不碍你的事
 
-推送之前，一道守卫会把每个文件和每个打开的 pull request 对一遍。如果队友已经在改某个文件，任务就放弃那处改动，并且告诉你。
+推送之前，一道守卫会把分支和每个打开的 pull request 试合并一遍。和队友改同一个文件没关系。如果某处改动会和队友的冲突，任务就放弃那处改动，并且告诉你。
 
 [每个任务都遵守的规则 →](../../jobs/_common.md)
 
 </td>
 <td width="50%">
-  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="守卫把一个被打开的 pull request 碰过的文件标记为禁止修改" width="100%"></a>
+  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="守卫放行能干净合并的共享文件，放弃会和打开的 pull request 冲突的改动" width="100%"></a>
 </td>
 </tr>
 <tr>

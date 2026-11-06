@@ -85,13 +85,13 @@ Um segundo timer lê seus pull requests abertos e deixa uma revisão curta. Ele 
 
 ### Não atrapalha você
 
-Antes de enviar, um guarda checa cada arquivo contra cada pull request aberto. Se um colega já está mexendo em um arquivo, o trabalho descarta essa mudança e avisa.
+Antes de enviar, um guarda testa o merge do branch com cada pull request aberto. Mexer no mesmo arquivo que um colega não tem problema. Se uma mudança der conflito com a dele, o trabalho descarta essa mudança e avisa.
 
 [As regras que todo trabalho segue →](../../jobs/_common.md)
 
 </td>
 <td width="50%">
-  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="O guarda marca um arquivo tocado por um pull request aberto como proibido" width="100%"></a>
+  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="O guarda deixa passar um arquivo compartilhado que faz merge limpo e descarta uma mudança que dá conflito com um pull request aberto" width="100%"></a>
 </td>
 </tr>
 <tr>

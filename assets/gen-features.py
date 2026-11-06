@@ -345,7 +345,7 @@ def card_resume():
 
 # ---------------------------------------------------------------- 6. the guard
 def card_guard():
-    c = Card("guard", "stays out of your way", "A job wants to change three files. One is touched by a teammate's open pull request, so the guard marks it off limits and the job leaves it alone.", 14.0)
+    c = Card("guard", "stays out of your way", "A job wants to change three files. Two are also in teammates' open pull requests. The guard test-merges the branch with each one: the shared file that merges clean stays, the one that conflicts is left alone.", 15.0)
     c.chrome()
     c.caption(28, 58, 280, "TONIGHT'S CHANGE", "performance")
     files = [("src/db/settings.ts", None), ("src/auth.ts", "#298"), ("src/cache/keys.ts", None)]
@@ -354,7 +354,7 @@ def card_guard():
         c.text(40, y + 2, f, 13, TEXT, c.appear(0.6 + i * 0.4))
         c.raw(f'<circle cx="30" cy="{y - 2}" r="3" fill="{MUTED}" class="{c.appear(0.6 + i * 0.4, dy=0)}"/>')
     c.caption(340, 58, W - 368, "OPEN PULL REQUESTS", "yours and your team's")
-    prs = [("#298", "a teammate", "src/auth.ts, src/login.ts"), ("#301", "a teammate", "docs/api.md")]
+    prs = [("#298", "a teammate", "src/auth.ts, src/login.ts"), ("#301", "a teammate", "src/db/settings.ts, docs/api.md")]
     for i, (num, who, fl) in enumerate(prs):
         y = 86 + i * 40
         a = c.appear(1.2 + i * 0.4)
@@ -367,19 +367,25 @@ def card_guard():
     run = c.appear(3.0)
     c.text(40, gy + 26, "$ guard.sh nightshift/performance-20260908-0532", 12, INK, run)
     c.raw(f'<rect x="40" y="{gy + 36}" width="{W - 80}" height="6" fill="{LINEHI}" class="{c.grow(3.2, 5.0)}"/>')
-    hit = c.appear(5.2)
-    # the red strike across src/auth.ts
+    # src/db/settings.ts is shared with #301 but touches other lines: it merges clean and stays
+    share = c.appear(5.2)
+    c.raw(f'<rect x="20" y="{86 - 14}" width="300" height="22" fill="{GREEN}" fill-opacity="0.10" class="{share}"/>')
+    c.raw(f'<circle cx="30" cy="{86 - 2}" r="3" fill="{GREEN}" class="{share}"/>')
+    c.text(300, 86 + 2, "#301", 12, GREEN, share, anchor="end")
+    c.text(40, gy + 58, "~ src/db/settings.ts is also in #301 · other lines, merges clean", 12, FG2, share)
+    # src/auth.ts changes the same lines as #298: a real conflict
+    hit = c.appear(6.6)
     c.raw(f'<rect x="20" y="{86 + 26 - 14}" width="300" height="22" fill="{RED}" fill-opacity="0.14" class="{hit}"/>')
     c.raw(f'<circle cx="30" cy="{86 + 26 - 2}" r="3" fill="{RED}" class="{hit}"/>')
     c.text(300, 86 + 26 + 2, "#298", 12, RED, hit, anchor="end")
-    c.text(40, gy + 62, "✗ src/auth.ts is in open PR #298 · off limits tonight", 12, RED, hit)
-    drop = c.appear(6.8)
-    c.text(40, gy + 82, "→ change dropped from tonight's branch", 12, WARN, drop)
+    c.text(40, gy + 76, "✗ src/auth.ts conflicts with open PR #298 · same lines", 12, RED, hit)
+    drop = c.appear(8.0)
+    c.text(40, gy + 94, "→ that change dropped from tonight's branch", 12, WARN, drop)
     c.raw(f'<line x1="40" y1="{86 + 26 - 2}" x2="130" y2="{86 + 26 - 2}" stroke="{TEXT}" stroke-width="1.2" class="{drop}"/>')
-    ok = c.appear(8.4)
-    c.text(40, gy + 108, "✓ no shared files with any open PR · guard ok · pushed", 12, GREEN, ok)
-    c.text(40, gy + 128, "the guard output goes in the PR body. never push while it fails.", 11, MUTED, c.appear(9.4))
-    c.text(28, H - 22, "you decide what merges. it only ever opens pull requests.", 12, DIM, c.appear(10.4))
+    ok = c.appear(9.4)
+    c.text(40, gy + 116, "✓ no merge conflicts with any open PR · guard ok · pushed", 12, GREEN, ok)
+    c.text(40, gy + 134, "the guard output goes in the PR body. never push while it fails.", 11, MUTED, c.appear(10.4))
+    c.text(28, H - 18, "you decide what merges. it only ever opens pull requests.", 12, DIM, c.appear(11.4))
     c.write()
 
 

@@ -23,10 +23,10 @@ Order:
 
 Skip a flag, and record why, if:
 
-- Its files are on the open-PR list. Mark `blocked: PR #N`.
+- The fix would conflict with an open PR (`$GUARD` fails). Mark `blocked: PR #N`.
 - The fix needs a new dependency, a new layer, a cache or memo shim, or a comment to explain itself. Mark `rejected`.
 - The right answer depends on product intent you cannot read from code, docs, or tests. Mark `rejected: needs product call`. Do not guess.
-- It is only a rename or a re-sort. Skip it. Trivial PRs get closed.
+- It is only a rename or a re-sort with no real gain. Skip it.
 
 ## How to fix
 

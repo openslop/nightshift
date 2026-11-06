@@ -85,13 +85,13 @@ Un second minuteur lit vos pull requests ouvertes et laisse une courte revue. Il
 
 ### Il ne vous gêne pas
 
-Avant de pousser, un garde vérifie chaque fichier contre chaque pull request ouverte. Si un collègue travaille déjà dans un fichier, le job abandonne ce changement et le dit.
+Avant de pousser, un garde teste la fusion de la branche avec chaque pull request ouverte. Partager un fichier avec un collègue ne pose pas de problème. Si un changement entrerait en conflit avec le sien, le job l'abandonne et le dit.
 
 [Les règles que chaque job suit →](../../jobs/_common.md)
 
 </td>
 <td width="50%">
-  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="Le garde marque un fichier touché par une pull request ouverte comme interdit" width="100%"></a>
+  <a href="../../jobs/_common.md"><img src="../../assets/features/guard.svg" alt="Le garde laisse passer un fichier partagé qui fusionne sans conflit et abandonne un changement qui entre en conflit avec une pull request ouverte" width="100%"></a>
 </td>
 </tr>
 <tr>

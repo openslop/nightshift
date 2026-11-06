@@ -8,7 +8,7 @@ Make the app feel fast where users feel it. Change no behavior.
 - Runtime first, not bundle size. Profile real user actions: typing, dragging, playback, renders.
 - Do not remove a good library just to shave bundle size.
 - Do not rewrite clear library calls as hand-rolled code.
-- Do not ship tiny rerender guards, one memoized callback, or a single `useMemo` as the night's result. These get closed as trivial. Fewer, bigger, proven changes.
+- Every change needs a measured, real gain. A small change with a real gain is fine. A lot of code for a tiny gain gets closed as trivial.
 - No dynamic import churn for a small first-load win when the app is already responsive.
 - Never hide a slow path behind a silent fallback.
 

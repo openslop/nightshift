@@ -13,7 +13,7 @@ The runner gives you these names. Use them.
 - `OWNER`: the GitHub handle of the person who reviews your PRs.
 - `CHECKS`: the shell command that runs the repo's checks.
 - `STATE_DIR`: a folder for notes that live outside the repo.
-- `GUARD`: the script that checks you did not touch a file an open PR touches.
+- `GUARD`: the script that checks your branch would not merge-conflict with an open PR.
 
 ## Scratch files
 
@@ -27,11 +27,11 @@ Put clones, diffs, and notes you throw away in `$TMPDIR`. Never write them to `/
 
 ## Stay out of other people's way (never break this)
 
-Your PR must never touch a file that any open PR touches.
+Your PR must never merge-conflict with an open PR. Touching the same files is fine.
 
-1. List open PRs: `gh pr list --repo $REPO_SLUG --state open --json number,title,files --limit 100`. Every file in that list is off limits tonight. That list caps at 100 files per PR, so the guard script below is the source of truth.
-2. If the only good change needs one of those files, do nothing tonight. Say which PR blocked you.
-3. Before you push, run `$GUARD` on your branch. It fails if you share a file with an open PR, or would conflict with one. Never push while it fails. Drop the change, or report no change.
+1. List open PRs: `gh pr list --repo $REPO_SLUG --state open --json number,title,files --limit 100`. Their files are not off limits, but stay clear of the lines they change. That list caps at 100 files per PR, so the guard script below is the source of truth.
+2. If the only good change would conflict with an open PR, do nothing tonight. Say which PR blocked you.
+3. Before you push, run `$GUARD` on your branch. It fails if your branch would conflict with an open PR. Never push while it fails. Change your diff so it no longer conflicts, drop the change, or report no change.
 4. Put the guard output in the PR body under the heading `Merge-conflict guard`.
 
 ## Git steps
@@ -48,7 +48,8 @@ Your PR must never touch a file that any open PR touches.
 
 ## What a good night looks like
 
-- One clear change beats five small ones. No change beats one weak one.
+- Judge a change by its gain against the code it costs. A small PR with a real gain (a bug fixed, a real speedup, simpler code) is good. A PR that adds a lot of code for a tiny perf, behavior, or bug gain is not, and gets closed as trivial. No change beats one of those.
+- Small is fine. Do not hold back a small, real fix because it is small, or wait to bundle it with others.
 - A night with no PR is fine. Say why. List what you skipped.
 - Never pad a PR. Never do side work outside the job.
 - Do not delete code just because nothing uses it yet. Design system parts, icons, tokens, and shared interfaces are often kept on purpose. List them as skipped instead. Never tighten a dead-code checker's ignore list to force those deletions.
