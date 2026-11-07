@@ -43,7 +43,7 @@ A cada duas horas, ele também lê os pull requests abertos e deixa uma revisão
 
 ### Um trabalho pequeno de cada vez
 
-Treze trabalhos, um depois do outro. Segurança, qualidade, bugs, legibilidade, limpeza, manutenibilidade, desempenho, convenções, arquitetura, docs, testes de fumaça e issues. Cada um recebe o agente inteiro para um trabalho e nada mais.
+Catorze trabalhos, um depois do outro. Segurança, qualidade, bugs, legibilidade, limpeza, manutenibilidade, desempenho, convenções, arquitetura, desvio, docs, testes de fumaça e issues. Cada um recebe o agente inteiro para um trabalho e nada mais.
 
 [Os trabalhos →](#os-trabalhos)
 
@@ -148,6 +148,7 @@ Aperte `c` em qualquer trabalho e o console reabre a transcrição daquela noite
 | `conventions`          | Lugares que quebram suas próprias regras escritas. Só correções seguras.           |
 | `conventions-followup` | As quebras de regra que precisam de uma mudança de verdade. Um tema por noite.     |
 | `architecture`         | A única grande forma de o código ficar mais simples.                               |
+| `drift`                | Prompts, estimativas e comentários que repetem o código e ficaram para trás. Corrige um por noite. |
 | `docs`                 | Guias que dizem algo que o código não faz mais. Corrige só o que está errado. |
 | `smoke-tests`          | Alguns testes calmos que checam se o app ainda abre. Normalmente não faz nada.     |
 | `issues`               | Uma issue do GitHub pequena e clara. Deixa as fáceis para quem está chegando.      |

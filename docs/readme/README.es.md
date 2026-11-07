@@ -43,7 +43,7 @@ Cada dos horas, también lee los pull requests abiertos y deja una reseña corta
 
 ### Un trabajo pequeño a la vez
 
-Trece trabajos, uno tras otro. Seguridad, calidad, bugs, legibilidad, limpieza, mantenibilidad, rendimiento, convenciones, arquitectura, docs, pruebas de humo e issues. Cada uno tiene al agente entero para un solo trabajo y nada más.
+Catorce trabajos, uno tras otro. Seguridad, calidad, bugs, legibilidad, limpieza, mantenibilidad, rendimiento, convenciones, arquitectura, deriva, docs, pruebas de humo e issues. Cada uno tiene al agente entero para un solo trabajo y nada más.
 
 [Los trabajos →](#los-trabajos)
 
@@ -148,6 +148,7 @@ Pulsa `c` en cualquier trabajo y la consola vuelve a abrir la transcripción de 
 | `conventions`          | Lugares que rompen tus propias reglas escritas. Solo arreglos seguros.     |
 | `conventions-followup` | Las reglas rotas que necesitan un cambio de verdad. Un tema por noche.     |
 | `architecture`         | La única gran forma en que el código podría ser más simple.                |
+| `drift`                | Prompts, estimaciones y comentarios que repiten el código y se quedaron atrás. Corrige uno por noche. |
 | `docs`                 | Guías que dicen algo que el código ya no hace. Corrige solo lo que es falso. |
 | `smoke-tests`          | Unas pocas pruebas tranquilas que comprueban que la app aún abre. Normalmente no hace nada. |
 | `issues`               | Un issue de GitHub pequeño y claro. Deja los fáciles para gente nueva.     |
