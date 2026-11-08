@@ -43,7 +43,7 @@ Every two hours, it also reads any open pull requests and leaves a short review.
 
 ### One small job at a time
 
-Thirteen jobs, run one after another. Security, quality, bugs, readability, cleanliness, maintainability, performance, conventions, architecture, docs, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
+Fourteen jobs, run one after another. Security, quality, bugs, readability, cleanliness, maintainability, performance, conventions, architecture, drift, docs, smoke tests, and issues. Each gets the whole agent for one job and nothing else.
 
 [The jobs →](#the-jobs)
 
@@ -148,6 +148,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | `conventions`          | Places that break your own written rules. Safe fixes only.                 |
 | `conventions-followup` | The rule breaks that need a real change. One theme a night.                |
 | `architecture`         | The one big way the code could be simpler.                                 |
+| `drift`                | Prompts, estimates and comments that restate the code and have fallen behind. Fixes one a night. |
 | `docs`                 | Guide files that say something the code no longer does. Fixes only what is false. |
 | `smoke-tests`          | A few calm tests that check the app still opens. Usually does nothing.     |
 | `issues`               | One small, clear GitHub issue. Leaves the easy ones for new people.        |

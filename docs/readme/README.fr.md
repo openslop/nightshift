@@ -43,7 +43,7 @@ Toutes les deux heures, il lit aussi les pull requests ouvertes et laisse une co
 
 ### Une petite tâche à la fois
 
-Treize jobs, lancés l'un après l'autre. Sécurité, qualité, bugs, lisibilité, propreté, maintenabilité, performance, conventions, architecture, docs, tests de fumée et issues. Chacun a l'agent entier pour un seul job et rien d'autre.
+Quatorze jobs, lancés l'un après l'autre. Sécurité, qualité, bugs, lisibilité, propreté, maintenabilité, performance, conventions, architecture, dérive, docs, tests de fumée et issues. Chacun a l'agent entier pour un seul job et rien d'autre.
 
 [Les jobs →](#les-jobs)
 
@@ -148,6 +148,7 @@ Appuyez sur `c` sur n'importe quel job et la console rouvre la transcription de 
 | `conventions`          | Les endroits qui cassent vos propres règles écrites. Corrections sûres uniquement.  |
 | `conventions-followup` | Les règles cassées qui demandent un vrai changement. Un thème par nuit.             |
 | `architecture`         | La seule grande façon dont le code pourrait être plus simple.                       |
+| `drift`                | Les prompts, estimations et commentaires qui répètent le code et ont pris du retard. En corrige un par nuit. |
 | `docs`                 | Les guides qui disent ce que le code ne fait plus. Corrige seulement ce qui est faux. |
 | `smoke-tests`          | Quelques tests calmes qui vérifient que l'app s'ouvre encore. Souvent ne fait rien. |
 | `issues`               | Une petite issue GitHub claire. Laisse les faciles aux nouveaux.                    |

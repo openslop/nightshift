@@ -26,6 +26,7 @@ const JOBS = [
   ["conventions-followup", 0.5, 4, 10, "Nightly conventions follow-up", "Took the 'one canonical validator' theme: two call sites now share the schema instead of re-checking fields by hand."],
   ["conventions", 0.55, 5, 9, "Nightly conventions sweep", "Read the guide files first. Four small rule breaks fixed, two design-level ones flagged for a human."],
   ["architecture", 0.4, 9, 22, "Nightly architecture report", "The provider seam typed as optional forced every adapter to keep a fallback. Made the contract total; four fallbacks deleted."],
+  ["drift", 0.45, 5, 14, "Nightly drift fix", "The music prompt told the writer a cue runs for the video plus the speech over it. The layout plays the longer of the two. Fixed the prompt, and the estimate now runs the layout itself."],
   ["docs", 0.3, 2, 6, "Nightly docs check", "Checked 64 claims in the guide files. Fixed three: a moved config path in CONTRIBUTING.md, a renamed script in README.md, and a pointer to a design rule that is gone."],
   ["smoke-tests", 0.1, 1, 4, "Nightly smoke-test report", "The app still opens, the three main screens render, no new test needed tonight."],
   ["issues", 0.45, 6, 18, "Nightly issue report", "Picked the one small, clear issue: the toast opened the wrong panel after export. Fixed with a test."],
