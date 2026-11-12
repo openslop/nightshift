@@ -138,7 +138,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 
 | Job                    | What it looks for                                                          |
 | ---------------------- | -------------------------------------------------------------------------- |
-| `security`             | Real holes a bad actor could use. Not "maybe someday" worries.             |
+| `security`             | A red-team audit. Proves each hole works, then fixes the worst one.        |
 | `quality`              | A weekly report card for the whole repo. Fixes the worst problem it found. |
 | `bugs`                 | Bugs a user would notice. Only clear ones.                                 |
 | `readability`          | Names that say nothing. Code that takes a second read. Fewer lines, not more. |
