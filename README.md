@@ -33,7 +33,7 @@ It wakes up your coding agent. It gives the agent one small job. The agent looks
 
 In the morning, you read what it did. Many nights it finds nothing. That is fine. Nothing is better than a bad change.
 
-Every 10 minutes, it also reads any open pull requests and leaves a short review. Every hour, it fixes what the reviews asked for and pushes it back to the pull request.
+Every 10 minutes, it also reads any open pull requests and leaves a short review. Every two hours, it fixes what the reviews asked for and pushes it back to the pull request.
 
 ## Features
 
@@ -73,7 +73,7 @@ It only ever opens pull requests. Nothing pushes to main. Nothing merges by itse
 
 A second timer reads your open pull requests and leaves a short review. It is quiet unless it finds something.
 
-A third timer, every hour, takes each reviewed pull request in turn, fixes the feedback worth fixing in a worktree of its own, runs your checks and review passes, and pushes back to the pull request's branch. It replies to each comment and resolves it. One pull request at a time.
+A third timer, every two hours, takes each reviewed pull request in turn, fixes the feedback worth fixing in a worktree of its own, runs your checks and review passes, and pushes back to the pull request's branch. It replies to each comment and resolves it. One pull request at a time.
 
 [How the reviewer acts →](review/SKILL.md)
 
@@ -155,7 +155,7 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | `smoke-tests`          | A few calm tests that check the app still opens. Usually does nothing.     |
 | `issues`               | One small, clear GitHub issue. Leaves the easy ones for new people.        |
 | `review`               | Reads open pull requests every 10 minutes. Quiet unless it finds something. |
-| `address`              | Every hour, fixes the review feedback worth fixing and pushes it to the PR. One PR at a time. |
+| `address`              | Every two hours, fixes the review feedback worth fixing and pushes it to the PR. One PR at a time. |
 
 Every job follows the same rules. They are in [`jobs/_common.md`](jobs/_common.md). In short:
 
