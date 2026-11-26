@@ -42,7 +42,7 @@ Timer one runs `~/nightshift/bin/nightly.sh` once a day at 5:12 in the morning. 
 
 Timer two runs `~/nightshift/bin/review.sh` every 10 minutes, at 7, 17, 27 and so on. Give it up to 70 minutes to finish. A tick that finds a review still running just exits.
 
-Timer three runs `~/nightshift/bin/address.sh` every hour, at 37 minutes past. Give it up to 8 hours to finish. It works through PRs one at a time, so a busy hour can run long; the next tick exits while it does.
+Timer three runs `~/nightshift/bin/address.sh` every two hours, at 37 minutes past. Give it up to 8 hours to finish. It works through PRs one at a time, so a busy pass can run long; the next tick exits while it does.
 
 The three never get in each other's way. The night batch owns the main checkout. The reviewer only reads GitHub. The address job works in its own worktree under the state folder. Both step aside while the night batch runs.
 
