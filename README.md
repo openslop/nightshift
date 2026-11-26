@@ -33,7 +33,7 @@ It wakes up your coding agent. It gives the agent one small job. The agent looks
 
 In the morning, you read what it did. Many nights it finds nothing. That is fine. Nothing is better than a bad change.
 
-Every two hours, it also reads any open pull requests and leaves a short review.
+Every 10 minutes, it also reads any open pull requests and leaves a short review. Every two hours, it fixes what the reviews asked for and pushes it back to the pull request.
 
 ## Features
 
@@ -69,15 +69,17 @@ It only ever opens pull requests. Nothing pushes to main. Nothing merges by itse
 <tr>
 <td width="50%" valign="middle">
 
-### A reviewer every two hours
+### A reviewer every 10 minutes
 
 A second timer reads your open pull requests and leaves a short review. It is quiet unless it finds something.
+
+A third timer, every two hours, takes each reviewed pull request in turn, fixes the feedback worth fixing in a worktree of its own, runs your checks and review passes, and pushes back to the pull request's branch. It replies to each comment and resolves it. One pull request at a time.
 
 [How the reviewer acts →](review/SKILL.md)
 
 </td>
 <td width="50%">
-  <a href="review/SKILL.md"><img src="./assets/features/review.svg" alt="A day-long timeline ticks every two hours; most ticks are quiet, two leave a note" width="100%"></a>
+  <a href="review/SKILL.md"><img src="./assets/features/review.svg" alt="A day-long timeline of review ticks; most ticks are quiet, two leave a note" width="100%"></a>
 </td>
 </tr>
 <tr>
@@ -152,7 +154,8 @@ Press `c` on any job and the console reopens that night's transcript. Ask the ag
 | `docs`                 | Guide files that say something the code no longer does. Fixes only what is false. |
 | `smoke-tests`          | A few calm tests that check the app still opens. Usually does nothing.     |
 | `issues`               | One small, clear GitHub issue. Leaves the easy ones for new people.        |
-| `review`               | Reads open pull requests every two hours. Quiet unless it finds something. |
+| `review`               | Reads open pull requests every 10 minutes. Quiet unless it finds something. |
+| `address`              | Every two hours, fixes the review feedback worth fixing and pushes it to the PR. One PR at a time. |
 
 Every job follows the same rules. They are in [`jobs/_common.md`](jobs/_common.md). In short:
 
@@ -194,7 +197,7 @@ Tell your coding agent this:
 
 > Get github.com/openslop/nightshift and set it up for my code at ~/code/my-app. Read SETUP.md there and follow it.
 
-That is it. Your agent will ask you a few questions, set two timers on your computer, and show you where the notes go.
+That is it. Your agent will ask you a few questions, set three timers on your computer, and show you where the notes go.
 
 Works on macOS, Linux, and Windows. If you would rather do it by hand, [`SETUP.md`](SETUP.md) is the page your agent follows.
 
@@ -215,9 +218,10 @@ It needs Node. Press `c` on a job to talk to the agent about what it did. Press 
 - [`jobs/`](jobs) has one page per job, in plain English. Read them. Change them if you want.
 - [`jobs/_common.md`](jobs/_common.md) has the rules every job follows.
 - [`review/SKILL.md`](review/SKILL.md) says how the reviewer acts.
+- [`address/SKILL.md`](address/SKILL.md) says how the address job handles feedback.
 - [`nightshift.conf.example`](nightshift.conf.example) is the settings page. Your agent fills in a copy.
 - [`SETUP.md`](SETUP.md) is the page your agent follows to set things up.
-- [`bin/`](bin) has three small scripts the timers run. You do not need to read them.
+- [`bin/`](bin) has four small scripts the timers run. You do not need to read them.
 - [`tui/`](tui) is the console. [`tui/README.md`](tui/README.md) says how to open it.
 
 ## Is it safe?
@@ -237,7 +241,7 @@ It needs Node. Press `c` on a job to talk to the agent about what it did. Press 
 
 ## Turn it off
 
-Tell your agent: "Turn off Nightshift." It removes the two timers. Your code is not touched.
+Tell your agent: "Turn off Nightshift." It removes the three timers. Your code is not touched.
 
 ---
 

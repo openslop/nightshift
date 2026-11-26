@@ -44,9 +44,16 @@ AGENT_STDIN=0
 # The reviewer. Same as AGENT unless you set it.
 # REVIEW_AGENT="claude -p --dangerously-skip-permissions --max-turns 80"
 
+# The job that addresses review feedback on open PRs. Same as AGENT unless you set it.
+# ADDRESS_AGENT="claude -p --dangerously-skip-permissions --max-turns 150"
+
+# Optional. PRs with this label are left alone by the address job.
+# HOLD_LABEL="on hold"
+
 # How long one job may run before it is stopped.
 JOB_TIMEOUT=45m
 REVIEW_TIMEOUT=55m
+ADDRESS_TIMEOUT=45m
 
 # If the night run starts at or after this hour, it is skipped.
 # This stops it from running in the middle of your day after your laptop wakes up.

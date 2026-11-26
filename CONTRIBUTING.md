@@ -7,7 +7,7 @@ Thanks for helping. Nightshift is small on purpose. Keep it that way.
 - `jobs/` is one page per job, in plain English. The agent reads the page as its instructions.
 - `jobs/_common.md` is the rules every job follows. Change it with care; every job feels it.
 - `review/SKILL.md` is how the reviewer acts.
-- `bin/` is three shell scripts. `nightly.sh` runs the jobs, `review.sh` runs the reviewer, `guard.sh` keeps a branch away from files that open pull requests touch. `lib.sh` is what they share.
+- `bin/` is four shell scripts. `nightly.sh` runs the jobs, `review.sh` runs the reviewer, `address.sh` addresses review feedback on PRs, `guard.sh` keeps a branch away from files that open pull requests touch. `lib.sh` is what they share.
 - `tui/` is the console. Plain Node, no dependencies, no build step.
 - `assets/` is the pictures. `gen-demo.py` draws the demo and `gen-features.py` draws the feature cards. Both emit SVG.
 
