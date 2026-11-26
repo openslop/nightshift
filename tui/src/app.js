@@ -644,7 +644,7 @@ class App {
     if (this.overlay === "report") return this.renderReport(ix, yy, iw, h, t);
     const quiet = d.review.ticks.filter((k) => k.kind === "noop").length;
     scr.text(ix, yy + 1, "PR REVIEW SHIFTS", { fg: th.bright });
-    scr.text(ix + 18, yy + 1, "· every 2h · " + Object.keys(d.review.ledger).length + " PRs in ledger · " + revs.length + " passes · " + quiet + " quiet ticks", { fg: th.fg2 }, iw - 18);
+    scr.text(ix + 18, yy + 1, "· every 10m · " + Object.keys(d.review.ledger).length + " PRs in ledger · " + revs.length + " passes · " + quiet + " quiet ticks", { fg: th.fg2 }, iw - 18);
     // activity strip: last 48 ticks
     const strip = d.review.ticks.slice(-Math.min(iw - 2, 72));
     strip.forEach((k, i) => scr.put(ix + i, yy + 2, k.kind === "review" ? "▮" : k.kind === "error" ? "×" : "▁", { fg: k.kind === "review" ? th.accent : k.kind === "error" ? th.bad : th.line }));
@@ -763,7 +763,7 @@ class App {
       ["d", "fullscreen deep field; < > spin, [ ] tilt, + - zoom, space pause"],
       ["f", "deep field style: ridge lines / wire mesh"],
       ["m", "metrics: yield, durations, review cadence, status mix"],
-      ["r", "PR review shifts (every 2h)"],
+      ["r", "PR review shifts (every 10m)"],
       ["o", "open the job's pull request in the browser"],
       ["t", "toggle palette: night / phosphor"],
       ["F", "fullscreen the terminal window (F11 works too)"],

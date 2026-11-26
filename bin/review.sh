@@ -8,8 +8,12 @@ LOG="$STATE_DIR/review.log"
 
 exec 9>"$STATE_DIR/review.lock"
 flock -n 9 || { log "$LOG" "another review is running"; exit 0; }
+# A waiting night batch holds nightly.lock, so stepping aside here keeps it from starving.
+exec 7>"$STATE_DIR/nightly.lock"
+flock -n 7 || { log "$LOG" "nightly batch is running; will try next tick"; exit 0; }
+flock -u 7
 exec 8>"$STATE_DIR/tree.lock"
-flock -n 8 || { log "$LOG" "nightly batch is running; will try next tick"; exit 0; }
+flock -s -n 8 || { log "$LOG" "nightly batch is running; will try next tick"; exit 0; }
 
 [ -f "$LEDGER" ] || echo '{}' >"$LEDGER"
 
