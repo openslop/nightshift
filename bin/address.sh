@@ -54,12 +54,13 @@ log "$LOG" "to address: $(echo "$NEED" | cut -d' ' -f1 | tr '\n' ' ')"
 cd "$REPO_DIR" || { log "$LOG" "no repo at $REPO_DIR"; exit 1; }
 git worktree prune
 [ -d "$TREE" ] || git worktree add --detach "$TREE" >>"$LOG" 2>&1 || { log "$LOG" "ERROR: worktree add failed"; exit 1; }
+trap 'git -C "$REPO_DIR" worktree remove --force "$TREE" >>"$LOG" 2>&1' EXIT
 
 echo "$NEED" | while read -r n ref sha head_repo; do
   if [ "$(git branch --show-current)" = "$ref" ]; then
     log "$LOG" "skip #$n: $ref is checked out in $REPO_DIR, someone is working on it"; continue
   fi
-  # Only one PR at a time: the worktree is reset to the PR's head. Ignored files (installed deps) stay.
+  # Only one PR at a time: the worktree is reset to the PR's head.
   if ! { git -C "$TREE" fetch -q origin "pull/$n/head" && git -C "$TREE" checkout -q -f --detach "$sha" && git -C "$TREE" clean -fdq; } >>"$LOG" 2>&1; then
     log "$LOG" "ERROR: could not check out PR #$n; skipped"; continue
   fi
